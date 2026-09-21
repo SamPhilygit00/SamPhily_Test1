@@ -53,16 +53,35 @@
   }
 
   function draw() {
-    ctx.fillStyle = "#1e293b";
+    ctx.fillStyle = "#001a00";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = "#f97316";
+    ctx.strokeStyle = "#003300";
+    ctx.lineWidth = 1;
+    for (let i = 1; i < GRID_SIZE; i++) {
+      ctx.beginPath();
+      ctx.moveTo(i * CELL, 0);
+      ctx.lineTo(i * CELL, canvas.height);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, i * CELL);
+      ctx.lineTo(canvas.width, i * CELL);
+      ctx.stroke();
+    }
+
+    ctx.shadowBlur = 8;
+
+    ctx.shadowColor = "#ff3b3b";
+    ctx.fillStyle = "#ff3b3b";
     ctx.fillRect(food.x * CELL + 1, food.y * CELL + 1, CELL - 2, CELL - 2);
 
+    ctx.shadowColor = "#39ff14";
     snake.forEach((seg, i) => {
-      ctx.fillStyle = i === 0 ? "#4ade80" : "#22c55e";
+      ctx.fillStyle = i === 0 ? "#a6ff8f" : "#39ff14";
       ctx.fillRect(seg.x * CELL + 1, seg.y * CELL + 1, CELL - 2, CELL - 2);
     });
+
+    ctx.shadowBlur = 0;
   }
 
   function endGame() {
