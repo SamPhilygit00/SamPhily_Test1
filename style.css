@@ -1,0 +1,148 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --accent: #22c55e;
+  --accent-2: #16a34a;
+  --food: #f97316;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: 16px;
+}
+
+.game-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 440px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.05em;
+}
+
+.hud {
+  display: flex;
+  gap: 24px;
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+.stat span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.board-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--panel);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 12px;
+  text-align: center;
+  padding: 16px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+#overlay-text {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+#start-btn {
+  padding: 10px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+#start-btn:hover {
+  background: var(--accent-2);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+  text-align: center;
+}
+
+.touch-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.mid-row {
+  display: flex;
+  gap: 6px;
+}
+
+.touch-controls button {
+  width: 52px;
+  height: 52px;
+  font-size: 1.3rem;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #334155;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.touch-controls button:active {
+  background: var(--accent);
+  color: #0f172a;
+}
+
+@media (min-width: 640px) {
+  .touch-controls {
+    display: none;
+  }
+}

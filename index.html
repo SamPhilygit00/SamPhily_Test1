@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snake</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-wrap">
+    <h1>Snake</h1>
+
+    <div class="hud">
+      <div class="stat">Score: <span id="score">0</span></div>
+      <div class="stat">Best: <span id="best">0</span></div>
+    </div>
+
+    <div class="board-wrap">
+      <canvas id="board" width="400" height="400"></canvas>
+      <div id="overlay" class="overlay">
+        <p id="overlay-text">Press Start to play</p>
+        <button id="start-btn">Start</button>
+      </div>
+    </div>
+
+    <p class="hint">Use arrow keys or WASD. On touch devices, swipe.</p>
+
+    <div class="touch-controls" id="touch-controls">
+      <button data-dir="up" aria-label="Up">&#8593;</button>
+      <div class="mid-row">
+        <button data-dir="left" aria-label="Left">&#8592;</button>
+        <button data-dir="down" aria-label="Down">&#8595;</button>
+        <button data-dir="right" aria-label="Right">&#8594;</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
