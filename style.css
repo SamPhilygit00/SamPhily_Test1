@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+:root {
+  --bg: #000000;
+  --panel: #001a00;
+  --grid: #003300;
+  --accent: #39ff14;
+  --accent-2: #2ecc0e;
+  --food: #ff3b3b;
+  --text: #39ff14;
+  --muted: #1f8a0e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Press Start 2P", monospace;
+  padding: 16px;
+  text-shadow: 0 0 6px currentColor;
+}
+
+.game-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 440px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-shadow: 0 0 8px var(--accent), 0 0 18px var(--accent);
+}
+
+.hud {
+  display: flex;
+  gap: 24px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.stat span {
+  color: var(--accent);
+}
+
+.board-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--panel);
+  border: 3px solid var(--accent);
+  border-radius: 0;
+  box-shadow:
+    0 0 12px var(--accent),
+    inset 0 0 24px rgba(57, 255, 20, 0.15);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 0;
+  text-align: center;
+  padding: 16px;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+#overlay-text {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: var(--accent);
+}
+
+#start-btn {
+  padding: 12px 24px;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--bg);
+  background: var(--accent);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  text-shadow: none;
+  box-shadow: 0 0 10px var(--accent);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+#start-btn:hover {
+  background: var(--accent-2);
+  box-shadow: 0 0 18px var(--accent);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.6rem;
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+}
+
+.touch-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.mid-row {
+  display: flex;
+  gap: 6px;
+}
+
+.touch-controls button {
+  width: 52px;
+  height: 52px;
+  font-size: 1.3rem;
+  font-family: inherit;
+  background: var(--panel);
+  color: var(--accent);
+  border: 2px solid var(--muted);
+  border-radius: 0;
+  cursor: pointer;
+  text-shadow: 0 0 6px currentColor;
+}
+
+.touch-controls button:active {
+  background: var(--accent);
+  color: var(--bg);
+  text-shadow: none;
+}
+
+@media (min-width: 640px) {
+  .touch-controls {
+    display: none;
+  }
+}
