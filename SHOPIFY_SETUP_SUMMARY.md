@@ -9,9 +9,11 @@ Actions **"Shopify orders extraction"** :
 
 1. Récupère toutes les commandes des **90 derniers jours calendrier**
    (`created_at_min`) via l'API Admin de Shopify.
-2. Écrit un fichier JSON complet et un CSV résumé dans `data/orders/`,
-   nommés par la date du jour (`YYYY-MM-DD.json` / `.csv`).
-3. Envoie le CSV par courriel à **eladdas@yahoo.fr**.
+2. Écrit dans `data/orders/`, nommés par la date du jour :
+   - `YYYY-MM-DD.json` — dump complet
+   - `YYYY-MM-DD.csv` — résumé aplati
+   - `YYYY-MM-DD_suivi_ventes.xlsx` — fichier "Suivi ventes" au format modèle
+3. Envoie le **CSV et le xlsx** par courriel à **eladdas@yahoo.fr**.
 4. Commit et pousse les fichiers générés dans le dépôt (`main`).
 
 ## Colonnes du CSV
@@ -23,6 +25,24 @@ frais_livraison, total_price, shipping_city`
 - **TPS** / **TVQ** : taxes fédérale (GST, 5%) et provinciale (QST, ~9.975%)
   séparées à partir des `tax_lines` de chaque commande.
 - **frais_livraison** : `total_shipping_price_set` de la commande.
+
+## Fichier "Suivi ventes" (xlsx)
+
+Généré par `scripts/build_sales_tracking_xlsx.py` (utilisable aussi en
+standalone), il reproduit le format du fichier modèle fourni :
+
+- Un bloc de 6 colonnes par mois calendaire (Date, Commande, Mt brut, tvq,
+  tps, Expedition), blocs disposés côte à côte de gauche à droite.
+- Une ligne par jour calendaire ; si plusieurs commandes tombent le même
+  jour, leurs montants sont additionnés sur cette ligne et les numéros de
+  commande sont joints par `, `.
+- Une ligne de total par mois (calculée directement en Python, pas une
+  formule Excel — donc toujours correcte à l'ouverture).
+- Une ligne **"TOTAL PÉRIODE"** en bas, sommant les totaux de tous les mois.
+- Format numérique forcé au point décimal (`0"."00`), peu importe la
+  configuration régionale d'Excel.
+- Mise en forme (couleurs, bordures, largeurs de colonnes) reproduite à
+  l'identique du modèle fourni.
 
 ## Comment c'est authentifié
 
@@ -48,9 +68,10 @@ Dans **Settings → Secrets and variables → Actions** :
 ## Fichiers du projet
 
 - `scripts/shopify_extract_orders.py` — le script d'extraction/email
-- `scripts/requirements.txt` — dépendances Python (`requests`)
+- `scripts/build_sales_tracking_xlsx.py` — génère le fichier "Suivi ventes"
+- `scripts/requirements.txt` — dépendances Python (`requests`, `openpyxl`)
 - `.github/workflows/shopify-extract.yml` — planification + déclenchement manuel
-- `data/orders/` — fichiers générés (un CSV + un JSON par date d'exécution)
+- `data/orders/` — fichiers générés (JSON + CSV + xlsx par date d'exécution)
 - `README.md` — instructions de configuration détaillées
 
 ## Déclencher un run manuellement
@@ -68,3 +89,6 @@ Dans **Settings → Secrets and variables → Actions** :
   client/tags/pays
 - Passage à une fenêtre glissante de 90 jours + noms de fichiers `YYYY-MM-DD`
 - Ajout de l'envoi automatique du CSV par courriel (Yahoo Mail SMTP)
+- Création du fichier "Suivi ventes" (xlsx) reproduisant le format modèle
+  fourni, avec total par mois et total général, intégré à l'automatisation
+  hebdomadaire et envoyé par courriel en plus du CSV
