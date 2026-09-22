@@ -22,19 +22,30 @@ JSON dump, a flattened CSV summary, and `orders_latest.{json,csv}` copies.
 
 ### 1. Create a Shopify custom app
 
-1. In your Shopify admin: **Settings → Apps and sales channels → Develop apps**.
-2. Create an app, then under **Configuration** grant the `read_orders` Admin
-   API access scope.
-3. Install the app and copy the generated **Admin API access token**.
+1. In your Shopify admin: **Settings → Apps and sales channels → Applications
+   → Développer des applications**, which now redirects to the **Dev
+   Dashboard**.
+2. Create an app from the Dev Dashboard ("Démarrer depuis le Dev Dashboard"),
+   grant the `read_orders` Admin API scope, and publish a version.
+3. Install the app on your store (**Installations → Installer l'appli**).
+4. Open **Paramètres de l'appli** and copy the **Client ID** and **Secret**
+   (click the eye icon to reveal it). The script exchanges these for a fresh
+   Admin API access token on every run via the client credentials grant, so
+   there is no static token to copy/rotate.
 
 ### 2. Configure GitHub secrets
 
 In this repository: **Settings → Secrets and variables → Actions**, add:
 
-| Secret                 | Value                                  |
-| ----------------------- | --------------------------------------- |
-| `SHOPIFY_STORE_URL`     | `your-store.myshopify.com`             |
-| `SHOPIFY_ACCESS_TOKEN`  | the Admin API access token from step 1 |
+| Secret                  | Value                                    |
+| ------------------------ | ----------------------------------------- |
+| `SHOPIFY_STORE_URL`      | `your-store.myshopify.com`               |
+| `SHOPIFY_CLIENT_ID`      | the Client ID from step 1                |
+| `SHOPIFY_CLIENT_SECRET`  | the Client secret from step 1            |
+
+(A static `SHOPIFY_ACCESS_TOKEN` secret also works if you have one from a
+legacy custom app — the script prefers it over the client ID/secret pair
+when both are set.)
 
 ### 3. Automated runs
 
@@ -48,7 +59,8 @@ workflow").
 ```
 pip install -r scripts/requirements.txt
 export SHOPIFY_STORE_URL="your-store.myshopify.com"
-export SHOPIFY_ACCESS_TOKEN="shpat_..."
+export SHOPIFY_CLIENT_ID="..."
+export SHOPIFY_CLIENT_SECRET="..."
 python scripts/shopify_extract_orders.py
 ```
 

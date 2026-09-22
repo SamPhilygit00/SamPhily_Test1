@@ -5,8 +5,15 @@ Writes both a full JSON dump and a flattened CSV summary to data/orders/,
 plus stable "latest" copies for easy downstream consumption.
 
 Required environment variables:
-  SHOPIFY_STORE_URL     e.g. "my-store.myshopify.com"
-  SHOPIFY_ACCESS_TOKEN  Admin API access token (custom app, scope read_orders)
+  SHOPIFY_STORE_URL      e.g. "my-store.myshopify.com"
+
+  Authentication - provide EITHER of these:
+  SHOPIFY_ACCESS_TOKEN   a static Admin API access token (legacy custom apps)
+  OR
+  SHOPIFY_CLIENT_ID      Client ID from a Dev Dashboard custom app
+  SHOPIFY_CLIENT_SECRET  Client secret from a Dev Dashboard custom app
+                         (a fresh access token is requested via the client
+                         credentials grant on every run)
 
 Optional environment variables:
   SHOPIFY_API_VERSION   default "2024-10"
@@ -39,6 +46,25 @@ def env_or_die(name: str) -> str:
         print(f"Missing required environment variable: {name}", file=sys.stderr)
         sys.exit(1)
     return value
+
+
+def get_access_token_via_client_credentials(store_url: str, client_id: str, client_secret: str) -> str:
+    url = f"https://{store_url}/admin/oauth/access_token"
+    resp = requests.post(
+        url,
+        json={
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "grant_type": "client_credentials",
+        },
+        timeout=30,
+    )
+    resp.raise_for_status()
+    token = resp.json().get("access_token")
+    if not token:
+        print("Client credentials grant did not return an access_token", file=sys.stderr)
+        sys.exit(1)
+    return token
 
 
 def build_session(access_token: str) -> requests.Session:
@@ -144,9 +170,26 @@ def write_outputs(orders: list[dict]) -> None:
     print(f"Updated {latest_json.name} / {latest_csv.name}")
 
 
+def resolve_access_token(store_url: str) -> str:
+    access_token = os.environ.get("SHOPIFY_ACCESS_TOKEN")
+    if access_token:
+        return access_token
+
+    client_id = os.environ.get("SHOPIFY_CLIENT_ID")
+    client_secret = os.environ.get("SHOPIFY_CLIENT_SECRET")
+    if client_id and client_secret:
+        return get_access_token_via_client_credentials(store_url, client_id, client_secret)
+
+    print(
+        "Missing credentials: set SHOPIFY_ACCESS_TOKEN, or both "
+        "SHOPIFY_CLIENT_ID and SHOPIFY_CLIENT_SECRET",
+        file=sys.stderr,
+    )
+    sys.exit(1)
+
+
 def main() -> None:
     store_url = env_or_die("SHOPIFY_STORE_URL")
-    access_token = env_or_die("SHOPIFY_ACCESS_TOKEN")
     api_version = os.environ.get("SHOPIFY_API_VERSION", "2024-10")
     status = os.environ.get("SHOPIFY_ORDER_STATUS", "any")
     updated_at_min = os.environ.get("SHOPIFY_UPDATED_AT_MIN") or None
@@ -154,6 +197,7 @@ def main() -> None:
     if urlparse(f"https://{store_url}").hostname != store_url:
         store_url = urlparse(store_url if "://" in store_url else f"https://{store_url}").hostname or store_url
 
+    access_token = resolve_access_token(store_url)
     session = build_session(access_token)
     orders = fetch_all_orders(store_url, session, api_version, status, updated_at_min)
     write_outputs(orders)
