@@ -3,7 +3,9 @@
 
 Reproduces the layout of the reference template: one block of 6 columns
 per calendar month (Date, Commande, Mt brut, tvq, tps, Expedition), one row
-per calendar day, and a totals row per month with SUM formulas. Blocks are
+per calendar day, and a totals row per month (computed in Python, written
+as plain numbers so they display correctly without depending on Excel
+recalculation), plus a grand-total row summing every month. Blocks are
 laid out left to right, one per month, covering the same date range as the
 orders JSON (typically the 90-day rolling extraction window).
 
@@ -53,6 +55,11 @@ TOTAL_TAX_FILL = PatternFill("solid", fgColor="FFFF0000")
 
 CENTER = Alignment(horizontal="center", vertical="center")
 LEFT = Alignment(horizontal="left", vertical="center")
+
+# Escaped period so Excel always displays a decimal point, regardless of the
+# spreadsheet locale (a plain "0.00" format renders with a comma under a
+# French locale).
+NUMBER_FORMAT = '0"."00'
 
 
 def load_orders(path: Path) -> list[dict]:
@@ -111,7 +118,7 @@ def months_covered(orders: list[dict]) -> list[tuple[int, int]]:
     return months
 
 
-def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date, list[dict]]) -> tuple[int, list[str]]:
+def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date, list[dict]]) -> tuple[int, dict[str, float]]:
     days_in_month = calendar.monthrange(year, month)[1]
     abbr = MONTH_ABBR[month]
 
@@ -121,6 +128,8 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
         cell.font = Font(bold=True, size=10)
         cell.alignment = CENTER
         cell.border = CELL_BORDER
+
+    totals = {"mt_brut": 0.0, "tvq": 0.0, "tps": 0.0, "expedition": 0.0}
 
     for day in range(1, days_in_month + 1):
         row = 1 + day
@@ -139,21 +148,26 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
 
         if orders_today:
             commande = ", ".join(o.get("name", "") for o in orders_today)
-            mt_brut = sum(float(o.get("subtotal_price") or 0) for o in orders_today)
-            tps_total = sum(split_taxes(o)[0] for o in orders_today)
-            tvq_total = sum(split_taxes(o)[1] for o in orders_today)
-            expedition = sum(shipping_fee(o) for o in orders_today)
+            mt_brut = round(sum(float(o.get("subtotal_price") or 0) for o in orders_today), 2)
+            tps_total = round(sum(split_taxes(o)[0] for o in orders_today), 2)
+            tvq_total = round(sum(split_taxes(o)[1] for o in orders_today), 2)
+            expedition = round(sum(shipping_fee(o) for o in orders_today), 2)
 
             cells[0].value = commande
-            cells[1].value = round(mt_brut, 2)
-            cells[2].value = round(tvq_total, 2)
-            cells[3].value = round(tps_total, 2)
-            cells[4].value = round(expedition, 2)
+            cells[1].value = mt_brut
+            cells[2].value = tvq_total
+            cells[3].value = tps_total
+            cells[4].value = expedition
             for c in [date_cell, *cells]:
                 c.fill = DAY_WITH_ORDER_FILL
 
+            totals["mt_brut"] += mt_brut
+            totals["tvq"] += tvq_total
+            totals["tps"] += tps_total
+            totals["expedition"] += expedition
+
         for c in cells[1:]:
-            c.number_format = "0.00"
+            c.number_format = NUMBER_FORMAT
 
     total_row = 2 + days_in_month
     label_cell = ws.cell(row=total_row, column=start_col, value=f"{abbr}-{str(year)[-2:]}")
@@ -163,10 +177,11 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
 
     col_letters = [get_column_letter(start_col + i) for i in range(1, 6)]
     fills = [TOTAL_AMOUNT_FILL, TOTAL_TAX_FILL, TOTAL_TAX_FILL, TOTAL_AMOUNT_FILL]
-    for letter, fill in zip(col_letters[1:], fills):
+    values = [round(totals["mt_brut"], 2), round(totals["tvq"], 2), round(totals["tps"], 2), round(totals["expedition"], 2)]
+    for letter, fill, value in zip(col_letters[1:], fills, values):
         cell = ws[f"{letter}{total_row}"]
-        cell.value = f"=SUM({letter}2:{letter}{total_row - 1})"
-        cell.number_format = "0.00"
+        cell.value = value
+        cell.number_format = NUMBER_FORMAT
         cell.fill = fill
         cell.font = Font(bold=True, size=10)
         cell.alignment = CENTER
@@ -179,10 +194,10 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
         ws.column_dimensions[get_column_letter(start_col + offset)].width = width
     ws.column_dimensions[get_column_letter(start_col + BLOCK_WIDTH - 1)].width = 3
 
-    return total_row, col_letters[1:]
+    return total_row, totals
 
 
-def write_grand_total(ws, block_totals: list[tuple[int, list[str]]]) -> None:
+def write_grand_total(ws, block_totals: list[tuple[int, dict[str, float]]]) -> None:
     """Write a grand-total row below all month blocks, summing every block's
     Mt brut / tvq / tps / Expedition totals into one row."""
     max_total_row = max(total_row for total_row, _ in block_totals)
@@ -197,10 +212,11 @@ def write_grand_total(ws, block_totals: list[tuple[int, list[str]]]) -> None:
 
     fills = [TOTAL_AMOUNT_FILL, TOTAL_TAX_FILL, TOTAL_TAX_FILL, TOTAL_AMOUNT_FILL]
     target_cols = [4, 5, 6, 7]  # D, E, F, G: Mt brut, tvq, tps, Expedition
-    for col_offset, target_col, fill in zip(range(4), target_cols, fills):
-        refs = [f"{letters[col_offset]}{total_row}" for total_row, letters in block_totals]
-        cell = ws.cell(row=grand_row, column=target_col, value="=" + "+".join(refs))
-        cell.number_format = "0.00"
+    keys = ["mt_brut", "tvq", "tps", "expedition"]
+    for target_col, fill, key in zip(target_cols, fills, keys):
+        value = round(sum(totals[key] for _, totals in block_totals), 2)
+        cell = ws.cell(row=grand_row, column=target_col, value=value)
+        cell.number_format = NUMBER_FORMAT
         cell.fill = fill
         cell.font = Font(bold=True, size=10)
         cell.alignment = CENTER
@@ -216,10 +232,10 @@ def build_workbook(orders: list[dict]) -> Workbook:
     day_orders = group_by_day(orders)
     block_totals = []
     for i, (year, month) in enumerate(months_covered(orders)):
-        total_row, col_letters = write_block(
+        total_row, totals = write_block(
             ws, start_col=2 + i * BLOCK_WIDTH, year=year, month=month, day_orders=day_orders
         )
-        block_totals.append((total_row, col_letters))
+        block_totals.append((total_row, totals))
 
     write_grand_total(ws, block_totals)
 
