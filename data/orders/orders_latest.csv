@@ -1,0 +1,70 @@
+id,order_number,created_at,updated_at,cancelled_at,financial_status,fulfillment_status,currency,subtotal_price,total_discounts,total_tax,total_price,customer_email,customer_name,shipping_country,shipping_city,line_items_count,tags
+7346776441120,#1355,2026-09-21T20:43:00-04:00,2026-09-21T20:43:08-04:00,,paid,,CAD,90.00,0.00,13.47,103.47,ayamoumnehfam@icloud.com,BMO AJI,,,3,genie-shipping
+7340662325536,#1354,2026-09-18T23:28:04-04:00,2026-09-20T15:30:21-04:00,,paid,fulfilled,CAD,66.60,7.39,9.99,76.59,soukimdn@gmail.com,Soukayna Madani,,,4,genie-shipping
+7335470137632,#1353,2026-09-16T14:47:48-04:00,2026-09-16T14:47:50-04:00,,paid,fulfilled,CAD,100.00,0.00,14.98,114.98,,,,,2,
+7335315243296,#1352,2026-09-16T13:20:06-04:00,2026-09-16T21:56:49-04:00,,paid,,CAD,23.00,0.00,0.00,23.00,mariloug@outlook.fr,Marilou Grenier,Canada,,2,
+7330853191968,#1351,2026-09-14T19:04:10-04:00,2026-09-16T21:57:04-04:00,,paid,fulfilled,CAD,441.91,404.00,61.15,503.06,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,14,genie-shipping
+7328788054304,#1350,2026-09-13T20:06:54-04:00,2026-09-13T20:06:57-04:00,,pending,,CAD,69.00,0.00,0.00,69.00,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,5,
+7328511623456,#1349,2026-09-13T17:00:47-04:00,2026-09-13T20:05:25-04:00,,paid,fulfilled,CAD,0.00,160.00,0.00,0.00,laylalavoie22@gmail.com,layla lavoie,,,9,genie-shipping
+7321577455904,#1348,2026-09-10T15:59:08-04:00,2026-09-10T20:32:11-04:00,,paid,fulfilled,CAD,9.00,0.00,1.35,10.35,lolo60gym@gmail.com,laurence Lalonde,,,1,genie-shipping
+7321410896160,#1347,2026-09-10T14:24:20-04:00,2026-09-10T20:32:06-04:00,,paid,fulfilled,CAD,43.49,0.00,6.52,50.01,,Lyann Carbonneau,,,2,genie-shipping
+7321198002464,#1346,2026-09-10T12:35:39-04:00,2026-09-11T13:20:47-04:00,,paid,fulfilled,CAD,59.00,16.00,8.83,67.83,Nynybeauty@outlook.com,Jennyfer Beausoleil,Canada,Granby,4,
+7312324526368,#1345,2026-09-06T21:43:27-04:00,2026-09-09T11:25:09-04:00,,paid,fulfilled,CAD,110.00,12.00,16.48,126.48,jennbeausoleil60@gmail.com,Jennyfer Beausoleil,Canada,Granby,5,genie-shipping
+7312252535072,#1344,2026-09-06T20:41:00-04:00,2026-09-09T16:39:35-04:00,,paid,fulfilled,CAD,84.00,12.00,12.58,96.58,lmlashedme@gmail.com,Lily-mai Lessard,Canada,Montréal,1,genie-shipping
+7312100819232,#1343,2026-09-06T18:40:49-04:00,2026-09-09T10:40:09-04:00,,paid,fulfilled,CAD,89.25,15.75,15.17,116.42,annabellebranchaud@hotmail.com,Annabelle Branchaud,Canada,Sherbrooke,7,genie-shipping
+7312096985376,#1342,2026-09-06T18:37:56-04:00,2026-09-08T10:19:10-04:00,,paid,fulfilled,CAD,42.00,0.00,2.10,44.10,meryemm.sm@hotmail.com,Meryem Chtarate,Canada,,1,
+7312082534688,#1341,2026-09-06T18:27:00-04:00,2026-09-06T21:04:05-04:00,,paid,fulfilled,CAD,126.00,0.00,18.90,144.90,aliciamcnicoll28@hotmail.com,Alicia Mcnicoll,Canada,Montréal,7,
+7310983921952,#1340,2026-09-06T08:58:03-04:00,2026-09-09T09:39:56-04:00,,paid,fulfilled,CAD,50.00,12.00,7.48,57.48,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,2,genie-shipping
+7309979648288,#1339,2026-09-05T19:38:23-04:00,2026-09-09T14:10:36-04:00,,paid,fulfilled,CAD,70.00,12.00,10.49,80.49,maria-busque@hotmail.com,Anne-Marie Busque,Canada,Québec,4,genie-shipping
+7307799429408,#1338,2026-09-04T20:32:29-04:00,2026-09-08T20:10:21-04:00,,paid,fulfilled,CAD,154.00,0.00,23.08,177.08,ameliecadieux@hotmail.com,Amelie Cadieux,,,8,genie-shipping
+7304409186592,#1337,2026-09-03T13:34:59-04:00,2026-09-08T20:10:35-04:00,,paid,fulfilled,CAD,306.00,0.00,45.83,351.83,,Ashley Costa,,,4,genie-shipping
+7302732382496,#1336,2026-09-02T20:51:05-04:00,2026-09-02T22:21:45-04:00,,paid,fulfilled,CAD,0.00,360.49,0.00,0.00,laylalavoie22@gmail.com,layla lavoie,,,20,genie-store-pickup
+7302164611360,#1335,2026-09-02T14:39:33-04:00,2026-09-08T20:10:51-04:00,,paid,fulfilled,CAD,52.90,0.00,0.00,52.90,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,5,
+7299468722464,#1334,2026-09-01T13:04:23-04:00,2026-09-03T12:07:53-04:00,,paid,fulfilled,CAD,330.00,40.50,49.44,379.44,dadarock1105@gmail.com,Dada Rock,Canada,Saint Hubert,10,genie-shipping
+7299420094752,#1333,2026-09-01T12:51:55-04:00,2026-09-05T10:23:27-04:00,,paid,fulfilled,CAD,34.50,0.00,0.00,34.50,julianna.hassan@yahoo.ca,julianna hasan,Canada,,2,
+7297978040608,#1332,2026-09-01T01:32:31-04:00,2026-09-01T20:16:31-04:00,,paid,fulfilled,CAD,76.50,13.50,13.26,101.76,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,6,genie-shipping
+7295428526368,#1331,2026-08-30T19:04:20-04:00,2026-09-01T10:22:50-04:00,,paid,fulfilled,CAD,84.00,0.00,14.38,110.38,anouk221@icloud.com,Anouk Maisonneuve,Canada,Laval,3,genie-shipping
+7288454873376,#1330,2026-08-27T14:27:40-04:00,2026-08-30T18:57:49-04:00,,paid,fulfilled,CAD,100.00,0.00,14.98,114.98,marjoriegosalvez23@gmail.com,Marjorie Gosalvez,,,1,genie-shipping
+7286860710176,#1329,2026-08-26T20:31:37-04:00,2026-08-26T20:31:38-04:00,,paid,fulfilled,CAD,106.00,0.00,15.87,121.87,,,,,1,
+7286678192416,#1328,2026-08-26T18:02:56-04:00,2026-08-28T11:01:24-04:00,,pending,partial,CAD,166.60,75.40,26.77,205.37,proteaukristina@gmail.com,Kristina Proteau,Canada,QuÉbec,14,genie-shipping
+7286528639264,#1327,2026-08-26T16:21:17-04:00,2026-08-28T10:12:11-04:00,,paid,fulfilled,CAD,107.10,11.90,17.88,136.98,lashedby.ag88@gmail.com,Ann-garla Brisson,Canada,L'Assomption,6,genie-shipping
+7284375290144,#1326,2026-08-25T15:29:21-04:00,2026-08-28T14:11:37-04:00,,paid,fulfilled,CAD,100.00,0.00,16.79,128.79,noemye.bern@gmail.com,Noemye Bernier,Canada,St-Jean-sur-Richelieu,6,genie-shipping
+7283679592736,#1325,2026-08-25T09:13:41-04:00,2026-08-30T18:58:49-04:00,,paid,fulfilled,CAD,72.45,0.00,0.00,72.45,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,5,
+7283567001888,#1324,2026-08-25T08:02:24-04:00,2026-08-25T13:55:36-04:00,,paid,fulfilled,CAD,21.00,0.00,3.14,24.14,,Vanessa Lefebvre,,,1,genie-shipping
+7276191777056,#1323,2026-08-21T16:58:25-04:00,2026-08-22T10:10:23-04:00,,paid,fulfilled,CAD,30.00,0.00,4.49,34.49,,Kabongo,,,1,genie-shipping
+7276003983648,#1322,2026-08-21T15:18:35-04:00,2026-08-25T11:12:23-04:00,,paid,fulfilled,CAD,16.20,1.80,4.23,32.43,abdelzeinab6@gmail.com,Zeinab Abdel-Sadigh,Canada,MontrÉal,1,genie-shipping
+7273889562912,#1321,2026-08-20T16:00:54-04:00,2026-08-20T16:00:56-04:00,,paid,fulfilled,CAD,56.00,0.00,8.39,64.39,,,,,1,
+7273760817440,#1320,2026-08-20T14:44:27-04:00,2026-08-22T10:10:31-04:00,,paid,fulfilled,CAD,51.00,8.98,7.64,58.64,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,1,
+7273594978592,#1319,2026-08-20T13:18:10-04:00,2026-08-20T20:09:09-04:00,,paid,fulfilled,CAD,48.30,0.00,0.00,48.30,meryemm.sm@hotmail.com,Meryem Chtarate,Canada,,2,
+7272093090080,#1318,2026-08-19T20:39:57-04:00,2026-08-20T20:58:13-04:00,,paid,fulfilled,CAD,441.11,404.80,61.03,502.14,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,14,genie-shipping
+7271869710624,#1317,2026-08-19T17:46:12-04:00,2026-08-20T20:09:35-04:00,,paid,fulfilled,CAD,64.00,0.00,9.59,73.59,,Venus jaimes,,,3,genie-shipping
+7270291276064,#1316,2026-08-19T07:10:48-04:00,2026-08-19T07:10:50-04:00,,paid,fulfilled,CAD,100.00,0.00,14.98,114.98,,,,,1,
+7269386846496,#1315,2026-08-18T18:43:10-04:00,2026-08-18T18:43:11-04:00,,paid,fulfilled,CAD,46.58,0.00,6.98,53.56,,,,,1,
+7269386256672,#1314,2026-08-18T18:42:42-04:00,2026-08-19T20:21:06-04:00,,paid,fulfilled,CAD,34.50,0.00,0.00,34.50,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,3,
+7268383260960,#1313,2026-08-18T08:30:04-04:00,2026-08-18T18:39:56-04:00,,paid,fulfilled,CAD,90.00,0.00,13.50,103.50,ameliecadieux@hotmail.com,Amelie Cadieux,,,6,genie-shipping
+7267487875360,#1312,2026-08-17T20:36:38-04:00,2026-08-18T18:38:56-04:00,,paid,fulfilled,CAD,313.65,55.35,46.99,360.64,lmlashedme@gmail.com,Lily-mai Lessard,Canada,Montréal,21,genie-shipping
+7266356494624,#1311,2026-08-17T08:53:28-04:00,2026-08-17T08:53:29-04:00,,paid,fulfilled,CAD,76.00,0.00,11.38,87.38,,,,,1,
+7262282121504,#1310,2026-08-15T10:08:19-04:00,2026-08-20T10:57:47-04:00,,paid,fulfilled,CAD,173.70,49.29,27.82,213.52,,Marlène Tessa,Canada,Saint Jérôme,3,genie-shipping
+7260152856864,#1309,2026-08-14T10:01:00-04:00,2026-08-14T18:00:15-04:00,2026-08-14T18:00:15-04:00,voided,,CAD,76.00,18.00,11.38,87.38,Audrey-eve1606@hotmail.com,Audrey-eve Vallieres,,,2,genie-shipping
+7259250950432,#1308,2026-08-13T22:22:13-04:00,2026-08-15T14:46:12-04:00,,paid,fulfilled,CAD,172.46,0.00,25.09,197.55,woodbenkaappo.ebox@gmail.com,Woodbenka Appo,,,9,genie-shipping
+7259029897504,#1307,2026-08-13T19:38:47-04:00,2026-08-13T19:38:49-04:00,,paid,fulfilled,CAD,30.00,0.00,4.49,34.49,,,,,1,
+7256682365216,#1306,2026-08-12T19:12:05-04:00,2026-08-14T12:50:13-04:00,,paid,fulfilled,CAD,75.60,8.40,13.12,100.72,chloeranger123@gmail.com,Chloe Ranger,Canada,Saint Hubert,1,genie-shipping
+7254863511840,#1305,2026-08-11T22:03:43-04:00,2026-08-11T22:03:45-04:00,,paid,fulfilled,CAD,58.90,0.00,8.83,67.73,,,,,1,
+7248511762720,#1304,2026-08-08T15:45:35-04:00,2026-08-13T16:54:23-04:00,,paid,fulfilled,CAD,90.00,0.00,13.50,103.50,Nuriapat1597@icloud.com,Nuria Patino Rodriguez,,,6,genie-shipping
+7246613578016,#1303,2026-08-07T17:43:38-04:00,2026-08-11T22:02:30-04:00,,paid,fulfilled,CAD,44.64,7.86,6.69,51.33,Edeugoue67@icloud.com,Éva Deugoue neboua,,,4,genie-shipping
+7246201422112,#1302,2026-08-07T13:55:48-04:00,2026-08-11T17:29:41-04:00,,paid,fulfilled,CAD,90.00,0.00,15.28,117.28,Sarahpelletier1@outlook.fr,Sarah Pelletier,Canada,Québec,4,genie-shipping
+7243426791712,#1301,2026-08-06T11:45:58-04:00,2026-08-11T14:15:59-04:00,,paid,fulfilled,CAD,79.00,0.00,13.64,104.64,maria-busque@hotmail.com,Anne-Marie Busque,Canada,Québec,3,genie-shipping
+7241371451680,#1300,2026-08-05T11:46:53-04:00,2026-08-05T22:44:47-04:00,,paid,fulfilled,CAD,19.80,2.20,2.97,22.77,khadidja.chikri@gmail.com,Khadija Chikri,,,1,genie-shipping
+7240149106976,#1299,2026-08-04T20:07:39-04:00,2026-08-06T10:14:24-04:00,,paid,fulfilled,CAD,37.80,4.20,7.46,57.26,abdelzeinab6@gmail.com,Zeinab Abdel-Sadigh,Canada,MontrÉal,1,genie-shipping
+7239365624096,#1298,2026-08-04T11:54:57-04:00,2026-08-07T14:13:03-04:00,,paid,fulfilled,CAD,51.75,0.00,0.00,51.75,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,4,
+7235998581024,#1297,2026-08-02T18:17:14-04:00,2026-08-03T11:25:53-04:00,,paid,fulfilled,CAD,48.30,0.00,0.00,48.30,meryemm.sm@hotmail.com,Meryem Chtarate,Canada,,2,
+7227568029984,#1296,2026-07-29T20:11:50-04:00,2026-07-30T23:19:00-04:00,,paid,fulfilled,CAD,17.25,0.00,0.00,17.25,Sabrinagalarneau@icloud.com,Sabrina Galarneau,Canada,,2,
+7227551940896,#1295,2026-07-29T19:58:03-04:00,2026-07-29T19:58:04-04:00,,paid,fulfilled,CAD,30.00,0.00,4.49,34.49,,,,,2,
+7223734894880,#1294,2026-07-28T11:49:16-04:00,2026-07-28T19:55:28-04:00,,paid,fulfilled,CAD,86.00,0.00,12.90,98.90,,Ashley Costa,,,5,genie-shipping
+7222487777568,#1293,2026-07-28T10:57:48-04:00,2026-07-28T14:19:02-04:00,,paid,fulfilled,CAD,15.30,2.70,2.30,17.60,Edeugoue67@icloud.com,Éva Deugoue neboua,,,2,"genie-store-pickup, LBL extensions"
+7221642494240,#1292,2026-07-28T07:13:56-04:00,2026-07-28T23:11:39-04:00,,paid,fulfilled,CAD,117.00,0.00,17.54,134.54,ameliecadieux@hotmail.com,Amelie Cadieux,,,6,genie-shipping
+7220521173280,#1291,2026-07-27T16:37:01-04:00,2026-07-27T19:35:28-04:00,2026-07-27T19:35:28-04:00,pending,,CAD,146.97,135.00,20.35,167.32,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,14,genie-shipping
+7220520157472,#1290,2026-07-27T16:36:30-04:00,2026-07-28T14:19:24-04:00,,paid,fulfilled,CAD,146.97,135.00,20.35,167.32,Edeugoue67@icloud.com,Éva Deugoue neboua,Canada,Montréal,14,genie-shipping
+7219052511520,#1289,2026-07-27T09:20:20-04:00,2026-07-28T14:19:11-04:00,,paid,fulfilled,CAD,63.00,0.00,9.42,72.42,ba.emilia@gmail.com,Emilia Raquel Barrios,Canada,Montréal,3,
+7217752375584,#1288,2026-07-26T14:48:07-04:00,2026-07-28T13:29:16-04:00,,paid,fulfilled,CAD,123.25,21.75,20.26,155.51,lmlashedme@gmail.com,Lily-mai Lessard,Canada,Montréal,3,genie-shipping
+7211957190944,#1287,2026-07-24T19:29:46-04:00,2026-07-24T19:29:48-04:00,,paid,fulfilled,CAD,950.00,0.00,142.26,1092.26,,,,,1,
