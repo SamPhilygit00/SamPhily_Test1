@@ -29,6 +29,8 @@ jobs:
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
         run: python scripts/shopify_extract_orders.py
 
       - name: Commit and push extracted data

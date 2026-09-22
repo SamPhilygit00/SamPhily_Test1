@@ -16,9 +16,10 @@ Controls: arrow keys / WASD, or swipe on touch devices.
 
 ## Shopify orders extraction
 
-`scripts/shopify_extract_orders.py` pulls all orders from a Shopify store via
-the Admin REST API and writes them to `data/orders/` as both a timestamped
-JSON dump, a flattened CSV summary, and `orders_latest.{json,csv}` copies.
+`scripts/shopify_extract_orders.py` pulls the last 90 calendar days of orders
+from a Shopify store via the Admin REST API, writes a JSON dump and a
+flattened CSV summary to `data/orders/` named after today's date
+(`YYYY-MM-DD.json` / `.csv`), and emails the CSV.
 
 ### 1. Create a Shopify custom app
 
@@ -47,6 +48,16 @@ In this repository: **Settings → Secrets and variables → Actions**, add:
 legacy custom app — the script prefers it over the client ID/secret pair
 when both are set.)
 
+Also add, for emailing the CSV via Yahoo Mail SMTP:
+
+| Secret          | Value                                              |
+| ---------------- | --------------------------------------------------- |
+| `SMTP_USERNAME`  | the sending Yahoo Mail address (e.g. `eladdas@yahoo.fr`) |
+| `SMTP_PASSWORD`  | a Yahoo **app password** for that account (Yahoo Account → Security → Generate app password) — not the regular account password |
+
+By default the CSV is sent from and to `eladdas@yahoo.fr`. Override with the
+`EMAIL_FROM` / `EMAIL_TO` environment variables if needed.
+
 ### 3. Automated runs
 
 `.github/workflows/shopify-extract.yml` runs the script every Monday at
@@ -61,11 +72,14 @@ pip install -r scripts/requirements.txt
 export SHOPIFY_STORE_URL="your-store.myshopify.com"
 export SHOPIFY_CLIENT_ID="..."
 export SHOPIFY_CLIENT_SECRET="..."
+export SMTP_USERNAME="eladdas@yahoo.fr"
+export SMTP_PASSWORD="..."
 python scripts/shopify_extract_orders.py
 ```
 
 Optional environment variables: `SHOPIFY_API_VERSION` (default `2024-10`),
 `SHOPIFY_ORDER_STATUS` (`any`/`open`/`closed`/`cancelled`, default `any`),
-`SHOPIFY_UPDATED_AT_MIN` (ISO 8601 timestamp to only fetch recently updated
-orders).
+`SMTP_HOST` (default `smtp.mail.yahoo.com`), `SMTP_PORT` (default `465`),
+`EMAIL_FROM` (default `SMTP_USERNAME`), `EMAIL_TO` (default
+`eladdas@yahoo.fr`).
 
