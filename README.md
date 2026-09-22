@@ -38,9 +38,10 @@ In this repository: **Settings → Secrets and variables → Actions**, add:
 
 ### 3. Automated runs
 
-`.github/workflows/shopify-extract.yml` runs the script daily at 06:00 UTC
-and commits any new/updated files under `data/orders/` back to this repo. You
-can also trigger it manually from the **Actions** tab ("Run workflow").
+`.github/workflows/shopify-extract.yml` runs the script every Monday at
+23:30 UTC and commits any new/updated files under `data/orders/` back to
+this repo. You can also trigger it manually from the **Actions** tab ("Run
+workflow").
 
 ### Run locally
 
