@@ -111,7 +111,7 @@ def months_covered(orders: list[dict]) -> list[tuple[int, int]]:
     return months
 
 
-def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date, list[dict]]) -> None:
+def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date, list[dict]]) -> tuple[int, list[str]]:
     days_in_month = calendar.monthrange(year, month)[1]
     abbr = MONTH_ABBR[month]
 
@@ -179,6 +179,33 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
         ws.column_dimensions[get_column_letter(start_col + offset)].width = width
     ws.column_dimensions[get_column_letter(start_col + BLOCK_WIDTH - 1)].width = 3
 
+    return total_row, col_letters[1:]
+
+
+def write_grand_total(ws, block_totals: list[tuple[int, list[str]]]) -> None:
+    """Write a grand-total row below all month blocks, summing every block's
+    Mt brut / tvq / tps / Expedition totals into one row."""
+    max_total_row = max(total_row for total_row, _ in block_totals)
+    grand_row = max_total_row + 2
+
+    label_cell = ws.cell(row=grand_row, column=2, value="TOTAL PÉRIODE")
+    label_cell.fill = TOTAL_LABEL_FILL
+    label_cell.font = Font(bold=True, size=16, color="FFFFFFFF")
+    label_cell.alignment = CENTER
+    ws.merge_cells(start_row=grand_row, start_column=2, end_row=grand_row, end_column=3)
+    ws.row_dimensions[grand_row].height = 25.5
+
+    fills = [TOTAL_AMOUNT_FILL, TOTAL_TAX_FILL, TOTAL_TAX_FILL, TOTAL_AMOUNT_FILL]
+    target_cols = [4, 5, 6, 7]  # D, E, F, G: Mt brut, tvq, tps, Expedition
+    for col_offset, target_col, fill in zip(range(4), target_cols, fills):
+        refs = [f"{letters[col_offset]}{total_row}" for total_row, letters in block_totals]
+        cell = ws.cell(row=grand_row, column=target_col, value="=" + "+".join(refs))
+        cell.number_format = "0.00"
+        cell.fill = fill
+        cell.font = Font(bold=True, size=10)
+        cell.alignment = CENTER
+        cell.border = CELL_BORDER
+
 
 def build_workbook(orders: list[dict]) -> Workbook:
     wb = Workbook()
@@ -187,8 +214,14 @@ def build_workbook(orders: list[dict]) -> Workbook:
     ws.freeze_panes = "A2"
 
     day_orders = group_by_day(orders)
+    block_totals = []
     for i, (year, month) in enumerate(months_covered(orders)):
-        write_block(ws, start_col=2 + i * BLOCK_WIDTH, year=year, month=month, day_orders=day_orders)
+        total_row, col_letters = write_block(
+            ws, start_col=2 + i * BLOCK_WIDTH, year=year, month=month, day_orders=day_orders
+        )
+        block_totals.append((total_row, col_letters))
+
+    write_grand_total(ws, block_totals)
 
     return wb
 
