@@ -112,10 +112,32 @@ def fetch_all_orders(store_url: str, session: requests.Session, api_version: str
     return orders
 
 
+def split_taxes(order: dict) -> tuple[str, str]:
+    """Split an order's tax_lines into (TPS, TVQ) amounts.
+
+    Shopify tags federal GST/TPS lines with title "GST" and Quebec QST/TVQ
+    lines with title "QST" (rate ~0.05 and ~0.09975 respectively).
+    """
+    tps = 0.0
+    tvq = 0.0
+    for tax_line in order.get("tax_lines") or []:
+        title = (tax_line.get("title") or "").upper()
+        price = float(tax_line.get("price") or 0)
+        if "GST" in title or "TPS" in title:
+            tps += price
+        elif "QST" in title or "TVQ" in title:
+            tvq += price
+    return f"{tps:.2f}", f"{tvq:.2f}"
+
+
+def shipping_fee(order: dict) -> str:
+    amount = (order.get("total_shipping_price_set") or {}).get("shop_money", {}).get("amount")
+    return amount if amount is not None else "0.00"
+
+
 def flatten_order(order: dict) -> dict:
-    customer = order.get("customer") or {}
     shipping = order.get("shipping_address") or {}
-    line_items = order.get("line_items") or []
+    tps, tvq = split_taxes(order)
     return {
         "id": order.get("id"),
         "order_number": order.get("name"),
@@ -127,16 +149,11 @@ def flatten_order(order: dict) -> dict:
         "currency": order.get("currency"),
         "subtotal_price": order.get("subtotal_price"),
         "total_discounts": order.get("total_discounts"),
-        "total_tax": order.get("total_tax"),
+        "TPS": tps,
+        "TVQ": tvq,
+        "frais_livraison": shipping_fee(order),
         "total_price": order.get("total_price"),
-        "customer_email": order.get("email") or customer.get("email"),
-        "customer_name": " ".join(
-            filter(None, [customer.get("first_name"), customer.get("last_name")])
-        ),
-        "shipping_country": shipping.get("country"),
         "shipping_city": shipping.get("city"),
-        "line_items_count": len(line_items),
-        "tags": order.get("tags"),
     }
 
 
@@ -152,9 +169,8 @@ def write_outputs(orders: list[dict]) -> None:
     fieldnames = list(rows[0].keys()) if rows else [
         "id", "order_number", "created_at", "updated_at", "cancelled_at",
         "financial_status", "fulfillment_status", "currency", "subtotal_price",
-        "total_discounts", "total_tax", "total_price", "customer_email",
-        "customer_name", "shipping_country", "shipping_city",
-        "line_items_count", "tags",
+        "total_discounts", "TPS", "TVQ", "frais_livraison", "total_price",
+        "shipping_city",
     ]
     with csv_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
