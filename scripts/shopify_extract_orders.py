@@ -16,7 +16,8 @@ Required environment variables:
                          (a fresh access token is requested via the client
                          credentials grant on every run)
 
-  After extraction, the CSV is emailed via SMTP. Required for that:
+  After extraction, the CSV and the "Suivi ventes" xlsx are emailed via
+  SMTP. Required for that:
   SMTP_USERNAME  the sending account's login (e.g. a Yahoo Mail address)
   SMTP_PASSWORD  an app password for that account
 
@@ -44,6 +45,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
+
+from build_sales_tracking_xlsx import build_workbook
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "orders"
 PAGE_LIMIT = 250
@@ -166,7 +169,7 @@ def flatten_order(order: dict) -> dict:
     }
 
 
-def write_outputs(orders: list[dict]) -> Path:
+def write_outputs(orders: list[dict]) -> tuple[Path, Path | None]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -186,11 +189,17 @@ def write_outputs(orders: list[dict]) -> Path:
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"Wrote {len(orders)} orders to {json_path.name} / {csv_path.name}")
-    return csv_path
+    xlsx_path: Path | None = None
+    if orders:
+        xlsx_path = DATA_DIR / f"{date_str}_suivi_ventes.xlsx"
+        build_workbook(orders).save(xlsx_path)
+
+    names = ", ".join(p.name for p in [json_path, csv_path, xlsx_path] if p)
+    print(f"Wrote {len(orders)} orders to {names}")
+    return csv_path, xlsx_path
 
 
-def send_csv_by_email(csv_path: Path, order_count: int) -> None:
+def send_by_email(attachments: list[Path], order_count: int) -> None:
     smtp_host = os.environ.get("SMTP_HOST", "smtp.mail.yahoo.com")
     smtp_port = int(os.environ.get("SMTP_PORT", "465"))
     username = env_or_die("SMTP_USERNAME")
@@ -198,26 +207,26 @@ def send_csv_by_email(csv_path: Path, order_count: int) -> None:
     from_addr = os.environ.get("EMAIL_FROM", username)
     to_addr = os.environ.get("EMAIL_TO", "eladdas@yahoo.fr")
 
+    date_str = attachments[0].stem.split("_")[0]
     msg = EmailMessage()
-    msg["Subject"] = f"Extraction commandes Shopify - {csv_path.stem}"
+    msg["Subject"] = f"Extraction commandes Shopify - {date_str}"
     msg["From"] = from_addr
     msg["To"] = to_addr
     msg.set_content(
         f"Ci-joint l'extraction des commandes des {LOOKBACK_DAYS} derniers "
         f"jours ({order_count} commandes).\n"
     )
-    msg.add_attachment(
-        csv_path.read_bytes(),
-        maintype="text",
-        subtype="csv",
-        filename=csv_path.name,
-    )
+    for path in attachments:
+        maintype, subtype = ("text", "csv") if path.suffix == ".csv" else (
+            "application", "vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+        msg.add_attachment(path.read_bytes(), maintype=maintype, subtype=subtype, filename=path.name)
 
     with smtplib.SMTP_SSL(smtp_host, smtp_port) as smtp:
         smtp.login(username, password)
         smtp.send_message(msg)
 
-    print(f"Emailed {csv_path.name} to {to_addr}")
+    print(f"Emailed {', '.join(p.name for p in attachments)} to {to_addr}")
 
 
 def resolve_access_token(store_url: str) -> str:
@@ -252,8 +261,9 @@ def main() -> None:
     access_token = resolve_access_token(store_url)
     session = build_session(access_token)
     orders = fetch_all_orders(store_url, session, api_version, status, created_at_min)
-    csv_path = write_outputs(orders)
-    send_csv_by_email(csv_path, len(orders))
+    csv_path, xlsx_path = write_outputs(orders)
+    attachments = [csv_path] + ([xlsx_path] if xlsx_path else [])
+    send_by_email(attachments, len(orders))
 
 
 if __name__ == "__main__":
