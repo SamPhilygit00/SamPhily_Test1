@@ -17,9 +17,17 @@ Controls: arrow keys / WASD, or swipe on touch devices.
 ## Shopify orders extraction
 
 `scripts/shopify_extract_orders.py` pulls the last 90 calendar days of orders
-from a Shopify store via the Admin REST API, writes a JSON dump and a
-flattened CSV summary to `data/orders/` named after today's date
-(`YYYY-MM-DD.json` / `.csv`), and emails the CSV.
+from a Shopify store via the Admin REST API, writes a JSON dump, a flattened
+CSV summary, and a formatted "Suivi ventes" Excel workbook to `data/orders/`
+named after today's date (`YYYY-MM-DD.json` / `.csv` / `.._suivi_ventes.xlsx`),
+and emails the CSV and the xlsx.
+
+The xlsx (built by `scripts/build_sales_tracking_xlsx.py`, which can also be
+run standalone) reproduces a monthly-block tracking format: one 6-column
+block per calendar month (Date, Commande, Mt brut, tvq, tps, Expedition),
+one row per calendar day, a totals row per month, and a grand-total row for
+the whole period. Orders on the same calendar day are summed onto that
+day's single row.
 
 ### 1. Create a Shopify custom app
 
@@ -48,15 +56,15 @@ In this repository: **Settings → Secrets and variables → Actions**, add:
 legacy custom app — the script prefers it over the client ID/secret pair
 when both are set.)
 
-Also add, for emailing the CSV via Yahoo Mail SMTP:
+Also add, for emailing the CSV and xlsx via Yahoo Mail SMTP:
 
 | Secret          | Value                                              |
 | ---------------- | --------------------------------------------------- |
 | `SMTP_USERNAME`  | the sending Yahoo Mail address (e.g. `eladdas@yahoo.fr`) |
 | `SMTP_PASSWORD`  | a Yahoo **app password** for that account (Yahoo Account → Security → Generate app password) — not the regular account password |
 
-By default the CSV is sent from and to `eladdas@yahoo.fr`. Override with the
-`EMAIL_FROM` / `EMAIL_TO` environment variables if needed.
+By default both files are sent from and to `eladdas@yahoo.fr`. Override with
+the `EMAIL_FROM` / `EMAIL_TO` environment variables if needed.
 
 ### 3. Automated runs
 
