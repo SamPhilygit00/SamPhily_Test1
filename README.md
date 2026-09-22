@@ -14,3 +14,58 @@ Then visit `http://localhost:8000`.
 
 Controls: arrow keys / WASD, or swipe on touch devices.
 
+## Shopify orders extraction
+
+`scripts/shopify_extract_orders.py` pulls all orders from a Shopify store via
+the Admin REST API and writes them to `data/orders/` as both a timestamped
+JSON dump, a flattened CSV summary, and `orders_latest.{json,csv}` copies.
+
+### 1. Create a Shopify custom app
+
+1. In your Shopify admin: **Settings → Apps and sales channels → Applications
+   → Développer des applications**, which now redirects to the **Dev
+   Dashboard**.
+2. Create an app from the Dev Dashboard ("Démarrer depuis le Dev Dashboard"),
+   grant the `read_orders` Admin API scope, and publish a version.
+3. Install the app on your store (**Installations → Installer l'appli**).
+4. Open **Paramètres de l'appli** and copy the **Client ID** and **Secret**
+   (click the eye icon to reveal it). The script exchanges these for a fresh
+   Admin API access token on every run via the client credentials grant, so
+   there is no static token to copy/rotate.
+
+### 2. Configure GitHub secrets
+
+In this repository: **Settings → Secrets and variables → Actions**, add:
+
+| Secret                  | Value                                    |
+| ------------------------ | ----------------------------------------- |
+| `SHOPIFY_STORE_URL`      | `your-store.myshopify.com`               |
+| `SHOPIFY_CLIENT_ID`      | the Client ID from step 1                |
+| `SHOPIFY_CLIENT_SECRET`  | the Client secret from step 1            |
+
+(A static `SHOPIFY_ACCESS_TOKEN` secret also works if you have one from a
+legacy custom app — the script prefers it over the client ID/secret pair
+when both are set.)
+
+### 3. Automated runs
+
+`.github/workflows/shopify-extract.yml` runs the script every Monday at
+23:30 UTC and commits any new/updated files under `data/orders/` back to
+this repo. You can also trigger it manually from the **Actions** tab ("Run
+workflow").
+
+### Run locally
+
+```
+pip install -r scripts/requirements.txt
+export SHOPIFY_STORE_URL="your-store.myshopify.com"
+export SHOPIFY_CLIENT_ID="..."
+export SHOPIFY_CLIENT_SECRET="..."
+python scripts/shopify_extract_orders.py
+```
+
+Optional environment variables: `SHOPIFY_API_VERSION` (default `2024-10`),
+`SHOPIFY_ORDER_STATUS` (`any`/`open`/`closed`/`cancelled`, default `any`),
+`SHOPIFY_UPDATED_AT_MIN` (ISO 8601 timestamp to only fetch recently updated
+orders).
+
