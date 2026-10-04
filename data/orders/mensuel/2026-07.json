@@ -1463,5 +1463,43 @@
     },
     "source_name": "web",
     "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": "manuel-1251",
+    "name": "#1251",
+    "created_at": "2026-07-01T07:52:00-04:00",
+    "updated_at": "2026-07-01T07:52:00-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "159.80",
+    "total_discounts": "28.20",
+    "total_price": "183.76",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "8.01"
+      },
+      {
+        "title": "QST",
+        "price": "15.95"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "discount_codes": [
+      {
+        "code": "IE3B-W11X-XGAU",
+        "amount": "28.20"
+      }
+    ],
+    "imported_from": "saisie_manuelle (détail de la commande dans l'admin Shopify)"
   }
 ]

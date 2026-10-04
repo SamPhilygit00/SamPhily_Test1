@@ -119,7 +119,8 @@ python scripts/import_shopify_csv.py orders_export.csv
 
 Le script crée ou complète `data/orders/mensuel/AAAA-MM.json` ; relancer
 ensuite le trimestre (Actions → Run workflow → trimestre `AAAA-TN`).
-Juillet 2026 a été importé ainsi (commandes #1252 à #1296).
+Juillet 2026 a été importé ainsi (commandes #1252 à #1296), plus la commande
+#1251 saisie à la main à partir de son détail dans l'admin Shopify.
 
 Les **commandes annulées** (ex. #1291, #1309) ne sont pas comptées dans le
 Suivi ventes ni dans la déclaration.
