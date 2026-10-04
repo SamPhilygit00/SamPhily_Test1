@@ -3,11 +3,12 @@
 
 Reproduces the layout of the reference template: one block of 6 columns
 per calendar month (Date, Commande, Mt brut, tvq, tps, Expedition), one row
-per calendar day, and a totals row per month (computed in Python, written
+per calendar day that has at least one order (days without orders are left
+out), and a totals row per month (computed in Python, written
 as plain numbers so they display correctly without depending on Excel
 recalculation), plus a grand-total row summing every month. Blocks are
 laid out left to right, one per month, covering the same date range as the
-orders JSON (typically the 90-day rolling extraction window).
+orders JSON (typically one calendar quarter).
 
 If more than one order falls on the same calendar day, their amounts are
 summed onto that day's single row and their order numbers are joined with
@@ -16,8 +17,8 @@ summed onto that day's single row and their order numbers are joined with
 Usage:
   python scripts/build_sales_tracking_xlsx.py [--input path/to/orders.json] [--output path/to/output.xlsx]
 
-Defaults: --input is the most recent data/orders/YYYY-MM-DD.json file,
---output is data/orders/<same-date>_suivi_ventes.xlsx.
+Defaults: --input is the most recent data/orders/*.json extraction file,
+--output is data/orders/<same-name>_suivi_ventes.xlsx.
 """
 
 from __future__ import annotations
@@ -56,10 +57,8 @@ TOTAL_TAX_FILL = PatternFill("solid", fgColor="FFFF0000")
 CENTER = Alignment(horizontal="center", vertical="center")
 LEFT = Alignment(horizontal="left", vertical="center")
 
-# Escaped period so Excel always displays a decimal point, regardless of the
-# spreadsheet locale (a plain "0.00" format renders with a comma under a
-# French locale).
-NUMBER_FORMAT = '0"."00'
+# Plain two-decimal format: 441 shows as 441.00 (441,00 in a French Excel).
+NUMBER_FORMAT = "0.00"
 
 
 def load_orders(path: Path) -> list[dict]:
@@ -67,7 +66,11 @@ def load_orders(path: Path) -> list[dict]:
 
 
 def find_latest_input() -> Path:
-    candidates = sorted(DATA_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].json"))
+    candidates = sorted(
+        [*DATA_DIR.glob("[0-9][0-9][0-9][0-9]-T[1-4].json"),
+         *DATA_DIR.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].json")],
+        key=lambda p: p.stat().st_mtime,
+    )
     if not candidates:
         raise SystemExit(f"No dated orders JSON file found in {DATA_DIR}")
     return candidates[-1]
@@ -121,6 +124,7 @@ def months_covered(orders: list[dict]) -> list[tuple[int, int]]:
 def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date, list[dict]]) -> tuple[int, dict[str, float]]:
     days_in_month = calendar.monthrange(year, month)[1]
     abbr = MONTH_ABBR[month]
+    order_days = [d for d in range(1, days_in_month + 1) if day_orders.get(date(year, month, d))]
 
     for offset, header in enumerate(HEADERS):
         cell = ws.cell(row=1, column=start_col + offset, value=header)
@@ -131,8 +135,7 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
 
     totals = {"mt_brut": 0.0, "tvq": 0.0, "tps": 0.0, "expedition": 0.0}
 
-    for day in range(1, days_in_month + 1):
-        row = 1 + day
+    for row, day in enumerate(order_days, start=2):
         d = date(year, month, day)
         date_cell = ws.cell(row=row, column=start_col, value=f"{day:02d}-{abbr}")
         date_cell.alignment = LEFT
@@ -169,7 +172,7 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
         for c in cells[1:]:
             c.number_format = NUMBER_FORMAT
 
-    total_row = 2 + days_in_month
+    total_row = 2 + len(order_days)
     label_cell = ws.cell(row=total_row, column=start_col, value=f"{abbr}-{str(year)[-2:]}")
     label_cell.fill = TOTAL_LABEL_FILL
     label_cell.font = Font(bold=True, size=16, color="FFFFFFFF")
@@ -223,7 +226,10 @@ def write_grand_total(ws, block_totals: list[tuple[int, dict[str, float]]]) -> N
         cell.border = CELL_BORDER
 
 
-def build_workbook(orders: list[dict]) -> Workbook:
+def build_workbook(orders: list[dict], months: list[tuple[int, int]] | None = None) -> Workbook:
+    """Build the workbook. `months` forces the (year, month) blocks to write
+    (e.g. the three months of a quarter, even one without orders); by default
+    they are the months spanned by the orders."""
     wb = Workbook()
     ws = wb.active
     ws.title = "Suivi ventes"
@@ -231,7 +237,7 @@ def build_workbook(orders: list[dict]) -> Workbook:
 
     day_orders = group_by_day(orders)
     block_totals = []
-    for i, (year, month) in enumerate(months_covered(orders)):
+    for i, (year, month) in enumerate(months or months_covered(orders)):
         total_row, totals = write_block(
             ws, start_col=2 + i * BLOCK_WIDTH, year=year, month=month, day_orders=day_orders
         )
