@@ -16,18 +16,22 @@ Controls: arrow keys / WASD, or swipe on touch devices.
 
 ## Shopify orders extraction
 
-`scripts/shopify_extract_orders.py` pulls the last 90 calendar days of orders
-from a Shopify store via the Admin REST API, writes a JSON dump, a flattened
-CSV summary, and a formatted "Suivi ventes" Excel workbook to `data/orders/`
-named after today's date (`YYYY-MM-DD.json` / `.csv` / `.._suivi_ventes.xlsx`),
-and emails the CSV and the xlsx.
+`scripts/shopify_extract_orders.py` pulls one calendar quarter of orders
+from a Shopify store via the Admin REST API (by default the last completed
+quarter, for the quarterly TPS/TVQ declaration), writes a JSON dump, a
+flattened CSV summary, and a formatted "Suivi ventes" Excel workbook to
+`data/orders/` named after the quarter (`2026-T4.json` / `.csv` /
+`.._suivi_ventes.xlsx`), plus a TPS/TVQ declaration workbook
+(`.._declaration_tps_tvq.xlsx`, built by `scripts/build_tax_declaration_xlsx.py`,
+whose E12/F12 equal the tps/tvq of the Suivi ventes "TOTAL PÉRIODE" row), and
+emails the CSV and both xlsx files.
 
 The xlsx (built by `scripts/build_sales_tracking_xlsx.py`, which can also be
 run standalone) reproduces a monthly-block tracking format: one 6-column
 block per calendar month (Date, Commande, Mt brut, tvq, tps, Expedition),
-one row per calendar day, a totals row per month, and a grand-total row for
-the whole period. Orders on the same calendar day are summed onto that
-day's single row.
+one row per calendar day that has orders (days without orders are left out),
+a totals row per month, and a grand-total row for the whole quarter. Orders
+on the same calendar day are summed onto that day's single row.
 
 ### 1. Create a Shopify custom app
 
@@ -68,10 +72,12 @@ the `EMAIL_FROM` / `EMAIL_TO` environment variables if needed.
 
 ### 3. Automated runs
 
-`.github/workflows/shopify-extract.yml` runs the script every Monday at
-23:30 UTC and commits any new/updated files under `data/orders/` back to
-this repo. You can also trigger it manually from the **Actions** tab ("Run
-workflow").
+`.github/workflows/shopify-extract.yml` runs the script on the 1st of
+January, April, July and October at 05:30 UTC (first run: 2027-01-01) and
+extracts the quarter that just ended, then commits the files under
+`data/orders/` back to this repo. You can also trigger it manually from the
+**Actions** tab ("Run workflow"); its `trimestre` field accepts empty (last
+completed quarter), `actuel` (current quarter to date) or e.g. `2026-T3`.
 
 ### Run locally
 
@@ -85,7 +91,9 @@ export SMTP_PASSWORD="..."
 python scripts/shopify_extract_orders.py
 ```
 
-Optional environment variables: `SHOPIFY_API_VERSION` (default `2024-10`),
+Optional environment variables: `TRIMESTRE` (see above),
+`SHOPIFY_TIMEZONE` (default `America/Toronto`),
+`SHOPIFY_API_VERSION` (default `2024-10`),
 `SHOPIFY_ORDER_STATUS` (`any`/`open`/`closed`/`cancelled`, default `any`),
 `SMTP_HOST` (default `smtp.mail.yahoo.com`), `SMTP_PORT` (default `465`),
 `EMAIL_FROM` (default `SMTP_USERNAME`), `EMAIL_TO` (default

@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Extract the last 90 calendar days of orders from a Shopify store via the
-Admin REST API.
+"""Extract one calendar quarter of orders from a Shopify store via the
+Admin REST API, for the quarterly TPS/TVQ declaration.
 
-Writes a full JSON dump and a flattened CSV summary to data/orders/, both
-named after today's date (YYYY-MM-DD).
+By default the quarter is the last completed one (a run on 2027-01-01
+extracts 2026-10-01 to 2026-12-31). Writes a full JSON dump, a flattened CSV
+summary, the "Suivi ventes" xlsx and the TPS/TVQ declaration xlsx to
+data/orders/, named after the quarter (e.g. 2026-T4.json, 2026-T4.csv,
+2026-T4_suivi_ventes.xlsx, 2026-T4_declaration_tps_tvq.xlsx).
 
 Required environment variables:
   SHOPIFY_STORE_URL      e.g. "my-store.myshopify.com"
@@ -16,12 +19,16 @@ Required environment variables:
                          (a fresh access token is requested via the client
                          credentials grant on every run)
 
-  After extraction, the CSV and the "Suivi ventes" xlsx are emailed via
-  SMTP. Required for that:
+  After extraction, the CSV and both xlsx files are emailed via SMTP. Required for that:
   SMTP_USERNAME  the sending account's login (e.g. a Yahoo Mail address)
   SMTP_PASSWORD  an app password for that account
 
 Optional environment variables:
+  TRIMESTRE             quarter to extract: empty (default) = last completed
+                        quarter, "actuel" = current quarter to date, or an
+                        explicit quarter such as "2026-T3"
+  SHOPIFY_TIMEZONE      store time zone used for quarter boundaries,
+                        default "America/Toronto"
   SHOPIFY_API_VERSION   default "2024-10"
   SHOPIFY_ORDER_STATUS  default "any" (any|open|closed|cancelled)
   SMTP_HOST      default "smtp.mail.yahoo.com"
@@ -39,18 +46,20 @@ import re
 import smtplib
 import sys
 import time
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 from email.message import EmailMessage
 from pathlib import Path
 from urllib.parse import urlparse
+from zoneinfo import ZoneInfo
 
 import requests
 
 from build_sales_tracking_xlsx import build_workbook
+from build_tax_declaration_xlsx import build_declaration
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "orders"
 PAGE_LIMIT = 250
-LOOKBACK_DAYS = 90
+QUARTER_RE = re.compile(r"^\s*(\d{4})\s*-?\s*[TtQq]\s*([1-4])\s*$")
 LINK_NEXT_RE = re.compile(r'<([^>]+)>;\s*rel="next"')
 
 
@@ -92,10 +101,42 @@ def build_session(access_token: str) -> requests.Session:
     return session
 
 
+def quarter_of(d: date) -> tuple[int, int]:
+    return d.year, (d.month - 1) // 3 + 1
+
+
+def resolve_quarter(spec: str, today: date) -> tuple[int, int]:
+    """Turn the TRIMESTRE setting into a (year, quarter) pair."""
+    spec = (spec or "").strip()
+    if not spec:
+        year, q = quarter_of(today)
+        return (year, q - 1) if q > 1 else (year - 1, 4)
+    if spec.lower() in ("actuel", "current"):
+        return quarter_of(today)
+    match = QUARTER_RE.match(spec)
+    if not match:
+        print(f"TRIMESTRE invalide : {spec!r} (attendu : vide, 'actuel' ou 'AAAA-TN', ex. 2026-T3)",
+              file=sys.stderr)
+        sys.exit(1)
+    return int(match.group(1)), int(match.group(2))
+
+
+def quarter_months(year: int, quarter: int) -> list[tuple[int, int]]:
+    return [(year, 3 * quarter - 2 + i) for i in range(3)]
+
+
+def quarter_bounds(year: int, quarter: int, tz: ZoneInfo) -> tuple[datetime, datetime]:
+    """Start (inclusive) and end (exclusive) of the quarter in the store time zone."""
+    start = datetime(year, 3 * quarter - 2, 1, tzinfo=tz)
+    end = datetime(year + 1, 1, 1, tzinfo=tz) if quarter == 4 else datetime(year, 3 * quarter + 1, 1, tzinfo=tz)
+    return start, end
+
+
 def fetch_all_orders(store_url: str, session: requests.Session, api_version: str,
-                      status: str, created_at_min: str) -> list[dict]:
+                      status: str, created_at_min: str, created_at_max: str) -> list[dict]:
     base = f"https://{store_url}/admin/api/{api_version}/orders.json"
-    params = {"limit": PAGE_LIMIT, "status": status, "created_at_min": created_at_min}
+    params = {"limit": PAGE_LIMIT, "status": status,
+              "created_at_min": created_at_min, "created_at_max": created_at_max}
 
     orders: list[dict] = []
     url = base
@@ -169,15 +210,15 @@ def flatten_order(order: dict) -> dict:
     }
 
 
-def write_outputs(orders: list[dict]) -> tuple[Path, Path | None]:
+def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]],
+                  period: str) -> list[Path]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    json_path = DATA_DIR / f"{date_str}.json"
+    json_path = DATA_DIR / f"{label}.json"
     json_path.write_text(json.dumps(orders, indent=2), encoding="utf-8")
 
     rows = [flatten_order(o) for o in orders]
-    csv_path = DATA_DIR / f"{date_str}.csv"
+    csv_path = DATA_DIR / f"{label}.csv"
     fieldnames = list(rows[0].keys()) if rows else [
         "id", "order_number", "created_at", "updated_at", "cancelled_at",
         "financial_status", "fulfillment_status", "currency", "subtotal_price",
@@ -189,17 +230,20 @@ def write_outputs(orders: list[dict]) -> tuple[Path, Path | None]:
         writer.writeheader()
         writer.writerows(rows)
 
-    xlsx_path: Path | None = None
+    attachments = [csv_path]
     if orders:
-        xlsx_path = DATA_DIR / f"{date_str}_suivi_ventes.xlsx"
-        build_workbook(orders).save(xlsx_path)
+        xlsx_path = DATA_DIR / f"{label}_suivi_ventes.xlsx"
+        build_workbook(orders, months).save(xlsx_path)
+        declaration_path = DATA_DIR / f"{label}_declaration_tps_tvq.xlsx"
+        build_declaration(orders, period).save(declaration_path)
+        attachments += [xlsx_path, declaration_path]
 
-    names = ", ".join(p.name for p in [json_path, csv_path, xlsx_path] if p)
+    names = ", ".join(p.name for p in [json_path, *attachments])
     print(f"Wrote {len(orders)} orders to {names}")
-    return csv_path, xlsx_path
+    return attachments
 
 
-def send_by_email(attachments: list[Path], order_count: int) -> None:
+def send_by_email(attachments: list[Path], order_count: int, period: str) -> None:
     smtp_host = os.environ.get("SMTP_HOST", "smtp.mail.yahoo.com")
     smtp_port = int(os.environ.get("SMTP_PORT", "465"))
     username = env_or_die("SMTP_USERNAME")
@@ -209,12 +253,12 @@ def send_by_email(attachments: list[Path], order_count: int) -> None:
 
     date_str = attachments[0].stem.split("_")[0]
     msg = EmailMessage()
-    msg["Subject"] = f"Extraction commandes Shopify - {date_str}"
+    msg["Subject"] = f"Extraction commandes Shopify (TPS/TVQ) - {date_str}"
     msg["From"] = from_addr
     msg["To"] = to_addr
     msg.set_content(
-        f"Ci-joint l'extraction des commandes des {LOOKBACK_DAYS} derniers "
-        f"jours ({order_count} commandes).\n"
+        f"Ci-joint l'extraction des commandes du trimestre {period} "
+        f"({order_count} commandes).\n"
     )
     for path in attachments:
         maintype, subtype = ("text", "csv") if path.suffix == ".csv" else (
@@ -251,19 +295,22 @@ def main() -> None:
     store_url = env_or_die("SHOPIFY_STORE_URL")
     api_version = os.environ.get("SHOPIFY_API_VERSION", "2024-10")
     status = os.environ.get("SHOPIFY_ORDER_STATUS", "any")
-    created_at_min = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).strftime(
-        "%Y-%m-%dT%H:%M:%SZ"
-    )
+    tz = ZoneInfo(os.environ.get("SHOPIFY_TIMEZONE") or "America/Toronto")
+    year, quarter = resolve_quarter(os.environ.get("TRIMESTRE", ""), datetime.now(tz).date())
+    start, end = quarter_bounds(year, quarter, tz)
+    label = f"{year}-T{quarter}"
+    period = f"{label} ({start:%Y-%m-%d} au {end - timedelta(days=1):%Y-%m-%d})"
+    print(f"Trimestre extrait : {period}")
 
     if urlparse(f"https://{store_url}").hostname != store_url:
         store_url = urlparse(store_url if "://" in store_url else f"https://{store_url}").hostname or store_url
 
     access_token = resolve_access_token(store_url)
     session = build_session(access_token)
-    orders = fetch_all_orders(store_url, session, api_version, status, created_at_min)
-    csv_path, xlsx_path = write_outputs(orders)
-    attachments = [csv_path] + ([xlsx_path] if xlsx_path else [])
-    send_by_email(attachments, len(orders))
+    orders = fetch_all_orders(store_url, session, api_version, status,
+                              start.isoformat(), (end - timedelta(seconds=1)).isoformat())
+    attachments = write_outputs(orders, label, quarter_months(year, quarter), period)
+    send_by_email(attachments, len(orders), period)
 
 
 if __name__ == "__main__":

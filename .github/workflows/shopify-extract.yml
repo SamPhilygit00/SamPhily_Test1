@@ -2,9 +2,15 @@ name: Shopify orders extraction
 
 on:
   schedule:
-    # Every Monday at 23:30 UTC
-    - cron: "30 23 * * 1"
-  workflow_dispatch: {}
+    # Le 1er janvier, avril, juillet et octobre à 05:30 UTC (minuit 30 / 1h30 au Québec) :
+    # extrait le trimestre qui vient de se terminer. Prochain lancement : 2027-01-01.
+    - cron: "30 5 1 1,4,7,10 *"
+  workflow_dispatch:
+    inputs:
+      trimestre:
+        description: "Trimestre : vide = dernier trimestre terminé, 'actuel' = trimestre en cours, ou ex. 2026-T3"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -31,6 +37,7 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          TRIMESTRE: ${{ inputs.trimestre }}
         run: python scripts/shopify_extract_orders.py
 
       - name: Commit and push extracted data
