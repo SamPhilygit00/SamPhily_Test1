@@ -2,9 +2,11 @@ name: Shopify orders extraction
 
 on:
   schedule:
-    # Le 1er janvier, avril, juillet et octobre à 05:30 UTC (minuit 30 / 1h30 au Québec) :
-    # extrait le trimestre qui vient de se terminer. Prochain lancement : 2027-01-01.
-    - cron: "30 5 1 1,4,7,10 *"
+    # Le 1er de chaque mois à 05:30 UTC (minuit 30 / 1h30 au Québec) : enregistre le mois
+    # qui vient de se terminer (Shopify ne donne que 60 jours d'historique). Les 1er janvier,
+    # avril, juillet et octobre, assemble aussi le trimestre et envoie les fichiers par courriel.
+    # Premier lancement : 2026-11-01 (enregistre octobre 2026).
+    - cron: "30 5 1 * *"
   workflow_dispatch:
     inputs:
       trimestre:
@@ -38,6 +40,7 @@ jobs:
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           TRIMESTRE: ${{ inputs.trimestre }}
+          EXTRACTION: ${{ github.event_name == 'schedule' && 'mensuel' || 'trimestre' }}
         run: python scripts/shopify_extract_orders.py
 
       - name: Commit and push extracted data

@@ -4,19 +4,26 @@ Résumé de l'automatisation mise en place (session du 22 septembre 2026).
 
 ## Ce que ça fait
 
-Le 1er janvier, avril, juillet et octobre à 05:30 UTC (premier lancement le
-1er janvier 2027), ou sur déclenchement manuel, le workflow GitHub Actions
-**"Shopify orders extraction"** :
+Shopify ne donne accès qu'aux **60 derniers jours** de commandes. Pour qu'un
+trimestre soit toujours complet, l'extraction se fait donc **chaque mois** :
 
-1. Récupère toutes les commandes du **trimestre qui vient de se terminer**
-   (ex. le 1er janvier 2027 : du 1er octobre au 31 décembre 2026, heure du
-   Québec) via l'API Admin de Shopify, pour la déclaration TPS/TVQ.
+- **Le 1er de chaque mois à 05:30 UTC** (premier lancement le **1er novembre
+  2026**), le workflow GitHub Actions **"Shopify orders extraction"**
+  récupère le mois qui vient de se terminer et l'enregistre dans
+  `data/orders/mensuel/AAAA-MM.json`. Ces fichiers restent dans le dépôt,
+  même si Shopify change ses règles plus tard.
+- **Les 1er janvier, avril, juillet et octobre**, il assemble en plus les 3
+  mois du trimestre terminé (ex. le 1er janvier 2027 : octobre, novembre et
+  décembre 2026) et :
+
+1. Calcule les commandes du **trimestre** (heure du Québec) à partir des 3
+   fichiers mensuels, pour la déclaration TPS/TVQ.
 2. Écrit dans `data/orders/`, nommés par le trimestre :
    - `AAAA-TN.json` — dump complet (ex. `2026-T4.json`)
    - `AAAA-TN.csv` — résumé aplati
    - `AAAA-TN_suivi_ventes.xlsx` — fichier "Suivi ventes" au format modèle
    - `AAAA-TN_declaration_tps_tvq.xlsx` — fichier de déclaration TPS/TVQ
-3. Envoie le **CSV et le xlsx** par courriel à **eladdas@yahoo.fr**.
+3. Envoie le **CSV et les deux xlsx** par courriel à **eladdas@yahoo.fr**.
 4. Commit et pousse les fichiers générés dans le dépôt (`main`).
 
 ## Fichier "Déclaration TPS/TVQ" (xlsx)
@@ -92,6 +99,14 @@ Dans **Settings → Secrets and variables → Actions** :
 - `.github/workflows/shopify-extract.yml` — planification + déclenchement manuel
 - `data/orders/` — fichiers générés (JSON + CSV + xlsx par date d'exécution)
 - `README.md` — instructions de configuration détaillées
+
+## Données incomplètes
+
+Si un mois du trimestre n'a pas de fichier mensuel et a commencé il y a plus
+de 60 jours, il ne peut être récupéré qu'en partie : le courriel porte alors
+la mention **INCOMPLET** et la déclaration affiche un avertissement en rouge
+(cellule C4). Août et septembre 2026 ont été enregistrés à partir des
+extractions précédentes ; juillet 2026 n'est que partiel (depuis le 24 juillet).
 
 ## Déclencher un run manuellement
 
