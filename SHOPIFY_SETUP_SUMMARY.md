@@ -15,8 +15,24 @@ Le 1er janvier, avril, juillet et octobre à 05:30 UTC (premier lancement le
    - `AAAA-TN.json` — dump complet (ex. `2026-T4.json`)
    - `AAAA-TN.csv` — résumé aplati
    - `AAAA-TN_suivi_ventes.xlsx` — fichier "Suivi ventes" au format modèle
+   - `AAAA-TN_declaration_tps_tvq.xlsx` — fichier de déclaration TPS/TVQ
 3. Envoie le **CSV et le xlsx** par courriel à **eladdas@yahoo.fr**.
 4. Commit et pousse les fichiers générés dans le dépôt (`main`).
+
+## Fichier "Déclaration TPS/TVQ" (xlsx)
+
+Généré par `scripts/build_tax_declaration_xlsx.py` (utilisable aussi en
+standalone), il reproduit la « Section A — Revenus » :
+
+| Ligne | Case | Montant HT (Brut) | TPS perçue (E) | TVQ perçue (F) |
+|---|---|---|---|---|
+| 11 | 101 — Vente en ligne (Shopify) | total des ventes HT | ventes × 5 % (indicatif) | ventes × 9,975 % (indicatif) |
+| 12 | 105/205 — Taxes perçues (clients) | ventes sur lesquelles une taxe a été perçue | **= tps du TOTAL PÉRIODE** | **= tvq du TOTAL PÉRIODE** |
+
+E12 et F12 sont calculés exactement comme la ligne « TOTAL PÉRIODE » du
+fichier Suivi ventes : les deux fichiers concordent toujours au cent près.
+Les taxes perçues incluent les taxes sur les frais de livraison, d'où un
+écart normal avec « montant × taux ».
 
 ## Colonnes du CSV
 

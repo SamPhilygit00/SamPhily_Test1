@@ -4,8 +4,9 @@ Admin REST API, for the quarterly TPS/TVQ declaration.
 
 By default the quarter is the last completed one (a run on 2027-01-01
 extracts 2026-10-01 to 2026-12-31). Writes a full JSON dump, a flattened CSV
-summary and the "Suivi ventes" xlsx to data/orders/, named after the quarter
-(e.g. 2026-T4.json, 2026-T4.csv, 2026-T4_suivi_ventes.xlsx).
+summary, the "Suivi ventes" xlsx and the TPS/TVQ declaration xlsx to
+data/orders/, named after the quarter (e.g. 2026-T4.json, 2026-T4.csv,
+2026-T4_suivi_ventes.xlsx, 2026-T4_declaration_tps_tvq.xlsx).
 
 Required environment variables:
   SHOPIFY_STORE_URL      e.g. "my-store.myshopify.com"
@@ -18,8 +19,7 @@ Required environment variables:
                          (a fresh access token is requested via the client
                          credentials grant on every run)
 
-  After extraction, the CSV and the "Suivi ventes" xlsx are emailed via
-  SMTP. Required for that:
+  After extraction, the CSV and both xlsx files are emailed via SMTP. Required for that:
   SMTP_USERNAME  the sending account's login (e.g. a Yahoo Mail address)
   SMTP_PASSWORD  an app password for that account
 
@@ -55,6 +55,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from build_sales_tracking_xlsx import build_workbook
+from build_tax_declaration_xlsx import build_declaration
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "orders"
 PAGE_LIMIT = 250
@@ -209,7 +210,8 @@ def flatten_order(order: dict) -> dict:
     }
 
 
-def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]]) -> tuple[Path, Path | None]:
+def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]],
+                  period: str) -> list[Path]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     json_path = DATA_DIR / f"{label}.json"
@@ -228,14 +230,17 @@ def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]])
         writer.writeheader()
         writer.writerows(rows)
 
-    xlsx_path: Path | None = None
+    attachments = [csv_path]
     if orders:
         xlsx_path = DATA_DIR / f"{label}_suivi_ventes.xlsx"
         build_workbook(orders, months).save(xlsx_path)
+        declaration_path = DATA_DIR / f"{label}_declaration_tps_tvq.xlsx"
+        build_declaration(orders, period).save(declaration_path)
+        attachments += [xlsx_path, declaration_path]
 
-    names = ", ".join(p.name for p in [json_path, csv_path, xlsx_path] if p)
+    names = ", ".join(p.name for p in [json_path, *attachments])
     print(f"Wrote {len(orders)} orders to {names}")
-    return csv_path, xlsx_path
+    return attachments
 
 
 def send_by_email(attachments: list[Path], order_count: int, period: str) -> None:
@@ -304,8 +309,7 @@ def main() -> None:
     session = build_session(access_token)
     orders = fetch_all_orders(store_url, session, api_version, status,
                               start.isoformat(), (end - timedelta(seconds=1)).isoformat())
-    csv_path, xlsx_path = write_outputs(orders, label, quarter_months(year, quarter))
-    attachments = [csv_path] + ([xlsx_path] if xlsx_path else [])
+    attachments = write_outputs(orders, label, quarter_months(year, quarter), period)
     send_by_email(attachments, len(orders), period)
 
 

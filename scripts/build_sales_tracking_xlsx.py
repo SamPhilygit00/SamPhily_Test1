@@ -98,6 +98,26 @@ def shipping_fee(order: dict) -> float:
     return float(amount) if amount is not None else 0.0
 
 
+def day_amounts(orders_today: list[dict]) -> dict[str, float]:
+    """Amounts shown on one day's row (several orders on a day are summed)."""
+    return {
+        "mt_brut": round(sum(float(o.get("subtotal_price") or 0) for o in orders_today), 2),
+        "tvq": round(sum(split_taxes(o)[1] for o in orders_today), 2),
+        "tps": round(sum(split_taxes(o)[0] for o in orders_today), 2),
+        "expedition": round(sum(shipping_fee(o) for o in orders_today), 2),
+    }
+
+
+def period_totals(orders: list[dict]) -> dict[str, float]:
+    """Totals of the "TOTAL PÉRIODE" row, summed from the same per-day rows,
+    so other documents (e.g. the TPS/TVQ declaration) match it to the cent."""
+    totals = {"mt_brut": 0.0, "tvq": 0.0, "tps": 0.0, "expedition": 0.0}
+    for orders_today in group_by_day(orders).values():
+        for key, value in day_amounts(orders_today).items():
+            totals[key] += value
+    return {key: round(value, 2) for key, value in totals.items()}
+
+
 def group_by_day(orders: list[dict]) -> dict[date, list[dict]]:
     grouped: dict[date, list[dict]] = defaultdict(list)
     for order in orders:
@@ -149,25 +169,16 @@ def write_block(ws, start_col: int, year: int, month: int, day_orders: dict[date
             c.border = CELL_BORDER
             c.font = Font(size=10)
 
-        if orders_today:
-            commande = ", ".join(o.get("name", "") for o in orders_today)
-            mt_brut = round(sum(float(o.get("subtotal_price") or 0) for o in orders_today), 2)
-            tps_total = round(sum(split_taxes(o)[0] for o in orders_today), 2)
-            tvq_total = round(sum(split_taxes(o)[1] for o in orders_today), 2)
-            expedition = round(sum(shipping_fee(o) for o in orders_today), 2)
-
-            cells[0].value = commande
-            cells[1].value = mt_brut
-            cells[2].value = tvq_total
-            cells[3].value = tps_total
-            cells[4].value = expedition
-            for c in [date_cell, *cells]:
-                c.fill = DAY_WITH_ORDER_FILL
-
-            totals["mt_brut"] += mt_brut
-            totals["tvq"] += tvq_total
-            totals["tps"] += tps_total
-            totals["expedition"] += expedition
+        amounts = day_amounts(orders_today)
+        cells[0].value = ", ".join(o.get("name", "") for o in orders_today)
+        cells[1].value = amounts["mt_brut"]
+        cells[2].value = amounts["tvq"]
+        cells[3].value = amounts["tps"]
+        cells[4].value = amounts["expedition"]
+        for c in [date_cell, *cells]:
+            c.fill = DAY_WITH_ORDER_FILL
+        for key, value in amounts.items():
+            totals[key] += value
 
         for c in cells[1:]:
             c.number_format = NUMBER_FORMAT

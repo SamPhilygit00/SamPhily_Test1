@@ -21,7 +21,10 @@ from a Shopify store via the Admin REST API (by default the last completed
 quarter, for the quarterly TPS/TVQ declaration), writes a JSON dump, a
 flattened CSV summary, and a formatted "Suivi ventes" Excel workbook to
 `data/orders/` named after the quarter (`2026-T4.json` / `.csv` /
-`.._suivi_ventes.xlsx`), and emails the CSV and the xlsx.
+`.._suivi_ventes.xlsx`), plus a TPS/TVQ declaration workbook
+(`.._declaration_tps_tvq.xlsx`, built by `scripts/build_tax_declaration_xlsx.py`,
+whose E12/F12 equal the tps/tvq of the Suivi ventes "TOTAL PÉRIODE" row), and
+emails the CSV and both xlsx files.
 
 The xlsx (built by `scripts/build_sales_tracking_xlsx.py`, which can also be
 run standalone) reproduces a monthly-block tracking format: one 6-column
