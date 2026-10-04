@@ -107,7 +107,7 @@ def _banner(ws, row: int, text: str, fill: PatternFill) -> None:
     ws.row_dimensions[row].height = 24
 
 
-def build_declaration(orders: list[dict], period: str = "") -> Workbook:
+def build_declaration(orders: list[dict], period: str = "", warnings: list[str] | None = None) -> Workbook:
     amounts = declaration_amounts(orders)
 
     wb = Workbook()
@@ -122,6 +122,9 @@ def build_declaration(orders: list[dict], period: str = "") -> Workbook:
           align=LEFT, border=False)
     if period:
         _cell(ws, "C3", f"Période : {period}", font=TEXT, align=LEFT, border=False)
+    if warnings:
+        _cell(ws, "C4", "ATTENTION — données incomplètes : " + " ".join(warnings),
+              font=Font(name="Arial", bold=True, size=11, color="FFFF0000"), align=LEFT, border=False)
 
     _banner(ws, 6, "TAUX EN VIGUEUR", TEAL_FILL)
     _cell(ws, "C7", "Taux TPS (fédéral)", align=LEFT)

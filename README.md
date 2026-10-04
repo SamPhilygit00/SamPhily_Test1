@@ -72,12 +72,17 @@ the `EMAIL_FROM` / `EMAIL_TO` environment variables if needed.
 
 ### 3. Automated runs
 
-`.github/workflows/shopify-extract.yml` runs the script on the 1st of
-January, April, July and October at 05:30 UTC (first run: 2027-01-01) and
-extracts the quarter that just ended, then commits the files under
-`data/orders/` back to this repo. You can also trigger it manually from the
-**Actions** tab ("Run workflow"); its `trimestre` field accepts empty (last
-completed quarter), `actuel` (current quarter to date) or e.g. `2026-T3`.
+Shopify's Admin API only returns the last 60 days of orders, so
+`.github/workflows/shopify-extract.yml` runs on the 1st of every month at
+05:30 UTC (first run: 2026-11-01) with `EXTRACTION=mensuel`: it stores the
+month that just ended in `data/orders/mensuel/AAAA-MM.json`, and on January,
+April, July and October 1st also builds and emails the quarter files from the
+three stored months. Everything under `data/orders/` is committed back to
+this repo. You can also trigger it manually from the **Actions** tab ("Run
+workflow") to build a quarter right away; its `trimestre` field accepts empty
+(last completed quarter), `actuel` (current quarter to date) or e.g.
+`2026-T3`. A month with no stored file that started more than 60 days ago is
+flagged INCOMPLET in the email and the declaration.
 
 ### Run locally
 
@@ -91,7 +96,8 @@ export SMTP_PASSWORD="..."
 python scripts/shopify_extract_orders.py
 ```
 
-Optional environment variables: `TRIMESTRE` (see above),
+Optional environment variables: `EXTRACTION` (`mensuel` or `trimestre`,
+default `trimestre`), `TRIMESTRE` (see above),
 `SHOPIFY_TIMEZONE` (default `America/Toronto`),
 `SHOPIFY_API_VERSION` (default `2024-10`),
 `SHOPIFY_ORDER_STATUS` (`any`/`open`/`closed`/`cancelled`, default `any`),
