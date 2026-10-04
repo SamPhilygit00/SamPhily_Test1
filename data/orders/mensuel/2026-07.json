@@ -1,0 +1,1505 @@
+[
+  {
+    "id": 7227568029984,
+    "name": "#1296",
+    "created_at": "2026-07-29T20:11:50-04:00",
+    "updated_at": "2026-07-29T20:11:50-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "17.25",
+    "total_discounts": "0.00",
+    "total_price": "17.25",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7227551940896,
+    "name": "#1295",
+    "created_at": "2026-07-29T19:58:03-04:00",
+    "updated_at": "2026-07-29T19:58:03-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "30.00",
+    "total_discounts": "0.00",
+    "total_price": "34.49",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "1.50"
+      },
+      {
+        "title": "QST",
+        "price": "2.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7223734894880,
+    "name": "#1294",
+    "created_at": "2026-07-28T11:49:16-04:00",
+    "updated_at": "2026-07-28T11:49:16-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "86.00",
+    "total_discounts": "0.00",
+    "total_price": "98.90",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.30"
+      },
+      {
+        "title": "QST",
+        "price": "8.60"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7222487777568,
+    "name": "#1293",
+    "created_at": "2026-07-28T10:57:48-04:00",
+    "updated_at": "2026-07-28T10:57:48-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "15.30",
+    "total_discounts": "2.70",
+    "total_price": "17.60",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.77"
+      },
+      {
+        "title": "QST",
+        "price": "1.53"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7221642494240,
+    "name": "#1292",
+    "created_at": "2026-07-28T07:13:56-04:00",
+    "updated_at": "2026-07-28T07:13:56-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "117.00",
+    "total_discounts": "0.00",
+    "total_price": "134.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.85"
+      },
+      {
+        "title": "QST",
+        "price": "11.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7220521173280,
+    "name": "#1291",
+    "created_at": "2026-07-27T16:37:01-04:00",
+    "updated_at": "2026-07-27T16:37:01-04:00",
+    "cancelled_at": "2026-07-27T19:35:28-04:00",
+    "financial_status": "pending",
+    "fulfillment_status": "unfulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7220520157472,
+    "name": "#1290",
+    "created_at": "2026-07-27T16:36:30-04:00",
+    "updated_at": "2026-07-27T16:36:30-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7219052511520,
+    "name": "#1289",
+    "created_at": "2026-07-27T09:20:20-04:00",
+    "updated_at": "2026-07-27T09:20:20-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "63.00",
+    "total_discounts": "0.00",
+    "total_price": "72.42",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.15"
+      },
+      {
+        "title": "QST",
+        "price": "6.27"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7217752375584,
+    "name": "#1288",
+    "created_at": "2026-07-26T14:48:07-04:00",
+    "updated_at": "2026-07-26T14:48:07-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "123.25",
+    "total_discounts": "21.75",
+    "total_price": "155.51",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.76"
+      },
+      {
+        "title": "QST",
+        "price": "13.50"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7211957190944,
+    "name": "#1287",
+    "created_at": "2026-07-24T19:29:46-04:00",
+    "updated_at": "2026-07-24T19:29:46-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "950.00",
+    "total_discounts": "0.00",
+    "total_price": "1092.26",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "47.50"
+      },
+      {
+        "title": "QST",
+        "price": "94.76"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209995174176,
+    "name": "#1286",
+    "created_at": "2026-07-23T21:52:51-04:00",
+    "updated_at": "2026-07-23T21:52:51-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "28.05",
+    "total_discounts": "4.95",
+    "total_price": "46.05",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.00"
+      },
+      {
+        "title": "QST",
+        "price": "4.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209771794720,
+    "name": "#1285",
+    "created_at": "2026-07-23T18:47:39-04:00",
+    "updated_at": "2026-07-23T18:47:39-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "50.00",
+    "total_discounts": "0.00",
+    "total_price": "57.49",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.50"
+      },
+      {
+        "title": "QST",
+        "price": "4.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209519448352,
+    "name": "#1284",
+    "created_at": "2026-07-23T15:50:48-04:00",
+    "updated_at": "2026-07-23T15:50:48-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "8.00",
+    "total_discounts": "0.00",
+    "total_price": "9.20",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.40"
+      },
+      {
+        "title": "QST",
+        "price": "0.80"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209514303776,
+    "name": "#1283",
+    "created_at": "2026-07-23T15:47:37-04:00",
+    "updated_at": "2026-07-23T15:47:37-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "610.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montreal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7206661718304,
+    "name": "#1282",
+    "created_at": "2026-07-22T12:37:43-04:00",
+    "updated_at": "2026-07-22T12:37:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "99.85",
+    "total_discounts": "0.00",
+    "total_price": "99.85",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205513920800,
+    "name": "#1281",
+    "created_at": "2026-07-21T21:28:32-04:00",
+    "updated_at": "2026-07-21T21:28:32-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205481840928,
+    "name": "#1280",
+    "created_at": "2026-07-21T20:55:41-04:00",
+    "updated_at": "2026-07-21T20:55:41-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205125423392,
+    "name": "#1279",
+    "created_at": "2026-07-21T16:02:54-04:00",
+    "updated_at": "2026-07-21T16:02:54-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "60.00",
+    "total_discounts": "0.00",
+    "total_price": "82.80",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.60"
+      },
+      {
+        "title": "QST",
+        "price": "7.20"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Sherbrooke"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7203569860896,
+    "name": "#1278",
+    "created_at": "2026-07-20T21:13:53-04:00",
+    "updated_at": "2026-07-20T21:13:53-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "116.00",
+    "total_discounts": "0.00",
+    "total_price": "133.37",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.80"
+      },
+      {
+        "title": "QST",
+        "price": "11.57"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7203385835808,
+    "name": "#1277",
+    "created_at": "2026-07-20T18:16:39-04:00",
+    "updated_at": "2026-07-20T18:16:39-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "66.00",
+    "total_discounts": "0.00",
+    "total_price": "75.88",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.30"
+      },
+      {
+        "title": "QST",
+        "price": "6.58"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7202531442976,
+    "name": "#1276",
+    "created_at": "2026-07-20T09:08:55-04:00",
+    "updated_at": "2026-07-20T09:08:55-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "95.00",
+    "total_discounts": "0.00",
+    "total_price": "109.23",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.75"
+      },
+      {
+        "title": "QST",
+        "price": "9.48"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7202530296096,
+    "name": "#1275",
+    "created_at": "2026-07-20T09:08:11-04:00",
+    "updated_at": "2026-07-20T09:08:11-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "15.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Quebec"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7201851310368,
+    "name": "#1274",
+    "created_at": "2026-07-19T22:48:14-04:00",
+    "updated_at": "2026-07-19T22:48:14-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "61.00",
+    "total_discounts": "0.00",
+    "total_price": "70.13",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.05"
+      },
+      {
+        "title": "QST",
+        "price": "6.08"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7201661288736,
+    "name": "#1273",
+    "created_at": "2026-07-19T19:40:33-04:00",
+    "updated_at": "2026-07-19T19:40:33-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "100.00",
+    "total_discounts": "0.00",
+    "total_price": "100.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7198669209888,
+    "name": "#1272",
+    "created_at": "2026-07-18T07:33:43-04:00",
+    "updated_at": "2026-07-18T07:33:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "57.00",
+    "total_discounts": "0.00",
+    "total_price": "65.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.85"
+      },
+      {
+        "title": "QST",
+        "price": "5.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196891087136,
+    "name": "#1271",
+    "created_at": "2026-07-17T10:26:43-04:00",
+    "updated_at": "2026-07-17T10:26:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "20.40",
+    "total_discounts": "3.60",
+    "total_price": "23.46",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "1.02"
+      },
+      {
+        "title": "QST",
+        "price": "2.04"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196620816672,
+    "name": "#1270",
+    "created_at": "2026-07-17T07:26:18-04:00",
+    "updated_at": "2026-07-17T07:26:18-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "63.00",
+    "total_discounts": "0.00",
+    "total_price": "72.43",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.15"
+      },
+      {
+        "title": "QST",
+        "price": "6.28"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196618981664,
+    "name": "#1269",
+    "created_at": "2026-07-17T07:24:52-04:00",
+    "updated_at": "2026-07-17T07:24:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "60.00",
+    "total_discounts": "0.00",
+    "total_price": "68.99",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.00"
+      },
+      {
+        "title": "QST",
+        "price": "5.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196617310496,
+    "name": "#1268",
+    "created_at": "2026-07-17T07:23:33-04:00",
+    "updated_at": "2026-07-17T07:23:33-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "65.00",
+    "total_discounts": "0.00",
+    "total_price": "74.73",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.25"
+      },
+      {
+        "title": "QST",
+        "price": "6.48"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196607742240,
+    "name": "#1267",
+    "created_at": "2026-07-17T07:16:18-04:00",
+    "updated_at": "2026-07-17T07:16:18-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "65.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195951464736,
+    "name": "#1266",
+    "created_at": "2026-07-16T21:38:19-04:00",
+    "updated_at": "2026-07-16T21:38:19-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195950022944,
+    "name": "#1265",
+    "created_at": "2026-07-16T21:36:52-04:00",
+    "updated_at": "2026-07-16T21:36:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "120.00",
+    "total_discounts": "0.00",
+    "total_price": "137.97",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.00"
+      },
+      {
+        "title": "QST",
+        "price": "11.97"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195358200096,
+    "name": "#1264",
+    "created_at": "2026-07-16T14:13:27-04:00",
+    "updated_at": "2026-07-16T14:13:27-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7194034405664,
+    "name": "#1263",
+    "created_at": "2026-07-15T21:42:17-04:00",
+    "updated_at": "2026-07-15T21:42:17-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7191887610144,
+    "name": "#1262",
+    "created_at": "2026-07-14T19:37:00-04:00",
+    "updated_at": "2026-07-14T19:37:00-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "27.45",
+    "total_discounts": "7.05",
+    "total_price": "27.45",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7191867359520,
+    "name": "#1261",
+    "created_at": "2026-07-14T19:16:31-04:00",
+    "updated_at": "2026-07-14T19:16:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "42.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Québec"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7190178660640,
+    "name": "#1260",
+    "created_at": "2026-07-13T20:58:20-04:00",
+    "updated_at": "2026-07-13T20:58:20-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "154.71",
+    "total_discounts": "27.29",
+    "total_price": "177.90",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "7.74"
+      },
+      {
+        "title": "QST",
+        "price": "15.45"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7189147386144,
+    "name": "#1259",
+    "created_at": "2026-07-13T09:03:52-04:00",
+    "updated_at": "2026-07-13T09:03:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "56.95",
+    "total_discounts": "10.04",
+    "total_price": "63.95",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.34"
+      },
+      {
+        "title": "QST",
+        "price": "4.66"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7188316029216,
+    "name": "#1258",
+    "created_at": "2026-07-12T19:59:22-04:00",
+    "updated_at": "2026-07-12T19:59:22-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "112.00",
+    "total_discounts": "0.00",
+    "total_price": "128.80",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.60"
+      },
+      {
+        "title": "QST",
+        "price": "11.20"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montréal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7187894173984,
+    "name": "#1257",
+    "created_at": "2026-07-12T15:14:31-04:00",
+    "updated_at": "2026-07-12T15:14:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "45.00",
+    "total_discounts": "0.00",
+    "total_price": "65.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.85"
+      },
+      {
+        "title": "QST",
+        "price": "5.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Québec"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7186416468256,
+    "name": "#1256",
+    "created_at": "2026-07-11T20:21:31-04:00",
+    "updated_at": "2026-07-11T20:21:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "90.00",
+    "total_discounts": "0.00",
+    "total_price": "103.50",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.50"
+      },
+      {
+        "title": "QST",
+        "price": "9.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7179385602336,
+    "name": "#1255",
+    "created_at": "2026-07-08T12:12:31-04:00",
+    "updated_at": "2026-07-08T12:12:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "83.00",
+    "total_discounts": "0.00",
+    "total_price": "95.44",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.15"
+      },
+      {
+        "title": "QST",
+        "price": "8.29"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7174982205728,
+    "name": "#1254",
+    "created_at": "2026-07-06T10:54:02-04:00",
+    "updated_at": "2026-07-06T10:54:02-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "57.00",
+    "total_discounts": "0.00",
+    "total_price": "79.33",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.45"
+      },
+      {
+        "title": "QST",
+        "price": "6.88"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Saint-Hyacinthe"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7169742995744,
+    "name": "#1253",
+    "created_at": "2026-07-03T18:09:25-04:00",
+    "updated_at": "2026-07-03T18:09:25-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "95.50",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Gatineau"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7164432122144,
+    "name": "#1252",
+    "created_at": "2026-07-01T20:00:31-04:00",
+    "updated_at": "2026-07-01T20:00:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "83.00",
+    "total_discounts": "0.00",
+    "total_price": "95.42",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.15"
+      },
+      {
+        "title": "QST",
+        "price": "8.27"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": "manuel-1251",
+    "name": "#1251",
+    "created_at": "2026-07-01T07:52:00-04:00",
+    "updated_at": "2026-07-01T07:52:00-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "159.80",
+    "total_discounts": "28.20",
+    "total_price": "183.76",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "8.01"
+      },
+      {
+        "title": "QST",
+        "price": "15.95"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "discount_codes": [
+      {
+        "code": "IE3B-W11X-XGAU",
+        "amount": "28.20"
+      }
+    ],
+    "imported_from": "saisie_manuelle (détail de la commande dans l'admin Shopify)"
+  }
+]
