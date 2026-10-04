@@ -11682,7 +11682,7 @@
     "customer": {
       "id": 11106816786720,
       "created_at": "2026-09-18T23:28:00-04:00",
-      "updated_at": "2026-09-30T01:53:23-04:00",
+      "updated_at": "2026-09-18T23:28:05-04:00",
       "first_name": "Soukayna",
       "last_name": "Madani",
       "state": "disabled",
@@ -11695,15 +11695,10 @@
         "opt_in_level": "confirmed_opt_in",
         "consent_updated_at": null
       },
-      "sms_marketing_consent": {
-        "state": "pending",
-        "opt_in_level": "confirmed_opt_in",
-        "consent_updated_at": "2026-09-30T01:53:22-04:00",
-        "consent_collected_from": "SHOPIFY"
-      },
+      "sms_marketing_consent": null,
       "tags": "",
       "email": "soukimdn@gmail.com",
-      "phone": "+15142104160",
+      "phone": null,
       "currency": "CAD",
       "tax_exemptions": [],
       "admin_graphql_api_id": "gid://shopify/Customer/11106816786720",
@@ -29810,7 +29805,7 @@
     "customer": {
       "id": 9512088076576,
       "created_at": "2025-10-25T21:00:49-04:00",
-      "updated_at": "2026-09-25T08:47:05-04:00",
+      "updated_at": "2026-09-04T20:32:30-04:00",
       "first_name": "Amelie",
       "last_name": "Cadieux",
       "state": "enabled",
@@ -36725,7 +36720,7 @@
     "customer": {
       "id": 9255272972576,
       "created_at": "2025-08-21T13:53:15-04:00",
-      "updated_at": "2026-09-24T20:44:17-04:00",
+      "updated_at": "2026-09-13T20:06:55-04:00",
       "first_name": "Sabrina",
       "last_name": "Galarneau",
       "state": "disabled",
@@ -40011,9 +40006,9 @@
     "customer": {
       "id": 9380381065504,
       "created_at": "2025-09-23T12:00:52-04:00",
-      "updated_at": "2026-09-24T20:43:05-04:00",
-      "first_name": "Julianna",
-      "last_name": "Hassan",
+      "updated_at": "2026-09-01T12:51:56-04:00",
+      "first_name": "julianna",
+      "last_name": "hasan",
       "state": "disabled",
       "note": null,
       "verified_email": true,
@@ -40030,26 +40025,26 @@
         "consent_updated_at": null,
         "consent_collected_from": null
       },
-      "tags": "EcomSend Popups, ES Popup Name: Roue de fortune LBL, ES Reward Label: Livraison sans frais !",
+      "tags": "",
       "email": "julianna.hassan@yahoo.ca",
       "phone": "+15148044104",
       "currency": "CAD",
       "tax_exemptions": [],
       "admin_graphql_api_id": "gid://shopify/Customer/9380381065504",
       "default_address": {
-        "id": 12520199192864,
+        "id": 11275454054688,
         "customer_id": 9380381065504,
-        "first_name": "Julianna",
-        "last_name": "Hassan",
-        "company": null,
-        "address1": null,
-        "address2": null,
-        "city": "Toronto",
-        "province": null,
+        "first_name": "julianna",
+        "last_name": "hasan",
+        "company": "",
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "province": "",
         "country": "Canada",
-        "zip": null,
-        "phone": null,
-        "name": "Julianna Hassan",
+        "zip": "",
+        "phone": "",
+        "name": "julianna hasan",
         "province_code": null,
         "country_code": "CA",
         "country_name": "Canada",
@@ -44104,7 +44099,7 @@
     "customer": {
       "id": 10189363085600,
       "created_at": "2026-03-09T12:18:04-04:00",
-      "updated_at": "2026-09-30T18:10:55-04:00",
+      "updated_at": "2026-08-26T18:02:57-04:00",
       "first_name": "Kristina",
       "last_name": "Proteau",
       "state": "disabled",
@@ -47035,7 +47030,7 @@
     "customer": {
       "id": 10266246906144,
       "created_at": "2026-03-24T19:38:44-04:00",
-      "updated_at": "2026-09-24T11:31:35-04:00",
+      "updated_at": "2026-08-26T16:21:19-04:00",
       "first_name": "Ann-garla",
       "last_name": "Brisson",
       "state": "disabled",
@@ -49991,7 +49986,7 @@
     "customer": {
       "id": 9255272972576,
       "created_at": "2025-08-21T13:53:15-04:00",
-      "updated_at": "2026-09-24T20:44:17-04:00",
+      "updated_at": "2026-09-13T20:06:55-04:00",
       "first_name": "Sabrina",
       "last_name": "Galarneau",
       "state": "disabled",
@@ -59079,7 +59074,7 @@
     "customer": {
       "id": 9255272972576,
       "created_at": "2025-08-21T13:53:15-04:00",
-      "updated_at": "2026-09-24T20:44:17-04:00",
+      "updated_at": "2026-09-13T20:06:55-04:00",
       "first_name": "Sabrina",
       "last_name": "Galarneau",
       "state": "disabled",
@@ -59829,7 +59824,7 @@
     "customer": {
       "id": 9512088076576,
       "created_at": "2025-10-25T21:00:49-04:00",
-      "updated_at": "2026-09-25T08:47:05-04:00",
+      "updated_at": "2026-09-04T20:32:30-04:00",
       "first_name": "Amelie",
       "last_name": "Cadieux",
       "state": "enabled",
@@ -67965,7 +67960,7 @@
     "customer": {
       "id": 10458137657632,
       "created_at": "2026-05-08T08:19:30-04:00",
-      "updated_at": "2026-10-01T17:51:18-04:00",
+      "updated_at": "2026-08-13T22:22:14-04:00",
       "first_name": "Woodbenka",
       "last_name": "Appo",
       "state": "enabled",
@@ -76116,5 +76111,3565 @@
         "discount_allocations": []
       }
     ]
+  },
+  {
+    "id": 7240149106976,
+    "admin_graphql_api_id": "gid://shopify/Order/7240149106976",
+    "app_id": 580111,
+    "browser_ip": "96.21.196.224",
+    "buyer_accepts_marketing": true,
+    "cancel_reason": null,
+    "cancelled_at": null,
+    "cart_token": "hWNFHfF5hILjrScKqLBcJSKI",
+    "checkout_id": 41543782433056,
+    "checkout_token": "6dbb10a299ca227dcb2726b00cc5991c",
+    "client_details": {
+      "accept_language": "fr-CA",
+      "browser_height": null,
+      "browser_ip": "96.21.196.224",
+      "browser_width": null,
+      "session_hash": null,
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_5_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/23F84 Instagram 440.0.0.30.81 (iPhone15,4; iOS 26_5_2; fr_FR; fr; scale=3.00; 1179x2556; IABMV/1; 1025609183) Safari/604.1"
+    },
+    "closed_at": "2026-08-05T12:03:16-04:00",
+    "company": null,
+    "confirmation_number": "FX2KWQAYP",
+    "confirmed": true,
+    "contact_email": "abdelzeinab6@gmail.com",
+    "created_at": "2026-08-04T20:07:39-04:00",
+    "currency": "CAD",
+    "current_subtotal_price": "37.80",
+    "current_subtotal_price_set": {
+      "shop_money": {
+        "amount": "37.80",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "37.80",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_additional_fees_set": null,
+    "current_total_discounts": "4.20",
+    "current_total_discounts_set": {
+      "shop_money": {
+        "amount": "4.20",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "4.20",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_duties_set": null,
+    "current_total_price": "57.26",
+    "current_total_price_set": {
+      "shop_money": {
+        "amount": "57.26",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "57.26",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_tax": "7.46",
+    "current_total_tax_set": {
+      "shop_money": {
+        "amount": "7.46",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "7.46",
+        "currency_code": "CAD"
+      }
+    },
+    "customer_locale": "fr-CA",
+    "device_id": null,
+    "discount_codes": [
+      {
+        "code": "SW-D9P7SAKPLBOC72PRBFR0",
+        "amount": "4.20",
+        "type": "percentage"
+      }
+    ],
+    "duties_included": false,
+    "email": "abdelzeinab6@gmail.com",
+    "estimated_taxes": false,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "landing_site": "/",
+    "landing_site_ref": null,
+    "location_id": null,
+    "merchant_business_entity_id": "MTk0NDMyNDI4MzIw",
+    "merchant_of_record_app_id": null,
+    "name": "#1299",
+    "note": null,
+    "note_attributes": [],
+    "number": 299,
+    "order_number": 1299,
+    "order_status_url": "https://www.lblextensions.ca/94432428320/orders/538767bafd92247acd0d2e2dfb41cafe/authenticate?key=c60f9e04dea859650c7740a6b47b642f",
+    "original_total_additional_fees_set": null,
+    "original_total_duties_set": null,
+    "payment_gateway_names": [
+      "shopify_payments"
+    ],
+    "phone": null,
+    "po_number": null,
+    "presentment_currency": "CAD",
+    "processed_at": "2026-08-04T20:07:34-04:00",
+    "reference": null,
+    "referring_site": "https://linktr.ee/",
+    "source_identifier": null,
+    "source_name": "web",
+    "source_url": null,
+    "subtotal_price": "37.80",
+    "subtotal_price_set": {
+      "shop_money": {
+        "amount": "37.80",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "37.80",
+        "currency_code": "CAD"
+      }
+    },
+    "tags": "genie-shipping",
+    "tax_exempt": false,
+    "tax_lines": [
+      {
+        "price": "2.49",
+        "rate": 0.05,
+        "title": "GST",
+        "price_set": {
+          "shop_money": {
+            "amount": "2.49",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "2.49",
+            "currency_code": "CAD"
+          }
+        },
+        "channel_liable": false
+      },
+      {
+        "price": "4.97",
+        "rate": 0.09975,
+        "title": "QST",
+        "price_set": {
+          "shop_money": {
+            "amount": "4.97",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "4.97",
+            "currency_code": "CAD"
+          }
+        },
+        "channel_liable": false
+      }
+    ],
+    "taxes_included": false,
+    "test": false,
+    "token": "538767bafd92247acd0d2e2dfb41cafe",
+    "total_cash_rounding_payment_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_cash_rounding_refund_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_discounts": "4.20",
+    "total_discounts_set": {
+      "shop_money": {
+        "amount": "4.20",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "4.20",
+        "currency_code": "CAD"
+      }
+    },
+    "total_line_items_price": "42.00",
+    "total_line_items_price_set": {
+      "shop_money": {
+        "amount": "42.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "42.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_outstanding": "0.00",
+    "total_price": "57.26",
+    "total_price_set": {
+      "shop_money": {
+        "amount": "57.26",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "57.26",
+        "currency_code": "CAD"
+      }
+    },
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "12.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tax": "7.46",
+    "total_tax_set": {
+      "shop_money": {
+        "amount": "7.46",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "7.46",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tip_received": "0.00",
+    "total_weight": 10,
+    "updated_at": "2026-08-06T10:14:24-04:00",
+    "user_id": null,
+    "billing_address": {
+      "first_name": "Zeinab",
+      "address1": "9163 2e Avenue",
+      "phone": "+15149621700",
+      "city": "Montr\u00e9al",
+      "zip": "H1Z 2S9",
+      "province": "Quebec",
+      "country": "Canada",
+      "last_name": "Abdel-Sadigh",
+      "address2": null,
+      "company": null,
+      "latitude": 45.5696296,
+      "longitude": -73.6320332,
+      "name": "Zeinab Abdel-Sadigh",
+      "country_code": "CA",
+      "province_code": "QC"
+    },
+    "customer": {
+      "id": 10870950854944,
+      "created_at": "2026-08-04T20:04:59-04:00",
+      "updated_at": "2026-08-21T15:18:36-04:00",
+      "first_name": "Zeinab",
+      "last_name": "Abdel-Sadigh",
+      "state": "enabled",
+      "note": null,
+      "verified_email": true,
+      "multipass_identifier": null,
+      "tax_exempt": false,
+      "email_marketing_consent": {
+        "state": "subscribed",
+        "opt_in_level": "single_opt_in",
+        "consent_updated_at": "2026-08-04T20:04:59-04:00"
+      },
+      "sms_marketing_consent": null,
+      "tags": "EcomSend Popups, ES Popup Name: Roue de fortune LBL, ES Reward Label: 10% OFF, Login with Shop, Shop",
+      "email": "abdelzeinab6@gmail.com",
+      "phone": null,
+      "currency": "CAD",
+      "tax_exemptions": [],
+      "admin_graphql_api_id": "gid://shopify/Customer/10870950854944",
+      "default_address": {
+        "id": 12393572729120,
+        "customer_id": 10870950854944,
+        "first_name": "Zeinab",
+        "last_name": "Abdel-Sadigh",
+        "company": null,
+        "address1": "9163 2e Av",
+        "address2": null,
+        "city": "Montr\u00c9al",
+        "province": "Quebec",
+        "country": "Canada",
+        "zip": "H1Z 2S9",
+        "phone": null,
+        "name": "Zeinab Abdel-Sadigh",
+        "province_code": "QC",
+        "country_code": "CA",
+        "country_name": "Canada",
+        "default": true
+      }
+    },
+    "discount_applications": [
+      {
+        "target_type": "line_item",
+        "type": "discount_code",
+        "value": "10.0",
+        "value_type": "percentage",
+        "allocation_method": "across",
+        "target_selection": "all",
+        "code": "SW-D9P7SAKPLBOC72PRBFR0"
+      }
+    ],
+    "fulfillments": [
+      {
+        "id": 6400422248736,
+        "admin_graphql_api_id": "gid://shopify/Fulfillment/6400422248736",
+        "created_at": "2026-08-05T12:03:14-04:00",
+        "location_id": 107441717536,
+        "name": "#1299.1",
+        "order_id": 7240149106976,
+        "origin_address": {},
+        "receipt": {},
+        "service": "manual",
+        "shipment_status": "delivered",
+        "status": "success",
+        "tracking_company": "Canada Post",
+        "tracking_number": "2010505725578458",
+        "tracking_numbers": [
+          "2010505725578458"
+        ],
+        "tracking_url": "https://www.canadapost-postescanada.ca/track-reperage/en#/search?searchFor=2010505725578458",
+        "tracking_urls": [
+          "https://www.canadapost-postescanada.ca/track-reperage/en#/search?searchFor=2010505725578458"
+        ],
+        "updated_at": "2026-08-06T10:14:24-04:00",
+        "line_items": [
+          {
+            "id": 17441246019872,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17441246019872",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 10,
+            "name": "Real Connection - Colle Noire \u00e0 Extensions de Cils - 5 ML",
+            "price": "42.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "42.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "42.00",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": true,
+            "product_id": 9918547755296,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": null,
+            "taxable": true,
+            "title": "Real Connection - Colle Noire \u00e0 Extensions de Cils",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": 51280139059488,
+            "variant_inventory_management": "shopify",
+            "variant_title": "5 ML",
+            "vendor": "LBL extensions ",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "1.89",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "1.89",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "1.89",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              },
+              {
+                "channel_liable": false,
+                "price": "3.77",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "3.77",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "3.77",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.09975,
+                "title": "QST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": [
+              {
+                "amount": "4.20",
+                "amount_set": {
+                  "shop_money": {
+                    "amount": "4.20",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "4.20",
+                    "currency_code": "CAD"
+                  }
+                },
+                "discount_application_index": 0
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "line_items": [
+      {
+        "id": 17441246019872,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17441246019872",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 10,
+        "name": "Real Connection - Colle Noire \u00e0 Extensions de Cils - 5 ML",
+        "price": "42.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "42.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "42.00",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": true,
+        "product_id": 9918547755296,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": null,
+        "taxable": true,
+        "title": "Real Connection - Colle Noire \u00e0 Extensions de Cils",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": 51280139059488,
+        "variant_inventory_management": "shopify",
+        "variant_title": "5 ML",
+        "vendor": "LBL extensions ",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "1.89",
+            "price_set": {
+              "shop_money": {
+                "amount": "1.89",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "1.89",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          },
+          {
+            "channel_liable": false,
+            "price": "3.77",
+            "price_set": {
+              "shop_money": {
+                "amount": "3.77",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "3.77",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.09975,
+            "title": "QST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": [
+          {
+            "amount": "4.20",
+            "amount_set": {
+              "shop_money": {
+                "amount": "4.20",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "4.20",
+                "currency_code": "CAD"
+              }
+            },
+            "discount_application_index": 0
+          }
+        ]
+      }
+    ],
+    "payment_terms": null,
+    "refunds": [],
+    "shipping_address": {
+      "first_name": "Zeinab",
+      "address1": "9163 2e Av",
+      "phone": null,
+      "city": "Montr\u00c9al",
+      "zip": "H1Z 2S9",
+      "province": "Quebec",
+      "country": "Canada",
+      "last_name": "Abdel-Sadigh",
+      "address2": null,
+      "company": null,
+      "latitude": 45.5696296,
+      "longitude": -73.6320332,
+      "name": "Zeinab Abdel-Sadigh",
+      "country_code": "CA",
+      "province_code": "QC"
+    },
+    "shipping_lines": [
+      {
+        "id": 5702868369696,
+        "carrier_identifier": null,
+        "code": "Express",
+        "discounted_price": "12.00",
+        "discounted_price_set": {
+          "shop_money": {
+            "amount": "12.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "12.00",
+            "currency_code": "CAD"
+          }
+        },
+        "is_removed": false,
+        "phone": null,
+        "price": "12.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "12.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "12.00",
+            "currency_code": "CAD"
+          }
+        },
+        "requested_fulfillment_service_id": null,
+        "source": "shopify",
+        "title": "Express",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.60",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.60",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.60",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          },
+          {
+            "channel_liable": false,
+            "price": "1.20",
+            "price_set": {
+              "shop_money": {
+                "amount": "1.20",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "1.20",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.09975,
+            "title": "QST"
+          }
+        ],
+        "discount_allocations": []
+      }
+    ]
+  },
+  {
+    "id": 7239365624096,
+    "admin_graphql_api_id": "gid://shopify/Order/7239365624096",
+    "app_id": 1354745,
+    "browser_ip": "184.160.138.72",
+    "buyer_accepts_marketing": true,
+    "cancel_reason": null,
+    "cancelled_at": null,
+    "cart_token": null,
+    "checkout_id": 41540716658976,
+    "checkout_token": "182afcad8bdd1bb9381feebae4ba543c",
+    "client_details": {
+      "accept_language": null,
+      "browser_height": null,
+      "browser_ip": "184.160.138.72",
+      "browser_width": null,
+      "session_hash": null,
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Shopify Mobile/iOS/10.2628.1 (iPhone18,2/com.jadedpixel.shopify/26.5.2) - Build 300499 polaris_uplift ExtensibilityHost MobileBridge MobileBridgeNext MobileOSENext ShopifyMobileFormFactor/phone"
+    },
+    "closed_at": "2026-08-07T14:13:03-04:00",
+    "company": null,
+    "confirmation_number": "XY5DWDZEW",
+    "confirmed": true,
+    "contact_email": "Sabrinagalarneau@icloud.com",
+    "created_at": "2026-08-04T11:54:57-04:00",
+    "currency": "CAD",
+    "current_subtotal_price": "51.75",
+    "current_subtotal_price_set": {
+      "shop_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_additional_fees_set": null,
+    "current_total_discounts": "0.00",
+    "current_total_discounts_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_duties_set": null,
+    "current_total_price": "51.75",
+    "current_total_price_set": {
+      "shop_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_tax": "0.00",
+    "current_total_tax_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "customer_locale": "fr",
+    "device_id": null,
+    "discount_codes": [],
+    "duties_included": false,
+    "email": "Sabrinagalarneau@icloud.com",
+    "estimated_taxes": false,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "landing_site": null,
+    "landing_site_ref": null,
+    "location_id": null,
+    "merchant_business_entity_id": "MTk0NDMyNDI4MzIw",
+    "merchant_of_record_app_id": null,
+    "name": "#1298",
+    "note": null,
+    "note_attributes": [],
+    "number": 298,
+    "order_number": 1298,
+    "order_status_url": "https://www.lblextensions.ca/94432428320/orders/5ba4431b016cabab8945f3fd7224f619/authenticate?key=f62024f912471a3b7e76350fa0425b01",
+    "original_total_additional_fees_set": null,
+    "original_total_duties_set": null,
+    "payment_gateway_names": [
+      "manual"
+    ],
+    "phone": "+14383954911",
+    "po_number": null,
+    "presentment_currency": "CAD",
+    "processed_at": "2026-08-04T11:54:57-04:00",
+    "reference": null,
+    "referring_site": null,
+    "source_identifier": null,
+    "source_name": "shopify_draft_order",
+    "source_url": null,
+    "subtotal_price": "51.75",
+    "subtotal_price_set": {
+      "shop_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      }
+    },
+    "tags": "",
+    "tax_exempt": true,
+    "tax_lines": [],
+    "taxes_included": false,
+    "test": false,
+    "token": "5ba4431b016cabab8945f3fd7224f619",
+    "total_cash_rounding_payment_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_cash_rounding_refund_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_discounts": "0.00",
+    "total_discounts_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_line_items_price": "51.75",
+    "total_line_items_price_set": {
+      "shop_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      }
+    },
+    "total_outstanding": "0.00",
+    "total_price": "51.75",
+    "total_price_set": {
+      "shop_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "51.75",
+        "currency_code": "CAD"
+      }
+    },
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tax": "0.00",
+    "total_tax_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tip_received": "0.00",
+    "total_weight": 30,
+    "updated_at": "2026-08-07T14:13:03-04:00",
+    "user_id": 119826219296,
+    "billing_address": {
+      "first_name": "Sabrina",
+      "address1": "",
+      "phone": null,
+      "city": "",
+      "zip": null,
+      "province": null,
+      "country": "Canada",
+      "last_name": "Galarneau",
+      "address2": null,
+      "company": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "Sabrina Galarneau",
+      "country_code": "CA",
+      "province_code": null
+    },
+    "customer": {
+      "id": 9255272972576,
+      "created_at": "2025-08-21T13:53:15-04:00",
+      "updated_at": "2026-09-13T20:06:55-04:00",
+      "first_name": "Sabrina",
+      "last_name": "Galarneau",
+      "state": "disabled",
+      "note": "",
+      "verified_email": true,
+      "multipass_identifier": null,
+      "tax_exempt": true,
+      "email_marketing_consent": {
+        "state": "subscribed",
+        "opt_in_level": "single_opt_in",
+        "consent_updated_at": "2025-11-03T15:46:31-05:00"
+      },
+      "sms_marketing_consent": {
+        "state": "subscribed",
+        "opt_in_level": "single_opt_in",
+        "consent_updated_at": "2026-02-03T18:46:04-05:00",
+        "consent_collected_from": "SHOPIFY"
+      },
+      "tags": "3+, Wrote Judge.me email review",
+      "email": "Sabrinagalarneau@icloud.com",
+      "phone": "+14383954911",
+      "currency": "CAD",
+      "tax_exemptions": [],
+      "admin_graphql_api_id": "gid://shopify/Customer/9255272972576",
+      "default_address": {
+        "id": 11175723073824,
+        "customer_id": 9255272972576,
+        "first_name": "Sabrina",
+        "last_name": "Galarneau",
+        "company": "",
+        "address1": "",
+        "address2": "",
+        "city": "",
+        "province": null,
+        "country": "Canada",
+        "zip": "",
+        "phone": "",
+        "name": "Sabrina Galarneau",
+        "province_code": null,
+        "country_code": "CA",
+        "country_name": "Canada",
+        "default": true
+      }
+    },
+    "discount_applications": [],
+    "fulfillments": [
+      {
+        "id": 6405282169120,
+        "admin_graphql_api_id": "gid://shopify/Fulfillment/6405282169120",
+        "created_at": "2026-08-07T14:12:51-04:00",
+        "location_id": 107441717536,
+        "name": "#1298.1",
+        "order_id": 7239365624096,
+        "origin_address": {},
+        "receipt": {},
+        "service": "manual",
+        "shipment_status": null,
+        "status": "success",
+        "tracking_company": null,
+        "tracking_number": null,
+        "tracking_numbers": [],
+        "tracking_url": null,
+        "tracking_urls": [],
+        "updated_at": "2026-08-07T14:12:51-04:00",
+        "line_items": [
+          {
+            "id": 17439687442720,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17439687442720",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 10,
+            "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 9 mm / CC / 0.05",
+            "price": "15.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": true,
+            "product_id": 9918547951904,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": "G750237",
+            "taxable": true,
+            "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": 50168793628960,
+            "variant_inventory_management": "shopify",
+            "variant_title": "9 mm / CC / 0.05",
+            "vendor": "LBL extensions ",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          },
+          {
+            "id": 17439687475488,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17439687475488",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 10,
+            "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 11 mm / CC / 0.05",
+            "price": "15.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": true,
+            "product_id": 9918547951904,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": "8547009",
+            "taxable": true,
+            "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": 50168793891104,
+            "variant_inventory_management": "shopify",
+            "variant_title": "11 mm / CC / 0.05",
+            "vendor": "LBL extensions ",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          },
+          {
+            "id": 17439687508256,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17439687508256",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 10,
+            "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 12 mm / CC / 0.05",
+            "price": "15.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "15.00",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": true,
+            "product_id": 9918547951904,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": "M035278",
+            "taxable": true,
+            "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": 50168794022176,
+            "variant_inventory_management": "shopify",
+            "variant_title": "12 mm / CC / 0.05",
+            "vendor": "LBL extensions ",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          },
+          {
+            "id": 17439687541024,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17439687541024",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 0,
+            "name": "Taxes",
+            "price": "6.75",
+            "price_set": {
+              "shop_money": {
+                "amount": "6.75",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "6.75",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": false,
+            "product_id": null,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": null,
+            "taxable": true,
+            "title": "Taxes",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": null,
+            "variant_inventory_management": null,
+            "variant_title": null,
+            "vendor": "",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          }
+        ]
+      }
+    ],
+    "line_items": [
+      {
+        "id": 17439687442720,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17439687442720",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 10,
+        "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 9 mm / CC / 0.05",
+        "price": "15.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": true,
+        "product_id": 9918547951904,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": "G750237",
+        "taxable": true,
+        "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": 50168793628960,
+        "variant_inventory_management": "shopify",
+        "variant_title": "9 mm / CC / 0.05",
+        "vendor": "LBL extensions ",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      },
+      {
+        "id": 17439687475488,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17439687475488",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 10,
+        "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 11 mm / CC / 0.05",
+        "price": "15.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": true,
+        "product_id": 9918547951904,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": "8547009",
+        "taxable": true,
+        "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": 50168793891104,
+        "variant_inventory_management": "shopify",
+        "variant_title": "11 mm / CC / 0.05",
+        "vendor": "LBL extensions ",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      },
+      {
+        "id": 17439687508256,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17439687508256",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 10,
+        "name": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm - 12 mm / CC / 0.05",
+        "price": "15.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "15.00",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": true,
+        "product_id": 9918547951904,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": "M035278",
+        "taxable": true,
+        "title": "Cils Volume et M\u00e9ga Volume Noir - Bo\u00eetiers 5 \u00e0 18mm",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": 50168794022176,
+        "variant_inventory_management": "shopify",
+        "variant_title": "12 mm / CC / 0.05",
+        "vendor": "LBL extensions ",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      },
+      {
+        "id": 17439687541024,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17439687541024",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 0,
+        "name": "Taxes",
+        "price": "6.75",
+        "price_set": {
+          "shop_money": {
+            "amount": "6.75",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "6.75",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": false,
+        "product_id": null,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": null,
+        "taxable": true,
+        "title": "Taxes",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": null,
+        "variant_inventory_management": null,
+        "variant_title": null,
+        "vendor": "",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      }
+    ],
+    "payment_terms": {
+      "id": 50697273632,
+      "created_at": "2026-08-04T11:54:58-04:00",
+      "due_in_days": null,
+      "payment_schedules": [],
+      "payment_terms_name": "Due on receipt",
+      "payment_terms_type": "receipt",
+      "updated_at": "2026-08-04T11:54:58-04:00"
+    },
+    "refunds": [],
+    "shipping_address": {
+      "first_name": "Sabrina",
+      "address1": "",
+      "phone": null,
+      "city": "",
+      "zip": null,
+      "province": null,
+      "country": "Canada",
+      "last_name": "Galarneau",
+      "address2": null,
+      "company": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "Sabrina Galarneau",
+      "country_code": "CA",
+      "province_code": null
+    },
+    "shipping_lines": []
+  },
+  {
+    "id": 7235998581024,
+    "admin_graphql_api_id": "gid://shopify/Order/7235998581024",
+    "app_id": 1354745,
+    "browser_ip": "184.160.138.72",
+    "buyer_accepts_marketing": false,
+    "cancel_reason": null,
+    "cancelled_at": null,
+    "cart_token": null,
+    "checkout_id": 41529617056032,
+    "checkout_token": "adac1de0e470425680169c9c5c0b40d9",
+    "client_details": {
+      "accept_language": null,
+      "browser_height": null,
+      "browser_ip": "184.160.138.72",
+      "browser_width": null,
+      "session_hash": null,
+      "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Shopify Mobile/iOS/10.2628.1 (iPhone18,2/com.jadedpixel.shopify/26.5.2) - Build 300499 polaris_uplift ExtensibilityHost MobileBridge MobileBridgeNext MobileOSENext ShopifyMobileFormFactor/phone"
+    },
+    "closed_at": "2026-08-03T11:25:53-04:00",
+    "company": null,
+    "confirmation_number": "PGKM8PHG6",
+    "confirmed": true,
+    "contact_email": "meryemm.sm@hotmail.com",
+    "created_at": "2026-08-02T18:17:14-04:00",
+    "currency": "CAD",
+    "current_subtotal_price": "48.30",
+    "current_subtotal_price_set": {
+      "shop_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_additional_fees_set": null,
+    "current_total_discounts": "0.00",
+    "current_total_discounts_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_duties_set": null,
+    "current_total_price": "48.30",
+    "current_total_price_set": {
+      "shop_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      }
+    },
+    "current_total_tax": "0.00",
+    "current_total_tax_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "customer_locale": "fr",
+    "device_id": null,
+    "discount_codes": [],
+    "duties_included": false,
+    "email": "meryemm.sm@hotmail.com",
+    "estimated_taxes": false,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "landing_site": null,
+    "landing_site_ref": null,
+    "location_id": null,
+    "merchant_business_entity_id": "MTk0NDMyNDI4MzIw",
+    "merchant_of_record_app_id": null,
+    "name": "#1297",
+    "note": null,
+    "note_attributes": [],
+    "number": 297,
+    "order_number": 1297,
+    "order_status_url": "https://www.lblextensions.ca/94432428320/orders/60babf7944a3128f739b35b4d0012fea/authenticate?key=fe103c585af5397749cd5d0acf222b6c",
+    "original_total_additional_fees_set": null,
+    "original_total_duties_set": null,
+    "payment_gateway_names": [
+      "manual"
+    ],
+    "phone": "+14388374194",
+    "po_number": null,
+    "presentment_currency": "CAD",
+    "processed_at": "2026-08-02T18:17:14-04:00",
+    "reference": null,
+    "referring_site": null,
+    "source_identifier": null,
+    "source_name": "shopify_draft_order",
+    "source_url": null,
+    "subtotal_price": "48.30",
+    "subtotal_price_set": {
+      "shop_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      }
+    },
+    "tags": "",
+    "tax_exempt": true,
+    "tax_lines": [],
+    "taxes_included": false,
+    "test": false,
+    "token": "60babf7944a3128f739b35b4d0012fea",
+    "total_cash_rounding_payment_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_cash_rounding_refund_adjustment_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_discounts": "0.00",
+    "total_discounts_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_line_items_price": "48.30",
+    "total_line_items_price_set": {
+      "shop_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      }
+    },
+    "total_outstanding": "0.00",
+    "total_price": "48.30",
+    "total_price_set": {
+      "shop_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "48.30",
+        "currency_code": "CAD"
+      }
+    },
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tax": "0.00",
+    "total_tax_set": {
+      "shop_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      },
+      "presentment_money": {
+        "amount": "0.00",
+        "currency_code": "CAD"
+      }
+    },
+    "total_tip_received": "0.00",
+    "total_weight": 10,
+    "updated_at": "2026-08-03T11:25:53-04:00",
+    "user_id": 119826219296,
+    "billing_address": {
+      "first_name": "Meryem",
+      "address1": "",
+      "phone": null,
+      "city": "",
+      "zip": null,
+      "province": null,
+      "country": "Canada",
+      "last_name": "Chtarate",
+      "address2": null,
+      "company": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "Meryem Chtarate",
+      "country_code": "CA",
+      "province_code": null
+    },
+    "customer": {
+      "id": 10485323858208,
+      "created_at": "2026-05-13T07:46:13-04:00",
+      "updated_at": "2026-09-06T18:37:57-04:00",
+      "first_name": "Meryem",
+      "last_name": "Chtarate",
+      "state": "disabled",
+      "note": "",
+      "verified_email": true,
+      "multipass_identifier": null,
+      "tax_exempt": false,
+      "email_marketing_consent": {
+        "state": "not_subscribed",
+        "opt_in_level": "single_opt_in",
+        "consent_updated_at": null
+      },
+      "sms_marketing_consent": {
+        "state": "not_subscribed",
+        "opt_in_level": "single_opt_in",
+        "consent_updated_at": null,
+        "consent_collected_from": null
+      },
+      "tags": "",
+      "email": "meryemm.sm@hotmail.com",
+      "phone": "+14388374194",
+      "currency": "CAD",
+      "tax_exemptions": [],
+      "admin_graphql_api_id": "gid://shopify/Customer/10485323858208",
+      "default_address": {
+        "id": 12181669314848,
+        "customer_id": 10485323858208,
+        "first_name": "Meryem",
+        "last_name": "Chtarate",
+        "company": null,
+        "address1": null,
+        "address2": null,
+        "city": null,
+        "province": null,
+        "country": "Canada",
+        "zip": null,
+        "phone": null,
+        "name": "Meryem Chtarate",
+        "province_code": null,
+        "country_code": "CA",
+        "country_name": "Canada",
+        "default": true
+      }
+    },
+    "discount_applications": [],
+    "fulfillments": [
+      {
+        "id": 6395591328032,
+        "admin_graphql_api_id": "gid://shopify/Fulfillment/6395591328032",
+        "created_at": "2026-08-03T11:25:52-04:00",
+        "location_id": 107441717536,
+        "name": "#1297.1",
+        "order_id": 7235998581024,
+        "origin_address": {},
+        "receipt": {},
+        "service": "manual",
+        "shipment_status": null,
+        "status": "success",
+        "tracking_company": null,
+        "tracking_number": null,
+        "tracking_numbers": [],
+        "tracking_url": null,
+        "tracking_urls": [],
+        "updated_at": "2026-08-03T11:25:52-04:00",
+        "line_items": [
+          {
+            "id": 17432745378080,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17432745378080",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 10,
+            "name": "Real Connection - Colle Noire \u00e0 Extensions de Cils - 5 ML",
+            "price": "42.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "42.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "42.00",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": true,
+            "product_id": 9918547755296,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": null,
+            "taxable": true,
+            "title": "Real Connection - Colle Noire \u00e0 Extensions de Cils",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": 51280139059488,
+            "variant_inventory_management": "shopify",
+            "variant_title": "5 ML",
+            "vendor": "LBL extensions ",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          },
+          {
+            "id": 17432745410848,
+            "admin_graphql_api_id": "gid://shopify/LineItem/17432745410848",
+            "attributed_staffs": [],
+            "current_quantity": 1,
+            "fulfillable_quantity": 0,
+            "fulfillment_service": "manual",
+            "fulfillment_status": "fulfilled",
+            "gift_card": false,
+            "grams": 0,
+            "name": "Taxes",
+            "price": "6.30",
+            "price_set": {
+              "shop_money": {
+                "amount": "6.30",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "6.30",
+                "currency_code": "CAD"
+              }
+            },
+            "product_exists": false,
+            "product_id": null,
+            "properties": [],
+            "quantity": 1,
+            "requires_shipping": true,
+            "sku": null,
+            "taxable": true,
+            "title": "Taxes",
+            "total_discount": "0.00",
+            "total_discount_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "variant_id": null,
+            "variant_inventory_management": null,
+            "variant_title": null,
+            "vendor": "",
+            "tax_lines": [
+              {
+                "channel_liable": false,
+                "price": "0.00",
+                "price_set": {
+                  "shop_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  },
+                  "presentment_money": {
+                    "amount": "0.00",
+                    "currency_code": "CAD"
+                  }
+                },
+                "rate": 0.05,
+                "title": "GST"
+              }
+            ],
+            "duties": [],
+            "discount_allocations": []
+          }
+        ]
+      }
+    ],
+    "line_items": [
+      {
+        "id": 17432745378080,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17432745378080",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 10,
+        "name": "Real Connection - Colle Noire \u00e0 Extensions de Cils - 5 ML",
+        "price": "42.00",
+        "price_set": {
+          "shop_money": {
+            "amount": "42.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "42.00",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": true,
+        "product_id": 9918547755296,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": null,
+        "taxable": true,
+        "title": "Real Connection - Colle Noire \u00e0 Extensions de Cils",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": 51280139059488,
+        "variant_inventory_management": "shopify",
+        "variant_title": "5 ML",
+        "vendor": "LBL extensions ",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      },
+      {
+        "id": 17432745410848,
+        "admin_graphql_api_id": "gid://shopify/LineItem/17432745410848",
+        "attributed_staffs": [],
+        "current_quantity": 1,
+        "fulfillable_quantity": 0,
+        "fulfillment_service": "manual",
+        "fulfillment_status": "fulfilled",
+        "gift_card": false,
+        "grams": 0,
+        "name": "Taxes",
+        "price": "6.30",
+        "price_set": {
+          "shop_money": {
+            "amount": "6.30",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "6.30",
+            "currency_code": "CAD"
+          }
+        },
+        "product_exists": false,
+        "product_id": null,
+        "properties": [],
+        "quantity": 1,
+        "requires_shipping": true,
+        "sku": null,
+        "taxable": true,
+        "title": "Taxes",
+        "total_discount": "0.00",
+        "total_discount_set": {
+          "shop_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          },
+          "presentment_money": {
+            "amount": "0.00",
+            "currency_code": "CAD"
+          }
+        },
+        "variant_id": null,
+        "variant_inventory_management": null,
+        "variant_title": null,
+        "vendor": "",
+        "tax_lines": [
+          {
+            "channel_liable": false,
+            "price": "0.00",
+            "price_set": {
+              "shop_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              },
+              "presentment_money": {
+                "amount": "0.00",
+                "currency_code": "CAD"
+              }
+            },
+            "rate": 0.05,
+            "title": "GST"
+          }
+        ],
+        "duties": [],
+        "discount_allocations": []
+      }
+    ],
+    "payment_terms": {
+      "id": 50607587616,
+      "created_at": "2026-08-02T18:17:14-04:00",
+      "due_in_days": null,
+      "payment_schedules": [],
+      "payment_terms_name": "Due on receipt",
+      "payment_terms_type": "receipt",
+      "updated_at": "2026-08-02T18:17:14-04:00"
+    },
+    "refunds": [],
+    "shipping_address": {
+      "first_name": "Meryem",
+      "address1": "",
+      "phone": null,
+      "city": "",
+      "zip": null,
+      "province": null,
+      "country": "Canada",
+      "last_name": "Chtarate",
+      "address2": null,
+      "company": null,
+      "latitude": null,
+      "longitude": null,
+      "name": "Meryem Chtarate",
+      "country_code": "CA",
+      "province_code": null
+    },
+    "shipping_lines": []
+  },
+  {
+    "id": 7227568029984,
+    "name": "#1296",
+    "created_at": "2026-07-29T20:11:50-04:00",
+    "updated_at": "2026-07-29T20:11:50-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "17.25",
+    "total_discounts": "0.00",
+    "total_price": "17.25",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7227551940896,
+    "name": "#1295",
+    "created_at": "2026-07-29T19:58:03-04:00",
+    "updated_at": "2026-07-29T19:58:03-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "30.00",
+    "total_discounts": "0.00",
+    "total_price": "34.49",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "1.50"
+      },
+      {
+        "title": "QST",
+        "price": "2.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7223734894880,
+    "name": "#1294",
+    "created_at": "2026-07-28T11:49:16-04:00",
+    "updated_at": "2026-07-28T11:49:16-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "86.00",
+    "total_discounts": "0.00",
+    "total_price": "98.90",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.30"
+      },
+      {
+        "title": "QST",
+        "price": "8.60"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7222487777568,
+    "name": "#1293",
+    "created_at": "2026-07-28T10:57:48-04:00",
+    "updated_at": "2026-07-28T10:57:48-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "15.30",
+    "total_discounts": "2.70",
+    "total_price": "17.60",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.77"
+      },
+      {
+        "title": "QST",
+        "price": "1.53"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7221642494240,
+    "name": "#1292",
+    "created_at": "2026-07-28T07:13:56-04:00",
+    "updated_at": "2026-07-28T07:13:56-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "117.00",
+    "total_discounts": "0.00",
+    "total_price": "134.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.85"
+      },
+      {
+        "title": "QST",
+        "price": "11.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7220521173280,
+    "name": "#1291",
+    "created_at": "2026-07-27T16:37:01-04:00",
+    "updated_at": "2026-07-27T16:37:01-04:00",
+    "cancelled_at": "2026-07-27T19:35:28-04:00",
+    "financial_status": "pending",
+    "fulfillment_status": "unfulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7220520157472,
+    "name": "#1290",
+    "created_at": "2026-07-27T16:36:30-04:00",
+    "updated_at": "2026-07-27T16:36:30-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7219052511520,
+    "name": "#1289",
+    "created_at": "2026-07-27T09:20:20-04:00",
+    "updated_at": "2026-07-27T09:20:20-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "63.00",
+    "total_discounts": "0.00",
+    "total_price": "72.42",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.15"
+      },
+      {
+        "title": "QST",
+        "price": "6.27"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7217752375584,
+    "name": "#1288",
+    "created_at": "2026-07-26T14:48:07-04:00",
+    "updated_at": "2026-07-26T14:48:07-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "123.25",
+    "total_discounts": "21.75",
+    "total_price": "155.51",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.76"
+      },
+      {
+        "title": "QST",
+        "price": "13.50"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7211957190944,
+    "name": "#1287",
+    "created_at": "2026-07-24T19:29:46-04:00",
+    "updated_at": "2026-07-24T19:29:46-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "950.00",
+    "total_discounts": "0.00",
+    "total_price": "1092.26",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "47.50"
+      },
+      {
+        "title": "QST",
+        "price": "94.76"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209995174176,
+    "name": "#1286",
+    "created_at": "2026-07-23T21:52:51-04:00",
+    "updated_at": "2026-07-23T21:52:51-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "28.05",
+    "total_discounts": "4.95",
+    "total_price": "46.05",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.00"
+      },
+      {
+        "title": "QST",
+        "price": "4.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209771794720,
+    "name": "#1285",
+    "created_at": "2026-07-23T18:47:39-04:00",
+    "updated_at": "2026-07-23T18:47:39-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "50.00",
+    "total_discounts": "0.00",
+    "total_price": "57.49",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.50"
+      },
+      {
+        "title": "QST",
+        "price": "4.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209519448352,
+    "name": "#1284",
+    "created_at": "2026-07-23T15:50:48-04:00",
+    "updated_at": "2026-07-23T15:50:48-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "8.00",
+    "total_discounts": "0.00",
+    "total_price": "9.20",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.40"
+      },
+      {
+        "title": "QST",
+        "price": "0.80"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7209514303776,
+    "name": "#1283",
+    "created_at": "2026-07-23T15:47:37-04:00",
+    "updated_at": "2026-07-23T15:47:37-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "610.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montreal"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7206661718304,
+    "name": "#1282",
+    "created_at": "2026-07-22T12:37:43-04:00",
+    "updated_at": "2026-07-22T12:37:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "99.85",
+    "total_discounts": "0.00",
+    "total_price": "99.85",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205513920800,
+    "name": "#1281",
+    "created_at": "2026-07-21T21:28:32-04:00",
+    "updated_at": "2026-07-21T21:28:32-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205481840928,
+    "name": "#1280",
+    "created_at": "2026-07-21T20:55:41-04:00",
+    "updated_at": "2026-07-21T20:55:41-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7205125423392,
+    "name": "#1279",
+    "created_at": "2026-07-21T16:02:54-04:00",
+    "updated_at": "2026-07-21T16:02:54-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "60.00",
+    "total_discounts": "0.00",
+    "total_price": "82.80",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.60"
+      },
+      {
+        "title": "QST",
+        "price": "7.20"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Sherbrooke"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7203569860896,
+    "name": "#1278",
+    "created_at": "2026-07-20T21:13:53-04:00",
+    "updated_at": "2026-07-20T21:13:53-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "116.00",
+    "total_discounts": "0.00",
+    "total_price": "133.37",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.80"
+      },
+      {
+        "title": "QST",
+        "price": "11.57"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7203385835808,
+    "name": "#1277",
+    "created_at": "2026-07-20T18:16:39-04:00",
+    "updated_at": "2026-07-20T18:16:39-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "66.00",
+    "total_discounts": "0.00",
+    "total_price": "75.88",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.30"
+      },
+      {
+        "title": "QST",
+        "price": "6.58"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7202531442976,
+    "name": "#1276",
+    "created_at": "2026-07-20T09:08:55-04:00",
+    "updated_at": "2026-07-20T09:08:55-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "95.00",
+    "total_discounts": "0.00",
+    "total_price": "109.23",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.75"
+      },
+      {
+        "title": "QST",
+        "price": "9.48"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7202530296096,
+    "name": "#1275",
+    "created_at": "2026-07-20T09:08:11-04:00",
+    "updated_at": "2026-07-20T09:08:11-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "15.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Quebec"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7201851310368,
+    "name": "#1274",
+    "created_at": "2026-07-19T22:48:14-04:00",
+    "updated_at": "2026-07-19T22:48:14-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "61.00",
+    "total_discounts": "0.00",
+    "total_price": "70.13",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.05"
+      },
+      {
+        "title": "QST",
+        "price": "6.08"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7201661288736,
+    "name": "#1273",
+    "created_at": "2026-07-19T19:40:33-04:00",
+    "updated_at": "2026-07-19T19:40:33-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "100.00",
+    "total_discounts": "0.00",
+    "total_price": "100.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7198669209888,
+    "name": "#1272",
+    "created_at": "2026-07-18T07:33:43-04:00",
+    "updated_at": "2026-07-18T07:33:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "57.00",
+    "total_discounts": "0.00",
+    "total_price": "65.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.85"
+      },
+      {
+        "title": "QST",
+        "price": "5.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196891087136,
+    "name": "#1271",
+    "created_at": "2026-07-17T10:26:43-04:00",
+    "updated_at": "2026-07-17T10:26:43-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "20.40",
+    "total_discounts": "3.60",
+    "total_price": "23.46",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "1.02"
+      },
+      {
+        "title": "QST",
+        "price": "2.04"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196620816672,
+    "name": "#1270",
+    "created_at": "2026-07-17T07:26:18-04:00",
+    "updated_at": "2026-07-17T07:26:18-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "63.00",
+    "total_discounts": "0.00",
+    "total_price": "72.43",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.15"
+      },
+      {
+        "title": "QST",
+        "price": "6.28"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196618981664,
+    "name": "#1269",
+    "created_at": "2026-07-17T07:24:52-04:00",
+    "updated_at": "2026-07-17T07:24:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "60.00",
+    "total_discounts": "0.00",
+    "total_price": "68.99",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.00"
+      },
+      {
+        "title": "QST",
+        "price": "5.99"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196617310496,
+    "name": "#1268",
+    "created_at": "2026-07-17T07:23:33-04:00",
+    "updated_at": "2026-07-17T07:23:33-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "65.00",
+    "total_discounts": "0.00",
+    "total_price": "74.73",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.25"
+      },
+      {
+        "title": "QST",
+        "price": "6.48"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7196607742240,
+    "name": "#1267",
+    "created_at": "2026-07-17T07:16:18-04:00",
+    "updated_at": "2026-07-17T07:16:18-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "65.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195951464736,
+    "name": "#1266",
+    "created_at": "2026-07-16T21:38:19-04:00",
+    "updated_at": "2026-07-16T21:38:19-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "70.00",
+    "total_discounts": "0.00",
+    "total_price": "80.48",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.50"
+      },
+      {
+        "title": "QST",
+        "price": "6.98"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195950022944,
+    "name": "#1265",
+    "created_at": "2026-07-16T21:36:52-04:00",
+    "updated_at": "2026-07-16T21:36:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "120.00",
+    "total_discounts": "0.00",
+    "total_price": "137.97",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.00"
+      },
+      {
+        "title": "QST",
+        "price": "11.97"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "quick_sale",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7195358200096,
+    "name": "#1264",
+    "created_at": "2026-07-16T14:13:27-04:00",
+    "updated_at": "2026-07-16T14:13:27-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7194034405664,
+    "name": "#1263",
+    "created_at": "2026-07-15T21:42:17-04:00",
+    "updated_at": "2026-07-15T21:42:17-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "146.97",
+    "total_discounts": "135.00",
+    "total_price": "167.32",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "6.80"
+      },
+      {
+        "title": "QST",
+        "price": "13.55"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7191887610144,
+    "name": "#1262",
+    "created_at": "2026-07-14T19:37:00-04:00",
+    "updated_at": "2026-07-14T19:37:00-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "27.45",
+    "total_discounts": "7.05",
+    "total_price": "27.45",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7191867359520,
+    "name": "#1261",
+    "created_at": "2026-07-14T19:16:31-04:00",
+    "updated_at": "2026-07-14T19:16:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "42.00",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Qu\u00e9bec"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7190178660640,
+    "name": "#1260",
+    "created_at": "2026-07-13T20:58:20-04:00",
+    "updated_at": "2026-07-13T20:58:20-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "154.71",
+    "total_discounts": "27.29",
+    "total_price": "177.90",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "7.74"
+      },
+      {
+        "title": "QST",
+        "price": "15.45"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7189147386144,
+    "name": "#1259",
+    "created_at": "2026-07-13T09:03:52-04:00",
+    "updated_at": "2026-07-13T09:03:52-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "56.95",
+    "total_discounts": "10.04",
+    "total_price": "63.95",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.34"
+      },
+      {
+        "title": "QST",
+        "price": "4.66"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7188316029216,
+    "name": "#1258",
+    "created_at": "2026-07-12T19:59:22-04:00",
+    "updated_at": "2026-07-12T19:59:22-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "112.00",
+    "total_discounts": "0.00",
+    "total_price": "128.80",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "5.60"
+      },
+      {
+        "title": "QST",
+        "price": "11.20"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Montr\u00e9al"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7187894173984,
+    "name": "#1257",
+    "created_at": "2026-07-12T15:14:31-04:00",
+    "updated_at": "2026-07-12T15:14:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "45.00",
+    "total_discounts": "0.00",
+    "total_price": "65.54",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "2.85"
+      },
+      {
+        "title": "QST",
+        "price": "5.69"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Qu\u00e9bec"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7186416468256,
+    "name": "#1256",
+    "created_at": "2026-07-11T20:21:31-04:00",
+    "updated_at": "2026-07-11T20:21:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "90.00",
+    "total_discounts": "0.00",
+    "total_price": "103.50",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.50"
+      },
+      {
+        "title": "QST",
+        "price": "9.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7179385602336,
+    "name": "#1255",
+    "created_at": "2026-07-08T12:12:31-04:00",
+    "updated_at": "2026-07-08T12:12:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "83.00",
+    "total_discounts": "0.00",
+    "total_price": "95.44",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.15"
+      },
+      {
+        "title": "QST",
+        "price": "8.29"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7174982205728,
+    "name": "#1254",
+    "created_at": "2026-07-06T10:54:02-04:00",
+    "updated_at": "2026-07-06T10:54:02-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "57.00",
+    "total_discounts": "0.00",
+    "total_price": "79.33",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "3.45"
+      },
+      {
+        "title": "QST",
+        "price": "6.88"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "12.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Saint-Hyacinthe"
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7169742995744,
+    "name": "#1253",
+    "created_at": "2026-07-03T18:09:25-04:00",
+    "updated_at": "2026-07-03T18:09:25-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "0.00",
+    "total_discounts": "95.50",
+    "total_price": "0.00",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "0.00"
+      },
+      {
+        "title": "QST",
+        "price": "0.00"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": "Gatineau"
+    },
+    "source_name": "shopify_draft_order",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": 7164432122144,
+    "name": "#1252",
+    "created_at": "2026-07-01T20:00:31-04:00",
+    "updated_at": "2026-07-01T20:00:31-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "83.00",
+    "total_discounts": "0.00",
+    "total_price": "95.42",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "4.15"
+      },
+      {
+        "title": "QST",
+        "price": "8.27"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "source_name": "web",
+    "imported_from": "shopify_admin_csv_export"
+  },
+  {
+    "id": "manuel-1251",
+    "name": "#1251",
+    "created_at": "2026-07-01T07:52:00-04:00",
+    "updated_at": "2026-07-01T07:52:00-04:00",
+    "cancelled_at": null,
+    "financial_status": "paid",
+    "fulfillment_status": "fulfilled",
+    "currency": "CAD",
+    "subtotal_price": "159.80",
+    "total_discounts": "28.20",
+    "total_price": "183.76",
+    "tax_lines": [
+      {
+        "title": "GST",
+        "price": "8.01"
+      },
+      {
+        "title": "QST",
+        "price": "15.95"
+      }
+    ],
+    "total_shipping_price_set": {
+      "shop_money": {
+        "amount": "0.00"
+      }
+    },
+    "shipping_address": {
+      "city": null
+    },
+    "discount_codes": [
+      {
+        "code": "IE3B-W11X-XGAU",
+        "amount": "28.20"
+      }
+    ],
+    "imported_from": "saisie_manuelle (d\u00e9tail de la commande dans l'admin Shopify)"
   }
 ]
