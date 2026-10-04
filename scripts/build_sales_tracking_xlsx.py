@@ -10,9 +10,10 @@ recalculation), plus a grand-total row summing every month. Blocks are
 laid out left to right, one per month, covering the same date range as the
 orders JSON (typically one calendar quarter).
 
-If more than one order falls on the same calendar day, their amounts are
-summed onto that day's single row and their order numbers are joined with
-", " in the Commande cell (the template only has room for one row per day).
+Cancelled orders are left out. If more than one order falls on the same
+calendar day, their amounts are summed onto that day's single row and their
+order numbers are joined with ", " in the Commande cell (the template only
+has room for one row per day).
 
 Usage:
   python scripts/build_sales_tracking_xlsx.py [--input path/to/orders.json] [--output path/to/output.xlsx]
@@ -118,10 +119,17 @@ def period_totals(orders: list[dict]) -> dict[str, float]:
     return {key: round(value, 2) for key, value in totals.items()}
 
 
+def is_cancelled(order: dict) -> bool:
+    return bool(order.get("cancelled_at"))
+
+
 def group_by_day(orders: list[dict]) -> dict[date, list[dict]]:
+    """Orders per calendar day. Cancelled orders are left out: no sale, no tax
+    to declare."""
     grouped: dict[date, list[dict]] = defaultdict(list)
     for order in orders:
-        grouped[order_date(order)].append(order)
+        if not is_cancelled(order):
+            grouped[order_date(order)].append(order)
     return grouped
 
 
