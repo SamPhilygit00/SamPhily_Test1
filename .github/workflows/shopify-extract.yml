@@ -7,6 +7,12 @@ on:
     # avril, juillet et octobre, assemble aussi le trimestre et envoie les fichiers par courriel.
     # Premier lancement : 2026-11-01 (enregistre octobre 2026).
     - cron: "30 5 1 * *"
+  push:
+    # Dépôt d'un document de dépenses (facture, reçu, tableau) dans depenses/ : recalcule la
+    # déclaration TPS/TVQ du trimestre concerné (perçu - payé) et l'envoie par courriel.
+    branches: [main]
+    paths:
+      - "depenses/**"
   workflow_dispatch:
     inputs:
       trimestre:
@@ -17,12 +23,19 @@ on:
 permissions:
   contents: write
 
+# Un seul lancement à la fois : deux dépôts rapprochés sont traités l'un après l'autre.
+concurrency:
+  group: shopify-extract
+  cancel-in-progress: false
+
 jobs:
   extract:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,6 +45,24 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      - name: List deposited expense documents
+        if: github.event_name == 'push'
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            files=$(git diff --name-only "$BEFORE" "$GITHUB_SHA" -- depenses/)
+          else
+            files=$(git ls-files depenses/)
+          fi
+          echo "Documents modifiés :"
+          echo "$files"
+          {
+            echo "DEPENSES_FICHIERS<<EOF"
+            echo "$files"
+            echo "EOF"
+          } >> "$GITHUB_ENV"
+
       - name: Run extraction
         env:
           SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
@@ -39,18 +70,20 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TRIMESTRE: ${{ inputs.trimestre }}
-          EXTRACTION: ${{ github.event_name == 'schedule' && 'mensuel' || 'trimestre' }}
+          EXTRACTION: ${{ github.event_name == 'schedule' && 'mensuel' || github.event_name == 'push' && 'depenses' || 'trimestre' }}
         run: python scripts/shopify_extract_orders.py
 
       - name: Commit and push extracted data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/orders
+          git add data/orders data/depenses 2>/dev/null || git add data/orders
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: automated Shopify orders extraction"
+            git pull --rebase origin main
             git push
           fi

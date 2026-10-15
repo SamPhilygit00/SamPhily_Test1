@@ -33,6 +33,16 @@ one row per calendar day that has orders (days without orders are left out),
 a totals row per month, and a grand-total row for the whole quarter. Orders
 on the same calendar day are summed onto that day's single row.
 
+### Expenses and balance (TPS/TVQ to pay or claim)
+
+Expense documents dropped in `depenses/AAAA-TN/` (xlsx/csv tables, PDF
+invoices, receipt photos) trigger the workflow: `scripts/extract_expenses.py`
+extracts the TPS/TVQ paid (tables directly, PDFs and photos through the
+Anthropic API with the `ANTHROPIC_API_KEY` secret), and the declaration
+workbook gets a Section B (expenses), a Section C (collected − paid, with
+"à payer à Revenu Québec" / "à réclamer" messages) and a "Dépenses" detail
+sheet; the email states the balance. See `depenses/README.md`.
+
 ### 1. Create a Shopify custom app
 
 1. In your Shopify admin: **Settings → Apps and sales channels → Applications
