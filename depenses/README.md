@@ -28,6 +28,21 @@ Les PDF et photos demandent le secret GitHub `ANTHROPIC_API_KEY`
 (Settings → Secrets and variables → Actions). Chaque document n'est lu qu'une
 fois : le résultat est gardé dans `data/depenses/cache.json`.
 
+## Factures « taxes incluses »
+
+Si une facture n'affiche qu'un **total taxes incluses** (ou « TTC »), sans
+montants de TPS/TVQ, ils sont calculés à partir de ce total :
+
+- montant HT = total ÷ 1,14975
+- TPS = 5 % du montant HT
+- TVQ = le reste (HT + TPS + TVQ = total, au cent près)
+
+La ligne est marquée « taxes calculées » dans l'onglet Dépenses. Pour forcer
+ce calcul sur un document qui ne porte pas la mention (ex. un reçu DHL),
+mettez **`taxes-incluses`** ou **`TTC`** dans le nom du fichier :
+`dhl_taxes-incluses.jpg`. Dans un tableau Excel/CSV nommé ainsi, le calcul
+s'applique aux lignes qui ont un total mais pas de TPS/TVQ.
+
 ## Vérifier le résultat
 
 Le fichier `data/orders/AAAA-TN_declaration_tps_tvq.xlsx` (aussi envoyé par
