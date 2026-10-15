@@ -27,6 +27,14 @@ pattern search (flagged "à vérifier") and images are reported as not read.
 A table without recognisable TPS/TVQ columns is also sent to Claude when the
 key is set.
 
+Taxes included: when a document only shows a total "taxes incluses" (or TTC,
+tax included) without the TPS/TVQ amounts, they are worked out from that
+total at the Québec rates: HT = total / 1.14975, TPS = 5 % of HT, TVQ = the
+rest (so HT + TPS + TVQ = total exactly). The expense is flagged "calculée".
+Putting "taxes-incluses" (or "TTC") in a file name forces this calculation
+for that file, e.g. for a receipt that doesn't say so; in a table, it
+applies to the rows that have a total but no TPS/TVQ.
+
 Usage (standalone, prints the quarter's expenses and totals):
   python scripts/extract_expenses.py 2026-T4
 
@@ -65,7 +73,12 @@ IGNORED_NAMES = {".gitkeep", "readme.md", ".ds_store", "thumbs.db"}
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_IMAGE_BYTES = 1_500_000  # photos above this are resized (API limit: 5 MB per image)
-CACHE_VERSION = 1
+CACHE_VERSION = 2  # 2: taxes_incluses read from documents
+
+TPS_RATE = 0.05
+TVQ_RATE = 0.09975
+TAX_INCLUDED_NAME_RE = re.compile(r"taxes?[ _.-]*inclus|(?<![a-z])ttc(?![a-z])|tax[ _.-]*incl", re.IGNORECASE)
+TAX_INCLUDED_TEXT_RE = re.compile(r"taxes?\s+inclus|\bTTC\b|tax(es)?\s+incl", re.IGNORECASE)
 
 
 # --------------------------------------------------------------------------
@@ -149,6 +162,27 @@ def r2(value) -> float:
     return round(float(value or 0), 2)
 
 
+def split_tax_included(total: float) -> tuple[float, float, float]:
+    """Total with TPS and TVQ included -> (HT, TPS, TVQ), summing exactly to total."""
+    ht = round(total / (1 + TPS_RATE + TVQ_RATE), 2)
+    tps = round(ht * TPS_RATE, 2)
+    tvq = round(total - ht - tps, 2)
+    return ht, tps, tvq
+
+
+def apply_tax_included(record: dict) -> dict:
+    """Fill TPS/TVQ from the total when the expense shows no tax amounts."""
+    if record["tps"] or record["tvq"] or not record["total"] or record["devise"] != "CAD":
+        return record
+    ht, tps, tvq = split_tax_included(record["total"])
+    record.update(montant_ht=ht, tps=tps, tvq=tvq)
+    record["remarques"] = record["remarques"] + [
+        f"TPS/TVQ calculées à partir du total taxes incluses ({record['total']:.2f} $ = "
+        f"{ht:.2f} HT + {tps:.2f} TPS 5 % + {tvq:.2f} TVQ 9,975 %)"]
+    record["methode"] += ", taxes calculées"
+    return record
+
+
 def new_record(fichier: str, methode: str, **fields) -> dict:
     tps = r2(fields.get("tps"))
     tvh = r2(fields.get("tvh"))
@@ -220,6 +254,7 @@ def table_records(rows: list[list], fichier: str, sheet: str = "") -> list[dict]
         return None
 
     label = f"tableau{f' ({sheet})' if sheet else ''}"
+    tax_included = bool(TAX_INCLUDED_NAME_RE.search(fichier))
     records = []
     for row in rows[header_index + 1:]:
         def get(role):
@@ -235,14 +270,17 @@ def table_records(rows: list[list], fichier: str, sheet: str = "") -> list[dict]
         ht, total = parse_amount(get("montant_ht")), parse_amount(get("total"))
         if all(v is None for v in (tps, tvq, tvh, ht, total)):
             continue
-        records.append(new_record(
+        record = new_record(
             fichier, label,
             date=parse_date(get("date")),
             fournisseur=str(get("fournisseur") or ""),
             facture=get("facture"),
             description=str(get("description") or ""),
             montant_ht=ht, tps=tps, tvh=tvh, tvq=tvq, total=total,
-        ))
+        )
+        if tax_included and tps is None and tvq is None and tvh is None:
+            record = apply_tax_included(record)
+        records.append(record)
     return records
 
 
@@ -309,11 +347,15 @@ TOOL = {
                         "tvq": {"type": "number", "description": "TVQ / QST payée (0 si absente)"},
                         "total": {"type": ["number", "null"], "description": "Total payé, taxes incluses"},
                         "devise": {"type": "string", "description": "Code de devise, ex. CAD, USD"},
+                        "taxes_incluses": {"type": "boolean",
+                                           "description": "true si le document indique que le total inclut "
+                                                          "les taxes (« taxes incluses », « TTC », « tax "
+                                                          "included ») SANS imprimer les montants de TPS/TVQ"},
                         "remarque": {"type": ["string", "null"],
                                      "description": "Doute ou particularité (illisible, remboursement, devise étrangère...)"},
                     },
                     "required": ["date", "fournisseur", "facture", "description", "montant_ht",
-                                 "tps", "tvh", "tvq", "total", "devise", "remarque"],
+                                 "tps", "tvh", "tvq", "total", "devise", "taxes_incluses", "remarque"],
                     "additionalProperties": False,
                 },
             },
@@ -329,6 +371,8 @@ PROMPT = (
     "(factures, reçus, frais de service). Pour CHAQUE facture ou reçu distinct, relève les "
     "montants de taxes réellement inscrits sur le document : TPS (GST), TVH (HST) et TVQ (QST). "
     "Ne calcule jamais une taxe qui n'est pas imprimée : si une taxe n'apparaît pas, mets 0. "
+    "Si le document indique seulement un total « taxes incluses » (ou TTC, tax included) sans montants de "
+    "TPS/TVQ, mets tps=0, tvq=0, le total dans total, et taxes_incluses=true. "
     "Ignore les annotations écrites à la main (crochets, flèches, notes) : seuls les montants imprimés comptent. "
     "Ne confonds pas les numéros d'inscription (ex. « TPS : 123456789 RT0001 ») avec des montants. "
     "Un remboursement ou une note de crédit a des montants négatifs. "
@@ -425,6 +469,7 @@ def image_block(path: Path) -> dict:
 
 
 def records_from_claude(result: dict, fichier: str, methode: str) -> list[dict]:
+    forced = bool(TAX_INCLUDED_NAME_RE.search(fichier))
     records = []
     for item in result.get("depenses") or []:
         remarques = [item["remarque"]] if item.get("remarque") else []
@@ -441,6 +486,8 @@ def records_from_claude(result: dict, fichier: str, methode: str) -> list[dict]:
             tps=item.get("tps"), tvh=item.get("tvh"), tvq=item.get("tvq"),
             total=item.get("total"), devise=devise, remarques=remarques,
         ))
+        if item.get("taxes_incluses") or forced:
+            records[-1] = apply_tax_included(records[-1])
     return records
 
 
@@ -473,15 +520,17 @@ def pdf_text_records(path: Path, fichier: str) -> list[dict]:
     tvq = last_amount(r"\b(TVQ|QST)\b")
     total = last_amount(r"\bTOTAL\b")
     dates = re.findall(r"\b(\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{4})\b", text)
-    if not (tps or tvh or tvq):
+    included = TAX_INCLUDED_TEXT_RE.search(text) or TAX_INCLUDED_NAME_RE.search(fichier)
+    if not (tps or tvh or tvq) and not (included and total):
         return []
-    return [new_record(
+    record = new_record(
         fichier, "PDF (lecture texte, à vérifier)",
         date=parse_date(dates[0]) if dates else None,
         fournisseur=next((l.strip() for l in text.splitlines() if l.strip()), "")[:60],
         tps=tps, tvh=tvh, tvq=tvq, total=total or None,
         remarques=["Lu sans IA (pas de clé ANTHROPIC_API_KEY) : vérifier les montants"],
-    )]
+    )
+    return [apply_tax_included(record) if included else record]
 
 
 # --------------------------------------------------------------------------
