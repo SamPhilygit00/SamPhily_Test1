@@ -64,7 +64,7 @@ IGNORED_NAMES = {".gitkeep", "readme.md", ".ds_store", "thumbs.db"}
 
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
-MAX_IMAGE_BYTES = 4_500_000  # API limit is 5 MB per image (base64 adds overhead)
+MAX_IMAGE_BYTES = 1_500_000  # photos above this are resized (API limit: 5 MB per image)
 CACHE_VERSION = 1
 
 
@@ -312,12 +312,15 @@ TOOL = {
                         "remarque": {"type": ["string", "null"],
                                      "description": "Doute ou particularité (illisible, remboursement, devise étrangère...)"},
                     },
-                    "required": ["fournisseur", "tps", "tvh", "tvq", "devise"],
+                    "required": ["date", "fournisseur", "facture", "description", "montant_ht",
+                                 "tps", "tvh", "tvq", "total", "devise", "remarque"],
+                    "additionalProperties": False,
                 },
             },
             "document_lisible": {"type": "boolean"},
         },
         "required": ["depenses", "document_lisible"],
+        "additionalProperties": False,
     },
 }
 
@@ -326,37 +329,70 @@ PROMPT = (
     "(factures, reçus, frais de service). Pour CHAQUE facture ou reçu distinct, relève les "
     "montants de taxes réellement inscrits sur le document : TPS (GST), TVH (HST) et TVQ (QST). "
     "Ne calcule jamais une taxe qui n'est pas imprimée : si une taxe n'apparaît pas, mets 0. "
+    "Ignore les annotations écrites à la main (crochets, flèches, notes) : seuls les montants imprimés comptent. "
     "Ne confonds pas les numéros d'inscription (ex. « TPS : 123456789 RT0001 ») avec des montants. "
     "Un remboursement ou une note de crédit a des montants négatifs. "
     "Si le document est illisible ou n'est pas une dépense, renvoie une liste vide et document_lisible=false. "
-    "Utilise l'outil enregistrer_depenses."
+    "Réponds uniquement en appelant l'outil enregistrer_depenses."
 )
 
 
-def call_claude(content_block: dict, api_key: str) -> dict:
-    model = os.environ.get("ANTHROPIC_MODEL") or DEFAULT_MODEL
-    payload = {
-        "model": model,
-        "max_tokens": 4096,
-        "tools": [TOOL],
-        "tool_choice": {"type": "tool", "name": TOOL["name"]},
-        "messages": [{"role": "user", "content": [content_block, {"type": "text", "text": PROMPT}]}],
-    }
-    headers = {"x-api-key": api_key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+def _post(payload: dict, headers: dict) -> requests.Response:
     for attempt in range(4):
         resp = requests.post(API_URL, json=payload, headers=headers, timeout=180)
         if resp.status_code in (429, 500, 502, 503, 529) and attempt < 3:
             time.sleep(float(resp.headers.get("retry-after", 5 * (attempt + 1))))
             continue
-        if resp.status_code >= 400:
-            raise RuntimeError(f"API Anthropic {resp.status_code} : {resp.text[:300]}")
-        break
-    for block in resp.json().get("content", []):
-        if block.get("type") == "tool_use":
+        return resp
+    return resp
+
+
+def _json_from_text(text: str) -> dict | None:
+    start, end = text.find("{"), text.rfind("}")
+    if start == -1 or end <= start:
+        return None
+    try:
+        data = json.loads(text[start:end + 1])
+    except json.JSONDecodeError:
+        return None
+    return data if isinstance(data, dict) and "depenses" in data else None
+
+
+def call_claude(content_block: dict, api_key: str) -> dict:
+    """Ask Claude to fill the enregistrer_depenses tool.
+
+    Recent models (e.g. Claude Sonnet 5.5) reject forced tool use
+    (tool_choice "tool"/"any"), so the call uses tool_choice "auto" with a
+    strict tool definition, which guarantees schema-valid inputs."""
+    model = os.environ.get("ANTHROPIC_MODEL") or DEFAULT_MODEL
+    tool = dict(TOOL, strict=True)
+    payload = {
+        "model": model,
+        "max_tokens": 4096,
+        "tools": [tool],
+        "tool_choice": {"type": "auto"},
+        "messages": [{"role": "user", "content": [content_block, {"type": "text", "text": PROMPT}]}],
+    }
+    headers = {"x-api-key": api_key, "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    resp = _post(payload, headers)
+    if resp.status_code == 400 and "strict" in resp.text:
+        payload["tools"] = [TOOL]  # model without strict tool support
+        resp = _post(payload, headers)
+    if resp.status_code >= 400:
+        raise RuntimeError(f"API Anthropic {resp.status_code} : {resp.text[:300]}")
+
+    content = resp.json().get("content", [])
+    for block in content:
+        if block.get("type") == "tool_use" and block.get("name") == TOOL["name"]:
             result = block.get("input") or {}
             result["_modele"] = model
             return result
-    raise RuntimeError("Réponse de l'API sans résultat structuré")
+    text = "".join(b.get("text", "") for b in content if b.get("type") == "text")
+    result = _json_from_text(text)
+    if result is not None:
+        result["_modele"] = model
+        return result
+    raise RuntimeError("Réponse de l'API sans résultat structuré : " + text[:200])
 
 
 def image_block(path: Path) -> dict:
@@ -570,18 +606,33 @@ def quarter_folder(label: str) -> Path | None:
     return None
 
 
-def duplicate_warnings(records: list[dict]) -> list[str]:
+def remove_duplicates(records: list[dict]) -> tuple[list[dict], list[str]]:
+    """Drop the same invoice found in two documents (e.g. photographed twice).
+
+    Two expenses are the same invoice when they have the same supplier and
+    invoice number, or the same supplier, date and total. The first one is
+    kept; the others are left out of the totals and reported."""
     seen: dict[tuple, str] = {}
-    warnings = []
+    kept, warnings = [], []
     for r in records:
-        if not (r["date"] and r["total"]):
+        supplier = normalize(r["fournisseur"]).replace(" ", "")[:12]
+        invoice = re.sub(r"[^0-9a-z]", "", (r["facture"] or "").lower())
+        keys = []
+        if invoice:
+            keys.append(("facture", supplier, invoice))
+        if r["date"] and r["total"]:
+            keys.append(("montant", supplier, r["date"], r["total"]))
+        first = next((seen[k] for k in keys if k in seen and seen[k] != r["fichier"]), None)
+        if first:
+            invoice_note = f" (facture {r['facture']})" if r["facture"] else ""
+            warnings.append(f"Doublon exclu : {r['fournisseur']} du {r['date'] or '?'}"
+                            f"{invoice_note}"
+                            f" se trouve dans {first} et {r['fichier']} : comptée une seule fois")
             continue
-        key = (r["date"], normalize(r["fournisseur"])[:15], r["total"])
-        if key in seen and seen[key] != r["fichier"]:
-            warnings.append(f"Doublon possible : {r['fournisseur']} du {r['date']} ({r['total']:.2f} $) "
-                            f"dans {seen[key]} et {r['fichier']}")
-        seen.setdefault(key, r["fichier"])
-    return warnings
+        for k in keys:
+            seen.setdefault(k, r["fichier"])
+        kept.append(r)
+    return kept, warnings
 
 
 def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
@@ -620,7 +671,8 @@ def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
             warnings += [w for w in warns if w not in warnings]
 
     save_cache(cache)
-    warnings += duplicate_warnings(records)
+    records, duplicate_notes = remove_duplicates(records)
+    warnings += duplicate_notes
     for r in records:
         if r["devise"] != "CAD":
             warnings.append(f"{r['fichier']} : {r['fournisseur']} en {r['devise']}, montants non convertis en $ CA")
