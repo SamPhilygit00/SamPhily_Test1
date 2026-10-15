@@ -1,3 +1,6 @@
 requests>=2.31,<3
 openpyxl>=3.1,<4
 tzdata>=2024.1  # time zones on Windows
+pdfplumber>=0.11,<1  # expense PDFs read without API key
+Pillow>=10,<12  # expense photos (resize before sending)
+pillow-heif>=0.16,<2  # iPhone photos (.heic)

@@ -26,6 +26,28 @@ trimestre soit toujours complet, l'extraction se fait donc **chaque mois** :
 3. Envoie le **CSV et les deux xlsx** par courriel à **eladdas@yahoo.fr**.
 4. Commit et pousse les fichiers générés dans le dépôt (`main`).
 
+## Dépenses et solde à payer / à réclamer (partie 2 et 3)
+
+Déposer les factures, reçus et relevés de frais dans **`depenses/AAAA-TN/`**
+(ex. `depenses/2026-T4/`). Chaque dépôt ou suppression relance
+automatiquement le workflow, qui :
+
+1. Extrait la **TPS et la TVQ payées** de chaque document
+   (`scripts/extract_expenses.py`) : Excel/CSV lus directement (colonnes TPS
+   et TVQ), PDF et photos lus par Claude (secret `ANTHROPIC_API_KEY`). La TVH
+   payée hors Québec compte avec la TPS.
+2. Reprend la **TPS/TVQ perçue** des clients (ligne 105/205, partie 1).
+3. Calcule **TPS perçue − TPS payée** et **TVQ perçue − TVQ payée** :
+   - résultat > 0 : « montant **à payer à Revenu Québec** » ;
+   - résultat < 0 : « montant **à réclamer à Revenu Québec (remboursement)** ».
+4. Ajoute les sections **B — Dépenses** et **C — Solde** et l'onglet
+   **Dépenses** au fichier de déclaration, et envoie le résultat par
+   courriel (dans l'objet et en tête du message).
+
+Le calcul est aussi fait à chaque déclaration trimestrielle automatique et à
+chaque lancement manuel. Les documents déjà lus par l'IA sont gardés dans
+`data/depenses/cache.json` (pas de double lecture). Voir `depenses/README.md`.
+
 ## Fichier "Déclaration TPS/TVQ" (xlsx)
 
 Généré par `scripts/build_tax_declaration_xlsx.py` (utilisable aussi en
@@ -90,6 +112,7 @@ Dans **Settings → Secrets and variables → Actions** :
 | `SHOPIFY_CLIENT_SECRET` | Secret de l'app Shopify |
 | `SMTP_USERNAME` | `eladdas@yahoo.fr` |
 | `SMTP_PASSWORD` | mot de passe d'application Yahoo Mail |
+| `ANTHROPIC_API_KEY` | clé API Anthropic, pour lire les PDF et photos de dépenses (**à ajouter**) |
 
 ## Fichiers du projet
 

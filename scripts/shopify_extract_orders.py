@@ -15,6 +15,14 @@ over. Instead:
     month not stored yet. A month that is not stored and started more than
     60 days ago can only be fetched partially: the files and the email are
     then flagged INCOMPLET.
+  * EXTRACTION=depenses (run triggered by a push under depenses/): rebuilds
+    the quarter(s) of the expense documents listed in DEPENSES_FICHIERS
+    (one path per line) and emails the result.
+
+Every quarter build also reads the quarter's expense documents (depenses/,
+see extract_expenses.py): the declaration workbook then shows the TPS/TVQ
+paid on expenses and the balance to pay to / claim from Revenu Québec, and
+the email states that balance.
 
 Quarter files go to data/orders/, named after the quarter: 2026-T4.json,
 2026-T4.csv, 2026-T4_suivi_ventes.xlsx, 2026-T4_declaration_tps_tvq.xlsx.
@@ -47,6 +55,7 @@ Optional environment variables:
   SMTP_PORT      default 465 (implicit TLS)
   EMAIL_FROM     default SMTP_USERNAME
   EMAIL_TO       default "eladdas@yahoo.fr"
+  ANTHROPIC_API_KEY  reads expense PDFs and photos (see extract_expenses.py)
 """
 
 from __future__ import annotations
@@ -67,7 +76,8 @@ from zoneinfo import ZoneInfo
 import requests
 
 from build_sales_tracking_xlsx import build_workbook
-from build_tax_declaration_xlsx import build_declaration
+from build_tax_declaration_xlsx import build_declaration, declaration_amounts, tax_balance
+from extract_expenses import load_quarter_expenses, quarters_for_paths
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "orders"
 MONTHLY_DIR = DATA_DIR / "mensuel"
@@ -279,7 +289,8 @@ def flatten_order(order: dict) -> dict:
 
 
 def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]],
-                  period: str, warnings: list[str] | None = None) -> list[Path]:
+                  period: str, warnings: list[str] | None = None,
+                  expenses: dict | None = None) -> list[Path]:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
     json_path = DATA_DIR / f"{label}.json"
@@ -302,9 +313,11 @@ def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]],
     if orders:
         xlsx_path = DATA_DIR / f"{label}_suivi_ventes.xlsx"
         build_workbook(orders, months).save(xlsx_path)
+        attachments.append(xlsx_path)
+    if orders or (expenses and expenses["depenses"]):
         declaration_path = DATA_DIR / f"{label}_declaration_tps_tvq.xlsx"
-        build_declaration(orders, period, warnings).save(declaration_path)
-        attachments += [xlsx_path, declaration_path]
+        build_declaration(orders, period, warnings, expenses).save(declaration_path)
+        attachments.append(declaration_path)
 
     names = ", ".join(p.name for p in [json_path, *attachments])
     print(f"Wrote {len(orders)} orders to {names}")
@@ -312,7 +325,8 @@ def write_outputs(orders: list[dict], label: str, months: list[tuple[int, int]],
 
 
 def send_by_email(attachments: list[Path], order_count: int, period: str,
-                  warnings: list[str] | None = None) -> None:
+                  warnings: list[str] | None = None, balance: dict | None = None,
+                  expenses: dict | None = None) -> None:
     smtp_host = os.environ.get("SMTP_HOST", "smtp.mail.yahoo.com")
     smtp_port = int(os.environ.get("SMTP_PORT", "465"))
     username = env_or_die("SMTP_USERNAME")
@@ -323,12 +337,34 @@ def send_by_email(attachments: list[Path], order_count: int, period: str,
     date_str = attachments[0].stem.split("_")[0]
     msg = EmailMessage()
     flag = " - INCOMPLET" if warnings else ""
-    msg["Subject"] = f"Extraction commandes Shopify (TPS/TVQ) - {date_str}{flag}"
+    summary = ""
+    if balance:
+        summary = " - " + ", ".join(m.split(" à Revenu")[0].replace(" : ", " ") for _, m in balance["messages"])
+    msg["Subject"] = f"Déclaration TPS/TVQ {date_str}{summary}{flag}"
     msg["From"] = from_addr
     msg["To"] = to_addr
-    body = f"Ci-joint l'extraction des commandes du trimestre {period} ({order_count} commandes).\n"
+    body = ""
+    if balance:
+        body += "RÉSULTAT DU TRIMESTRE\n"
+        body += "".join(f"  >>> {m}\n" for _, m in balance["messages"])
+        body += (
+            "\nDétail :\n"
+            f"  TPS perçue des clients (Shopify) : {balance['tps_percue']:>10.2f} $\n"
+            f"  TPS payée sur les dépenses       : {balance['tps_payee']:>10.2f} $\n"
+            f"  TPS nette                        : {balance['tps_nette']:>10.2f} $\n\n"
+            f"  TVQ perçue des clients (Shopify) : {balance['tvq_percue']:>10.2f} $\n"
+            f"  TVQ payée sur les dépenses       : {balance['tvq_payee']:>10.2f} $\n"
+            f"  TVQ nette                        : {balance['tvq_nette']:>10.2f} $\n\n"
+        )
+    body += f"Ci-joint l'extraction des commandes du trimestre {period} ({order_count} commandes)"
+    if expenses is not None:
+        n_exp, n_docs = len(expenses["depenses"]), len(expenses["documents"])
+        body += f" et le calcul des taxes sur {n_exp} dépense(s) tirée(s) de {n_docs} document(s)"
+    body += ".\n"
     if warnings:
         body += "\nATTENTION - données incomplètes :\n" + "".join(f"  - {w}\n" for w in warnings)
+    if expenses and expenses["avertissements"]:
+        body += "\nATTENTION - dépenses à vérifier :\n" + "".join(f"  - {w}\n" for w in expenses["avertissements"])
     msg.set_content(body)
     for path in attachments:
         maintype, subtype = ("text", "csv") if path.suffix == ".csv" else (
@@ -369,8 +405,16 @@ def build_quarter(year: int, quarter: int, tz: ZoneInfo, now: datetime, fetch) -
     orders, warnings = collect_quarter(year, quarter, tz, now, fetch)
     for warning in warnings:
         print(f"ATTENTION : {warning}")
-    attachments = write_outputs(orders, label, quarter_months(year, quarter), period, warnings)
-    send_by_email(attachments, len(orders), period, warnings)
+    expenses = load_quarter_expenses(label)
+    print(f"Dépenses {label} : {len(expenses['depenses'])} dépense(s) dans {len(expenses['documents'])} "
+          f"document(s), TPS payée {expenses['tps']:.2f} $, TVQ payée {expenses['tvq']:.2f} $")
+    for warning in expenses["avertissements"]:
+        print(f"ATTENTION (dépenses) : {warning}")
+    balance = tax_balance(declaration_amounts(orders), expenses)
+    for _, message in balance["messages"]:
+        print(f">>> {message}")
+    attachments = write_outputs(orders, label, quarter_months(year, quarter), period, warnings, expenses)
+    send_by_email(attachments, len(orders), period, warnings, balance, expenses)
 
 
 def main() -> None:
@@ -397,6 +441,17 @@ def main() -> None:
             build_quarter(year, month // 3, tz, now, fetch)
         else:
             print("Pas de fin de trimestre : aucun fichier trimestriel ni courriel ce mois-ci.")
+        return
+
+    if mode == "depenses":
+        paths = [p for p in (os.environ.get("DEPENSES_FICHIERS") or "").splitlines() if p.strip()]
+        quarters = sorted(quarters_for_paths(paths))
+        started = [q for q in quarters if quarter_bounds(*resolve_quarter(q, now.date()), tz)[0] <= now]
+        if not started:
+            print("Aucun trimestre à calculer pour les documents déposés : " + (", ".join(paths) or "(aucun)"))
+            return
+        for label in started:
+            build_quarter(*resolve_quarter(label, now.date()), tz, now, fetch)
         return
 
     year, quarter = resolve_quarter(os.environ.get("TRIMESTRE", ""), now.date())
