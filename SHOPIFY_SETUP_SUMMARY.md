@@ -168,3 +168,39 @@ Suivi ventes ni dans la déclaration.
 - Création du fichier "Suivi ventes" (xlsx) reproduisant le format modèle
   fourni, avec total par mois et total général, intégré à l'automatisation
   hebdomadaire et envoyé par courriel en plus du CSV
+
+## Séance du 14 octobre 2026 — parties 2 et 3 (dépenses et solde)
+
+- **PR #6** : extraction de la TPS/TVQ payée sur les dépenses déposées dans
+  `depenses/AAAA-TN/` (Excel/CSV directement, PDF et photos par Claude),
+  calcul perçu − payé avec message « à payer à Revenu Québec » ou « à
+  réclamer », sections B et C + onglet Dépenses dans la déclaration, résultat
+  dans le courriel, workflow déclenché au dépôt d'un document.
+- Secret **`ANTHROPIC_API_KEY`** ajouté (crédit acheté sur la console
+  Anthropic ; environ 1 à 3 cents par facture, chaque document lu une fois).
+- **PR #7** : compatibilité Claude Sonnet 5.5 (pas de choix d'outil forcé),
+  photos réduites avant envoi, annotations manuscrites ignorées, **doublons
+  exclus** (même facture dans deux documents comptée une fois).
+- **PR #8** : TPS/TVQ **calculées à partir d'un total « taxes incluses »**
+  (HT = total ÷ 1,14975 ; TPS 5 % ; TVQ = le reste). `taxes-incluses` ou
+  `TTC` dans le nom du fichier force le calcul.
+
+### Premier test réel (T3 2026, 4 photos)
+
+| Reçu | TPS | TVQ |
+|---|---|---|
+| La perle virtuelle #26005 (8 juil.) | 29,75 | 59,35 |
+| Canadian Tire (25 août) | 0,70 | 1,40 |
+| IMG_2963 = doublon de #26005 | exclu | exclu |
+| DHL (24 juin, aucune taxe imprimée) | 0 | 0 |
+
+Résultat T3 : TPS perçue 485,67 − payée 30,45 = **455,22 $ à payer** ;
+TVQ perçue 964,64 − payée 60,75 = **903,89 $ à payer**.
+
+### Prochaines étapes
+
+1. Déposer le reste des factures du T3 (~50) dans `depenses/2026-T3/`.
+2. Vérifier l'onglet Dépenses de la déclaration reçue par courriel.
+3. Reçu DHL : déposer la vraie facture si elle existe (une confirmation de
+   paiement sans taxes ni numéro de TPS/TVQ risque d'être refusée).
+4. Optionnel : numéros de case officiels pour les lignes CTI/RTI et solde.
