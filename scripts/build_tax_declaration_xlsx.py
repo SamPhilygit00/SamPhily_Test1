@@ -280,9 +280,9 @@ def _expenses_sections(ws, amounts: dict[str, float], expenses: dict) -> None:
 
 def _expenses_sheet(wb: Workbook, expenses: dict) -> None:
     ws = wb.create_sheet("Dépenses")
-    columns = [("Fichier", 34), ("Date", 12), ("Fournisseur", 28), ("N° facture", 16), ("Description", 30),
-               ("Montant HT ($)", 15), ("TPS payée ($)", 14), ("TVQ payée ($)", 14), ("Total ($)", 14),
-               ("Lu par", 22), ("Remarques", 50)]
+    columns = [("Fichier", 34), ("Date", 12), ("Fournisseur", 28), ("Catégorie", 30), ("N° facture", 16),
+               ("Description", 30), ("Montant HT ($)", 15), ("TPS payée ($)", 14), ("TVQ payée ($)", 14),
+               ("Total ($)", 14), ("Lu par", 22), ("Remarques", 50)]
     for index, (title, width) in enumerate(columns, start=1):
         cell = ws.cell(row=1, column=index, value=title)
         cell.font = Font(name="Arial", bold=True, size=11, color="FFFFFFFF")
@@ -294,18 +294,19 @@ def _expenses_sheet(wb: Workbook, expenses: dict) -> None:
 
     records = expenses.get("depenses", [])
     for row, r in enumerate(records, start=2):
-        values = [r["fichier"], r["date"], r["fournisseur"], r["facture"], r["description"],
-                  r["montant_ht"], r["tps"], r["tvq"], r["total"], r["methode"], " ; ".join(r["remarques"])]
+        values = [r["fichier"], r["date"], r["fournisseur"], r.get("categorie", ""), r["facture"],
+                  r["description"], r["montant_ht"], r["tps"], r["tvq"], r["total"], r["methode"],
+                  " ; ".join(r["remarques"])]
         for col, value in enumerate(values, start=1):
             cell = ws.cell(row=row, column=col, value=value)
-            cell.font = Font(name="Arial", size=10, color="FFC00000" if col == 11 and value else None)
+            cell.font = Font(name="Arial", size=10, color="FFC00000" if col == 12 and value else None)
             cell.border = BORDER
-            if 6 <= col <= 9:
+            if 7 <= col <= 10:
                 cell.number_format = MONEY_FORMAT
 
     total_row = len(records) + 2
     ws.cell(row=total_row, column=1, value="TOTAL")
-    for col, key in ((6, "montant_ht"), (7, "tps"), (8, "tvq")):
+    for col, key in ((7, "montant_ht"), (8, "tps"), (9, "tvq")):
         ws.cell(row=total_row, column=col, value=expenses.get(key, 0.0)).number_format = MONEY_FORMAT
     for col in range(1, len(columns) + 1):
         cell = ws.cell(row=total_row, column=col)

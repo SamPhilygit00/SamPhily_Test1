@@ -91,6 +91,32 @@ def normalize(text) -> str:
     return re.sub(r"[^a-z0-9]+", " ", text.lower()).strip()
 
 
+CATEGORY_DEFAULT = "Matériel de cils"
+
+# Checked in order against the normalized supplier name; first match wins.
+CATEGORY_RULES: list[tuple[re.Pattern, str]] = [
+    (re.compile(r"\bamazon\b"), "Matériel de cils"),
+    (re.compile(r"\bdhl\b"), "Frais de livraison"),
+    (re.compile(r"\bscores\b"), "Frais de maintien divers"),
+    (re.compile(r"\bmaxi\b"), "Frais de maintien divers"),
+    (re.compile(r"\bdollarama\b"), "Frais de maintien divers"),
+    (re.compile(r"\bh\s?m\b"), "Frais de maintien divers"),
+    (re.compile(r"\bdollar\s+max\b"), "Frais de maintien divers"),
+    (re.compile(r"\bmichaels\b"), "Frais de maintien divers"),
+    (re.compile(r"\bla perle virtuelle\b"), "Soutien technique"),
+    (re.compile(r"\bzahka\b"), "Service d'accompagnement en ligne de marque"),
+    (re.compile(r"\bmm\b"), "Matériel de cils"),
+]
+
+
+def categorize_fournisseur(fournisseur: str) -> str:
+    text = normalize(fournisseur)
+    for pattern, category in CATEGORY_RULES:
+        if pattern.search(text):
+            return category
+    return CATEGORY_DEFAULT
+
+
 def parse_amount(value) -> float | None:
     """'1 234,56 $' -> 1234.56, '(12.00)' -> -12.0, 12 -> 12.0, '' -> None."""
     if value is None:
@@ -723,6 +749,7 @@ def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
     records, duplicate_notes = remove_duplicates(records)
     warnings += duplicate_notes
     for r in records:
+        r["categorie"] = categorize_fournisseur(r["fournisseur"])
         if r["devise"] != "CAD":
             warnings.append(f"{r['fichier']} : {r['fournisseur']} en {r['devise']}, montants non convertis en $ CA")
     records.sort(key=lambda r: (r["date"] or "9999", r["fichier"]))
@@ -764,8 +791,8 @@ def main() -> None:
         sys.exit(1)
     result = load_quarter_expenses(sys.argv[1].upper())
     for r in result["depenses"]:
-        print(f"{r['date'] or '?':10}  {r['fournisseur'][:30]:30}  TPS {r['tps']:>9.2f}  TVQ {r['tvq']:>9.2f}"
-              f"  [{r['methode']}] {r['fichier']}")
+        print(f"{r['date'] or '?':10}  {r['fournisseur'][:30]:30}  {r['categorie']:35}"
+              f"  TPS {r['tps']:>9.2f}  TVQ {r['tvq']:>9.2f}  [{r['methode']}] {r['fichier']}")
     print(f"\nTotal {result['trimestre']} : TPS payée {result['tps']:.2f} $, TVQ payée {result['tvq']:.2f} $ "
           f"({len(result['depenses'])} dépenses, {len(result['documents'])} documents)")
     for w in result["avertissements"]:
