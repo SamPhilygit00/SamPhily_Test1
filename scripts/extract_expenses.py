@@ -73,7 +73,7 @@ IGNORED_NAMES = {".gitkeep", "readme.md", ".ds_store", "thumbs.db"}
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_IMAGE_BYTES = 1_500_000  # photos above this are resized (API limit: 5 MB per image)
-CACHE_VERSION = 2  # 2: taxes_incluses read from documents
+CACHE_VERSION = 3  # 3: taxe_combinee (single printed tax amount, not split TPS/TVQ)
 
 TPS_RATE = 0.05
 TVQ_RATE = 0.09975
@@ -206,6 +206,29 @@ def apply_tax_included(record: dict) -> dict:
         f"TPS/TVQ calculées à partir du total taxes incluses ({record['total']:.2f} $ = "
         f"{ht:.2f} HT + {tps:.2f} TPS 5 % + {tvq:.2f} TVQ 9,975 %)"]
     record["methode"] += ", taxes calculées"
+    return record
+
+
+def split_combined_tax(taxe: float) -> tuple[float, float]:
+    """A single printed tax amount (TPS+TVQ not itemized separately) -> (TPS, TVQ),
+    split by the fixed 5 % / 9,975 % rate ratio so TPS + TVQ sums exactly to taxe."""
+    tps = round(taxe * TPS_RATE / (TPS_RATE + TVQ_RATE), 2)
+    tvq = round(taxe - tps, 2)
+    return tps, tvq
+
+
+def apply_combined_tax(record: dict, taxe_combinee) -> dict:
+    """Fill TPS/TVQ from a single combined tax amount printed on the document
+    (e.g. "Taxes de vente", "Taxes estimées") when TPS and TVQ are not itemized."""
+    taxe = parse_amount(taxe_combinee)
+    if not taxe or record["tps"] or record["tvq"] or record["devise"] != "CAD":
+        return record
+    tps, tvq = split_combined_tax(taxe)
+    record.update(tps=tps, tvq=tvq)
+    record["remarques"] = record["remarques"] + [
+        f"TPS/TVQ réparties à partir de la taxe combinée imprimée ({taxe:.2f} $ = "
+        f"{tps:.2f} TPS 5 % + {tvq:.2f} TVQ 9,975 %)"]
+    record["methode"] += ", taxe combinée répartie"
     return record
 
 
@@ -376,12 +399,25 @@ TOOL = {
                         "taxes_incluses": {"type": "boolean",
                                            "description": "true si le document indique que le total inclut "
                                                           "les taxes (« taxes incluses », « TTC », « tax "
-                                                          "included ») SANS imprimer les montants de TPS/TVQ"},
+                                                          "included », ou un reçu/total final sans AUCUNE "
+                                                          "mention de taxe) SANS imprimer le moindre montant "
+                                                          "de taxe"},
+                        "taxe_combinee": {"type": ["number", "null"],
+                                          "description": "Montant de taxe imprimé quand TPS et TVQ ne sont "
+                                                         "PAS indiqués séparément mais qu'un montant de taxe "
+                                                         "EST visible et distinct du total (ex. « Taxes de "
+                                                         "vente : 77,46 $ », « Taxes estimées : 83,11 $ », "
+                                                         "« Taxe : 4,49 $ »). Utilise le montant de taxe du "
+                                                         "TOTAL FINAL réellement payé (après rabais), pas "
+                                                         "celui d'une ligne d'article avant rabais. Laisse "
+                                                         "tps=0 et tvq=0 dans ce cas ; null si TPS/TVQ sont "
+                                                         "indiqués séparément ou si taxes_incluses est true"},
                         "remarque": {"type": ["string", "null"],
                                      "description": "Doute ou particularité (illisible, remboursement, devise étrangère...)"},
                     },
                     "required": ["date", "fournisseur", "facture", "description", "montant_ht",
-                                 "tps", "tvh", "tvq", "total", "devise", "taxes_incluses", "remarque"],
+                                 "tps", "tvh", "tvq", "total", "devise", "taxes_incluses",
+                                 "taxe_combinee", "remarque"],
                     "additionalProperties": False,
                 },
             },
@@ -397,9 +433,20 @@ PROMPT = (
     "(factures, reçus, frais de service). Pour CHAQUE facture ou reçu distinct, relève les "
     "montants de taxes réellement inscrits sur le document : TPS (GST), TVH (HST) et TVQ (QST). "
     "Ne calcule jamais une taxe qui n'est pas imprimée : si une taxe n'apparaît pas, mets 0. "
-    "Si le document indique seulement un total « taxes incluses » (ou TTC, tax included) sans montants de "
-    "TPS/TVQ, mets tps=0, tvq=0, le total dans total, et taxes_incluses=true. "
-    "Ignore les annotations écrites à la main (crochets, flèches, notes) : seuls les montants imprimés comptent. "
+    "TROIS cas possibles selon ce qui est imprimé, à distinguer soigneusement : "
+    "(1) TPS et TVQ sont indiquées séparément -> mets ces montants dans tps/tvq, taxes_incluses=false, "
+    "taxe_combinee=null. "
+    "(2) un seul montant de taxe est imprimé, SANS distinction TPS/TVQ, mais ce montant de taxe est "
+    "visible et distinct du total (ex. « Taxes de vente : 77,46 $ », « Taxes estimées : 83,11 $ », "
+    "« Taxe : 4,49 $ ») -> mets ce montant dans taxe_combinee, tps=0, tvq=0, taxes_incluses=false. "
+    "(3) aucun montant de taxe n'apparaît du tout, seulement un total final payé (c'est le cas normal "
+    "d'un reçu de service comme Uber, livraison, etc., où la taxe est incluse sans être détaillée) -> "
+    "mets ce total dans total, tps=0, tvq=0, taxes_incluses=true, taxe_combinee=null. "
+    "Chaque dépense doit correspondre à exactement UN de ces trois cas. Utilise toujours les montants du "
+    "total final réellement payé (après rabais/réduction), jamais ceux d'une ligne d'article avant rabais, "
+    "même si cette ligne affiche une TPS/TVQ détaillée. "
+    "Ignore les annotations écrites à la main (crochets, flèches, notes, catégories) : seuls les montants "
+    "imprimés par le marchand comptent. "
     "Ne confonds pas les numéros d'inscription (ex. « TPS : 123456789 RT0001 ») avec des montants. "
     "Un remboursement ou une note de crédit a des montants négatifs. "
     "Si le document est illisible ou n'est pas une dépense, renvoie une liste vide et document_lisible=false. "
@@ -514,6 +561,8 @@ def records_from_claude(result: dict, fichier: str, methode: str) -> list[dict]:
         ))
         if item.get("taxes_incluses") or forced:
             records[-1] = apply_tax_included(records[-1])
+        elif item.get("taxe_combinee"):
+            records[-1] = apply_combined_tax(records[-1], item["taxe_combinee"])
     return records
 
 
