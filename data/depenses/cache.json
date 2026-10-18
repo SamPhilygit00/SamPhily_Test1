@@ -1,4 +1,112 @@
 {
   "version": 2,
-  "documents": {}
+  "documents": {
+    "956c3f92f991ce4beddc233bcb468d1dc7cf8ab4bda22d37872802f6c642d87e": {
+      "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+      "depenses": [],
+      "avertissements": [
+        "2026-T3/Dépenses_T3-1-20.pdf : aucune dépense avec taxes trouvée"
+      ],
+      "extrait_le": "2026-10-18T13:47:01"
+    },
+    "2ac552bed3c71ba2189d4652df9cbeeca030ca0d51b34623708c08fc9cbaba15": {
+      "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+      "depenses": [],
+      "avertissements": [
+        "2026-T3/Dépenses_T3-21-39.pdf : aucune dépense avec taxes trouvée"
+      ],
+      "extrait_le": "2026-10-18T13:47:31"
+    },
+    "ccabb467749324cfb2b21d220cc9582a75854e86454fd1d96d9d9457a70e2279": {
+      "fichier": "2026-T3/IMG_2959.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/IMG_2959.jpeg",
+          "date": "2026-07-08",
+          "fournisseur": "La perle virtuelle",
+          "facture": "26005",
+          "description": "Journée de contenu - Présentiel (soutien technique et administratif, création de contenu, gestion de projet, stratégies) le 06 juillet 2026",
+          "montant_ht": 595.0,
+          "tps": 29.75,
+          "tvq": 59.35,
+          "total": 684.1,
+          "devise": "CAD",
+          "methode": "photo (lue par IA)",
+          "remarques": [
+            "Le sous-total de 595,00 $ plus TPS de 29,75 $ et TVQ de 59,35 $ donne 684,10 $, ce qui correspond au grand total. Les annotations manuscrites ont été ignorées."
+          ]
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-18T13:47:35"
+    },
+    "a31ed117c5fd48504e4013e7dbb0eea1c40c39e1f386d40428aec79284f1bb5b": {
+      "fichier": "2026-T3/IMG_2962.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/IMG_2962.jpeg",
+          "date": "2026-08-25",
+          "fournisseur": "Canadian Tire #928",
+          "facture": "TRANS: 139",
+          "description": "GLD BLEU P50 45 (article 142-4701-0)",
+          "montant_ht": 13.99,
+          "tps": 0.7,
+          "tvq": 1.4,
+          "total": 16.09,
+          "devise": "CAD",
+          "methode": "photo (lue par IA)",
+          "remarques": [
+            "Annotation manuscrite ignorée. Payé par Mastercard. Le numéro de transaction est utilisé comme numéro de reçu."
+          ]
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-18T13:47:42"
+    },
+    "939fef3a181a4d9331328982dc7b90f53a4a162a7d59b478d36d297a8cf148e6": {
+      "fichier": "2026-T3/IMG_2963.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/IMG_2963.jpeg",
+          "date": "2026-07-08",
+          "fournisseur": "La perle virtuelle",
+          "facture": "26005",
+          "description": "Journée de contenu - présentiel (soutien technique et administratif, 6 juillet 2026)",
+          "montant_ht": 595.0,
+          "tps": 29.75,
+          "tvq": 59.35,
+          "total": 684.1,
+          "devise": "CAD",
+          "methode": "photo (lue par IA)",
+          "remarques": []
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-18T13:47:45"
+    },
+    "09e1a3c1ef41be27f0fba58e6fcfae468b4eaa4d52bd0ba33b2a2074861e4b4f": {
+      "fichier": "2026-T3/IMG_2964.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/IMG_2964.jpeg",
+          "date": "2026-06-24",
+          "fournisseur": "DHL Express",
+          "facture": "204557218-108434242",
+          "description": "Envoi DHL Express (waybill 3157487874) - confirmation de paiement",
+          "montant_ht": null,
+          "tps": 0.0,
+          "tvq": 0.0,
+          "total": 40.31,
+          "devise": "CAD",
+          "methode": "photo (lue par IA)",
+          "remarques": [
+            "Confirmation de paiement seulement : aucun montant de TPS/TVQ imprimé ni mention de taxes incluses. Numéro indiqué = ID de transaction. Annotations manuscrites (TVQ, TPS) ignorées. Le document apparaît deux fois (version française et anglaise) : une seule dépense.",
+            "Date 2026-06-24 hors du trimestre 2026-T3"
+          ]
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-18T13:47:49"
+    }
+  }
 }
