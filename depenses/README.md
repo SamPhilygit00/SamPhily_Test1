@@ -28,6 +28,41 @@ Les PDF et photos demandent le secret GitHub `ANTHROPIC_API_KEY`
 (Settings → Secrets and variables → Actions). Chaque document n'est lu qu'une
 fois : le résultat est gardé dans `data/depenses/cache.json`.
 
+## Plusieurs factures dans un seul PDF
+
+Un PDF peut contenir **plusieurs factures à la suite** (ex. un lot de reçus
+scannés) : chacune est extraite séparément, comme si elle avait été déposée
+seule. C'est la façon recommandée de déposer un trimestre complet d'un coup.
+
+GitHub limite le téléversement web à 25 Mo et le chat à 30 Mo : si votre PDF
+dépasse cette taille, divisez-le en 2-3 fichiers plus petits (par plage de
+pages, sans tout fusionner) avec un outil comme
+[ilovepdf.com/split_pdf](https://www.ilovepdf.com/split_pdf) — avoir
+plusieurs PDF au lieu d'un seul ne change rien au résultat.
+
+## Repère manuscrit pour calculer une taxe
+
+Si vous annotez une facture à la main et que vous ne connaissez pas le
+détail TPS/TVQ (ex. un reçu qui n'affiche qu'une taxe combinée ou aucune
+taxe du tout), écrivez **« TPS - ? »** et/ou **« TVQ - ? »** à côté du
+montant. C'est le seul repère manuscrit pris en compte : il indique que la
+taxe doit être **calculée** plutôt que laissée à 0. Toute autre annotation
+manuscrite (catégorie, flèches, notes) est ignorée pour les montants.
+
+## Catégories
+
+Chaque dépense est classée automatiquement selon le nom du fournisseur :
+
+| Fournisseur | Catégorie |
+|---|---|
+| Amazon, MM, tout fournisseur non listé | Matériel de cils |
+| DHL | Frais de livraison |
+| Scores, Maxi, Dollarama, H&M, Dollar Max Dépôt, Michaels | Frais de maintien divers |
+| La Perle Virtuelle | Soutien technique |
+| Zahka Inc | Service d'accompagnement en ligne de marque |
+
+La catégorie apparaît dans l'onglet Dépenses, à côté du fournisseur.
+
 ## Factures « taxes incluses »
 
 Si une facture n'affiche qu'un **total taxes incluses** (ou « TTC »), sans
@@ -42,6 +77,13 @@ ce calcul sur un document qui ne porte pas la mention (ex. un reçu DHL),
 mettez **`taxes-incluses`** ou **`TTC`** dans le nom du fichier :
 `dhl_taxes-incluses.jpg`. Dans un tableau Excel/CSV nommé ainsi, le calcul
 s'applique aux lignes qui ont un total mais pas de TPS/TVQ.
+
+## Factures avec une taxe combinée (non détaillée)
+
+Beaucoup de factures (Amazon « Taxes de vente », Shopify « Taxes estimées »)
+affichent **un seul montant de taxe**, sans distinguer TPS et TVQ. Dans ce
+cas, le montant est réparti selon le même ratio que les taux en vigueur
+(5 % / 9,975 %) et la ligne est marquée « taxe combinée répartie ».
 
 ## Vérifier le résultat
 

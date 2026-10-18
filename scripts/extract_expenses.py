@@ -35,6 +35,20 @@ Putting "taxes-incluses" (or "TTC") in a file name forces this calculation
 for that file, e.g. for a receipt that doesn't say so; in a table, it
 applies to the rows that have a total but no TPS/TVQ.
 
+Combined tax (no TPS/TVQ split printed, but a tax amount IS shown, e.g.
+"Taxes de vente", "Taxes estimées"): split from that amount using the same
+5 % / 9,975 % rate ratio (split_combined_tax). A handwritten "?" next to
+"TPS" and/or "TVQ" on the document (e.g. "TPS - ?", "TVQ - ?") is the
+convention used to flag this on documents dropped in depenses/ — it tells
+Claude to compute the tax instead of leaving it at 0, overriding the usual
+"ignore handwritten annotations" rule for that one marker.
+
+Batching: multiple invoices in a single PDF (e.g. a stack of receipts
+scanned together) are all extracted as separate expenses from one API call.
+A very large deposit (many invoices in one PDF) should still be split into
+several smaller PDFs of under ~30 MB each (GitHub's upload/attachment
+limit) — see depenses/README.md for how.
+
 Usage (standalone, prints the quarter's expenses and totals):
   python scripts/extract_expenses.py 2026-T4
 
