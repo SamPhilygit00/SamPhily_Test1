@@ -73,7 +73,7 @@ IGNORED_NAMES = {".gitkeep", "readme.md", ".ds_store", "thumbs.db"}
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_IMAGE_BYTES = 1_500_000  # photos above this are resized (API limit: 5 MB per image)
-CACHE_VERSION = 4  # 4: handwritten "TPS - ?" / "TVQ - ?" recognized as a calc marker
+CACHE_VERSION = 5  # 5: max_tokens raised (multi-invoice PDFs were truncating the tool call)
 
 TPS_RATE = 0.05
 TVQ_RATE = 0.09975
@@ -489,7 +489,7 @@ def call_claude(content_block: dict, api_key: str) -> dict:
     tool = dict(TOOL, strict=True)
     payload = {
         "model": model,
-        "max_tokens": 4096,
+        "max_tokens": 16000,
         "tools": [tool],
         "tool_choice": {"type": "auto"},
         "messages": [{"role": "user", "content": [content_block, {"type": "text", "text": PROMPT}]}],
@@ -502,10 +502,16 @@ def call_claude(content_block: dict, api_key: str) -> dict:
     if resp.status_code >= 400:
         raise RuntimeError(f"API Anthropic {resp.status_code} : {resp.text[:300]}")
 
-    content = resp.json().get("content", [])
+    body = resp.json()
+    stop_reason = body.get("stop_reason")
+    content = body.get("content", [])
     for block in content:
         if block.get("type") == "tool_use" and block.get("name") == TOOL["name"]:
             result = block.get("input") or {}
+            if "depenses" not in result:
+                # max_tokens cut the response before the tool call was complete.
+                raise RuntimeError(f"Appel d'outil incomplet (stop_reason={stop_reason}) : "
+                                   "augmenter max_tokens ou réduire la taille du document")
             result["_modele"] = model
             return result
     text = "".join(b.get("text", "") for b in content if b.get("type") == "text")
