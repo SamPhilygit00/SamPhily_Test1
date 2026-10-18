@@ -48,6 +48,29 @@ Le calcul est aussi fait à chaque déclaration trimestrielle automatique et à
 chaque lancement manuel. Les documents déjà lus par l'IA sont gardés dans
 `data/depenses/cache.json` (pas de double lecture). Voir `depenses/README.md`.
 
+### Comment déposer les factures (convention adoptée)
+
+- **Plusieurs factures dans un seul PDF** sont acceptées : chacune est
+  extraite séparément. C'est la façon recommandée de déposer un trimestre
+  complet d'un coup (ex. `Dépenses_T3.pdf` avec toutes les factures à la
+  suite).
+- Un PDF trop volumineux pour GitHub (web : 25 Mo, chat : 30 Mo) doit être
+  divisé en 2-3 fichiers plus petits par plage de pages (ex. avec
+  [ilovepdf.com/split_pdf](https://www.ilovepdf.com/split_pdf)) — avoir
+  plusieurs PDF au lieu d'un seul ne change rien au résultat.
+- **Taxe combinée non détaillée** (ex. Amazon « Taxes de vente », Shopify
+  « Taxes estimées ») : répartie automatiquement selon le ratio des taux
+  (5 % / 9,975 %), marquée « taxe combinée répartie ».
+- **Repère manuscrit** : écrire **« TPS - ? »** / **« TVQ - ? »** à côté
+  d'un montant signale que cette taxe doit être calculée plutôt que laissée
+  à 0 — c'est la seule annotation manuscrite prise en compte, toutes les
+  autres (catégorie, flèches, notes) sont ignorées pour les montants.
+- **Catégorie automatique** selon le fournisseur (colonne « Catégorie » de
+  l'onglet Dépenses) : Amazon/MM/non listé → Matériel de cils ; DHL → Frais
+  de livraison ; Scores/Maxi/Dollarama/H&M/Dollar Max Dépôt/Michaels →
+  Frais de maintien divers ; La Perle Virtuelle → Soutien technique ; Zahka
+  Inc → Service d'accompagnement en ligne de marque.
+
 ## Fichier "Déclaration TPS/TVQ" (xlsx)
 
 Généré par `scripts/build_tax_declaration_xlsx.py` (utilisable aussi en
@@ -112,7 +135,7 @@ Dans **Settings → Secrets and variables → Actions** :
 | `SHOPIFY_CLIENT_SECRET` | Secret de l'app Shopify |
 | `SMTP_USERNAME` | `eladdas@yahoo.fr` |
 | `SMTP_PASSWORD` | mot de passe d'application Yahoo Mail |
-| `ANTHROPIC_API_KEY` | clé API Anthropic, pour lire les PDF et photos de dépenses (**à ajouter**) |
+| `ANTHROPIC_API_KEY` | clé API Anthropic, pour lire les PDF et photos de dépenses |
 
 ## Fichiers du projet
 
@@ -168,3 +191,36 @@ Suivi ventes ni dans la déclaration.
 - Création du fichier "Suivi ventes" (xlsx) reproduisant le format modèle
   fourni, avec total par mois et total général, intégré à l'automatisation
   hebdomadaire et envoyé par courriel en plus du CSV
+
+### Session du 18 octobre 2026 — catégories et correction du dépôt par PDF
+
+- Ajout de la **catégorisation automatique par fournisseur** (colonne
+  Catégorie dans l'onglet Dépenses du fichier de déclaration).
+- Test réel du dépôt d'un trimestre complet (T3) en 2 PDF multi-pages (39
+  pages, toutes les factures à la suite) : 4 bugs trouvés et corrigés en
+  conditions réelles, un par un, en revalidant à chaque fois sur un vrai
+  run GitHub Actions :
+  1. Noms de fichiers accentués (ex. `Dépenses_T3-1-20.pdf`) mal reconnus
+     par le workflow (`git diff`/`ls-files` les renvoyait entre guillemets
+     avec échappement octal) → `core.quotepath=false` ajouté au workflow.
+  2. Taxe combinée non détaillée (ex. « Taxes de vente ») non gérée →
+     nouveau champ `taxe_combinee`, réparti selon le ratio 5 % / 9,975 %.
+  3. Repère manuscrit « TPS - ? » / « TVQ - ? » ignoré comme toute
+     annotation manuscrite → exception ajoutée au prompt pour le traiter
+     comme un signal de calcul.
+  4. Cause réelle du problème : `max_tokens` à 4096 beaucoup trop bas pour
+     décrire ~15-20 factures sur 20 pages → la réponse de l'IA était
+     tronquée avant même de produire l'appel d'outil, d'où « 0 dépense »
+     silencieux. Remonté à 16 000, avec une erreur explicite désormais si
+     ça se reproduit (au lieu d'un résultat vide silencieux).
+  Résultat final validé : 42 dépenses extraites de 6 documents (au lieu de
+  3 au départ), déclaration et solde TPS/TVQ recalculés correctement.
+- `CACHE_VERSION` du cache de dépenses passé de 2 à 5 au fil de ces
+  correctifs (chaque changement de logique force une relecture complète
+  par l'IA des documents déjà en cache).
+- Convention de dépôt (PDF multi-factures, repère manuscrit, catégories)
+  documentée dans `scripts/extract_expenses.py` et `depenses/README.md`.
+- **Contrôle qualité en cours côté usager** au moment de cette sauvegarde :
+  l'usager valide les 42 dépenses extraites (dont 5 avec date illisible et
+  4 avec TVQ à 0 $, signalées pour vérification) avant de confirmer que le
+  flow est conforme.
