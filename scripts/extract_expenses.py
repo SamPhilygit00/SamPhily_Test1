@@ -73,7 +73,7 @@ IGNORED_NAMES = {".gitkeep", "readme.md", ".ds_store", "thumbs.db"}
 API_URL = "https://api.anthropic.com/v1/messages"
 DEFAULT_MODEL = "claude-sonnet-5-5"
 MAX_IMAGE_BYTES = 1_500_000  # photos above this are resized (API limit: 5 MB per image)
-CACHE_VERSION = 3  # 3: taxe_combinee (single printed tax amount, not split TPS/TVQ)
+CACHE_VERSION = 4  # 4: handwritten "TPS - ?" / "TVQ - ?" recognized as a calc marker
 
 TPS_RATE = 0.05
 TVQ_RATE = 0.09975
