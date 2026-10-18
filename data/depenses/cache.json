@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "documents": {
     "956c3f92f991ce4beddc233bcb468d1dc7cf8ab4bda22d37872802f6c642d87e": {
       "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
@@ -7,7 +7,7 @@
       "avertissements": [
         "2026-T3/Dépenses_T3-1-20.pdf : aucune dépense avec taxes trouvée"
       ],
-      "extrait_le": "2026-10-18T13:53:55"
+      "extrait_le": "2026-10-18T13:58:02"
     },
     "2ac552bed3c71ba2189d4652df9cbeeca030ca0d51b34623708c08fc9cbaba15": {
       "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
@@ -15,7 +15,7 @@
       "avertissements": [
         "2026-T3/Dépenses_T3-21-39.pdf : aucune dépense avec taxes trouvée"
       ],
-      "extrait_le": "2026-10-18T13:54:23"
+      "extrait_le": "2026-10-18T13:58:28"
     },
     "ccabb467749324cfb2b21d220cc9582a75854e86454fd1d96d9d9457a70e2279": {
       "fichier": "2026-T3/IMG_2959.jpeg",
@@ -36,7 +36,7 @@
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:54:27"
+      "extrait_le": "2026-10-18T13:58:32"
     },
     "a31ed117c5fd48504e4013e7dbb0eea1c40c39e1f386d40428aec79284f1bb5b": {
       "fichier": "2026-T3/IMG_2962.jpeg",
@@ -45,8 +45,8 @@
           "fichier": "2026-T3/IMG_2962.jpeg",
           "date": "2026-08-25",
           "fournisseur": "Canadian Tire #928",
-          "facture": "TRANS: 139",
-          "description": "GLD BLEU P50 45 (article de quincaillerie/papeterie)",
+          "facture": "TRANS 139",
+          "description": "GLD BLEU P50 45 (article de quincaillerie)",
           "montant_ht": 13.99,
           "tps": 0.7,
           "tvq": 1.4,
@@ -54,12 +54,12 @@
           "devise": "CAD",
           "methode": "photo (lue par IA)",
           "remarques": [
-            "Payé par Mastercard ****6337. Annotation manuscrite ignorée."
+            "Date imprimée 08/25/2026; annotation manuscrite « oct 2026 » ignorée. TVQ imprimée 1,40 (9,975 % de 13,99 = 1,395)."
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:54:31"
+      "extrait_le": "2026-10-18T13:58:39"
     },
     "939fef3a181a4d9331328982dc7b90f53a4a162a7d59b478d36d297a8cf148e6": {
       "fichier": "2026-T3/IMG_2963.jpeg",
@@ -77,12 +77,12 @@
           "devise": "CAD",
           "methode": "photo (lue par IA)",
           "remarques": [
-            "TPS 5 % et TVQ 9,975 % indiquées séparément. Total imprimé 684,10 $ (la somme 595 + 29,75 + 59,35 = 684,10). Service rendu le 6 juillet 2026."
+            "Service rendu le 6 juillet 2026. Le sous-total 595,00 + TPS 29,75 + TVQ 59,35 donne 684,10 $."
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:54:34"
+      "extrait_le": "2026-10-18T13:58:43"
     },
     "09e1a3c1ef41be27f0fba58e6fcfae468b4eaa4d52bd0ba33b2a2074861e4b4f": {
       "fichier": "2026-T3/IMG_2964.jpeg",
@@ -92,7 +92,7 @@
           "date": "2026-06-24",
           "fournisseur": "DHL Express",
           "facture": "204557218-108434242",
-          "description": "Envoi DHL Express (bordereau 3157487874) – Miss Pretty Lashes",
+          "description": "Envoi DHL Express (bordereau 3157487874) - Miss Pretty Lashes",
           "montant_ht": 35.06,
           "tps": 1.75,
           "tvq": 3.5,
@@ -100,14 +100,14 @@
           "devise": "CAD",
           "methode": "photo (lue par IA), taxes calculées",
           "remarques": [
-            "Confirmation de paiement en français et en anglais (même transaction, comptée une seule fois). Aucun montant de taxe imprimé; les annotations manuscrites (TVQ, TPS) sont ignorées. Le numéro de facture est l'ID de transaction.",
+            "Confirmation de paiement en français et en anglais (même transaction, comptée une seule fois). Aucun montant de taxe imprimé. Annotations manuscrites TVQ/TPS ignorées (sans « ? »). Numéro de facture = ID de transaction.",
             "TPS/TVQ calculées à partir du total taxes incluses (40.31 $ = 35.06 HT + 1.75 TPS 5 % + 3.50 TVQ 9,975 %)",
             "Date 2026-06-24 hors du trimestre 2026-T3"
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:54:37"
+      "extrait_le": "2026-10-18T13:58:46"
     }
   }
 }
