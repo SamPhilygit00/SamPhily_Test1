@@ -51,9 +51,9 @@ jobs:
           BEFORE: ${{ github.event.before }}
         run: |
           if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
-            files=$(git diff --name-only "$BEFORE" "$GITHUB_SHA" -- depenses/)
+            files=$(git -c core.quotepath=false diff --name-only "$BEFORE" "$GITHUB_SHA" -- depenses/)
           else
-            files=$(git ls-files depenses/)
+            files=$(git -c core.quotepath=false ls-files depenses/)
           fi
           echo "Documents modifiés :"
           echo "$files"
