@@ -446,7 +446,11 @@ PROMPT = (
     "total final réellement payé (après rabais/réduction), jamais ceux d'une ligne d'article avant rabais, "
     "même si cette ligne affiche une TPS/TVQ détaillée. "
     "Ignore les annotations écrites à la main (crochets, flèches, notes, catégories) : seuls les montants "
-    "imprimés par le marchand comptent. "
+    "imprimés par le marchand comptent pour les CHIFFRES. SEULE EXCEPTION : un « ? » écrit à la main à côté "
+    "de « TPS » et/ou « TVQ » (ex. « TPS - ? », « TVQ - ? ») est un repère intentionnel de l'entreprise "
+    "signalant que cette taxe n'est pas détaillée sur le document et doit être calculée : traite alors ce "
+    "cas comme (2) ou (3) ci-dessus selon ce qui est imprimé (taxe combinée visible, ou total seulement), "
+    "jamais comme une raison de laisser la dépense de côté. "
     "Ne confonds pas les numéros d'inscription (ex. « TPS : 123456789 RT0001 ») avec des montants. "
     "Un remboursement ou une note de crédit a des montants négatifs. "
     "Si le document est illisible ou n'est pas une dépense, renvoie une liste vide et document_lisible=false. "
@@ -667,6 +671,9 @@ def extract_document(path: Path, cache: dict, api_key: str | None) -> tuple[list
                 use_cache = True
                 if not result.get("document_lisible", True):
                     warnings.append(f"{fichier} : document illisible ou sans dépense")
+                if not records:
+                    print(f"DEBUG {fichier} : réponse brute = "
+                          f"{json.dumps(result, ensure_ascii=False)[:4000]}", file=sys.stderr)
             else:
                 records = pdf_text_records(path, fichier)
                 if not records:
