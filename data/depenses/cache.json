@@ -1,21 +1,645 @@
 {
-  "version": 4,
+  "version": 5,
   "documents": {
     "956c3f92f991ce4beddc233bcb468d1dc7cf8ab4bda22d37872802f6c642d87e": {
       "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
-      "depenses": [],
-      "avertissements": [
-        "2026-T3/Dépenses_T3-1-20.pdf : aucune dépense avec taxes trouvée"
+      "depenses": [
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": null,
+          "fournisseur": "Fournisseur non indiqué (commande en ligne, livraison à Montréal)",
+          "facture": "",
+          "description": "Marchandise et expédition",
+          "montant_ht": 517.28,
+          "tps": 25.86,
+          "tvq": 51.6,
+          "total": 594.74,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxe combinée répartie",
+          "remarques": [
+            "Fournisseur et date non visibles. Sous-total 507,29 $ + expédition 9,99 $. Taxes de vente combinées 77,46 $.",
+            "TPS/TVQ réparties à partir de la taxe combinée imprimée (77.46 $ = 25.86 TPS 5 % + 51.60 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": null,
+          "fournisseur": "NovoQueen Pro",
+          "facture": "MF04A537Y",
+          "description": "L'expérience Glow & Grow 2027 (formation)",
+          "montant_ht": 555.0,
+          "tps": 27.75,
+          "tvq": 55.36,
+          "total": 638.11,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxe combinée répartie",
+          "remarques": [
+            "Taxes estimées combinées 83,11 $. Date non visible.",
+            "TPS/TVQ réparties à partir de la taxe combinée imprimée (83.11 $ = 27.75 TPS 5 % + 55.36 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-06-24",
+          "fournisseur": "VL Top Lash",
+          "facture": "132",
+          "description": "Pinces SKYE (x2)",
+          "montant_ht": 29.98,
+          "tps": 1.5,
+          "tvq": 2.99,
+          "total": 34.47,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxe combinée répartie",
+          "remarques": [
+            "Montants du total final après réduction de 10,00 $ (taxe 4,49 $).",
+            "TPS/TVQ réparties à partir de la taxe combinée imprimée (4.49 $ = 1.50 TPS 5 % + 2.99 TVQ 9,975 %)",
+            "Date 2026-06-24 hors du trimestre 2026-T3"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-18",
+          "fournisseur": "Uber",
+          "facture": "",
+          "description": "Livraison Uber (Courier Saver)",
+          "montant_ht": 14.39,
+          "tps": 0.72,
+          "tvq": 1.43,
+          "total": 16.54,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Aucune taxe détaillée.",
+            "TPS/TVQ calculées à partir du total taxes incluses (16.54 $ = 14.39 HT + 0.72 TPS 5 % + 1.43 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-15",
+          "fournisseur": "Amazon.ca",
+          "facture": "",
+          "description": "Tabouret hydraulique Master Massage",
+          "montant_ht": 109.98,
+          "tps": 5.5,
+          "tvq": 10.97,
+          "total": 126.45,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Taxes incluses non détaillées. Date déduite (livraison 'demain 16 juill.'; note manuscrite peu lisible).",
+            "TPS/TVQ calculées à partir du total taxes incluses (126.45 $ = 109.98 HT + 5.50 TPS 5 % + 10.97 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-16",
+          "fournisseur": "Amazon.ca (LLBA Professional)",
+          "facture": "",
+          "description": "Extensions de cils Curacoro",
+          "montant_ht": 16.06,
+          "tps": 0.8,
+          "tvq": 1.6,
+          "total": 18.46,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Taxes incluses non détaillées. Date selon note manuscrite.",
+            "TPS/TVQ calculées à partir du total taxes incluses (18.46 $ = 16.06 HT + 0.80 TPS 5 % + 1.60 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-14",
+          "fournisseur": "DHL Express",
+          "facture": "5477755522",
+          "description": "Frais de livraison DHL (envoi de Miss Pretty Lashes)",
+          "montant_ht": 26.42,
+          "tps": 1.32,
+          "tvq": 2.64,
+          "total": 30.38,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Numéro de bordereau utilisé comme numéro de facture. Aucune taxe détaillée.",
+            "TPS/TVQ calculées à partir du total taxes incluses (30.38 $ = 26.42 HT + 1.32 TPS 5 % + 2.64 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-08",
+          "fournisseur": "Amazon.ca (LLBA Professional)",
+          "facture": "",
+          "description": "Écrans de rehaussement de cils Curacoro",
+          "montant_ht": 18.93,
+          "tps": 0.95,
+          "tvq": 1.88,
+          "total": 21.76,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Taxes incluses non détaillées; total après code promo 2,20 $. Date déduite (livraison 'demain 9 juill.'), note manuscrite peu lisible.",
+            "TPS/TVQ calculées à partir du total taxes incluses (21.76 $ = 18.93 HT + 0.95 TPS 5 % + 1.88 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-10",
+          "fournisseur": "Amazon.ca (StarsColors)",
+          "facture": "",
+          "description": "Trousse de rehaussement de cils ICONSIGN",
+          "montant_ht": 16.99,
+          "tps": 0.85,
+          "tvq": 1.69,
+          "total": 19.53,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Taxes incluses non détaillées. Date selon note manuscrite/livraison.",
+            "TPS/TVQ calculées à partir du total taxes incluses (19.53 $ = 16.99 HT + 0.85 TPS 5 % + 1.69 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-05",
+          "fournisseur": "Shopify Inc.",
+          "facture": "",
+          "description": "Frais de service en ligne Shopify",
+          "montant_ht": 24.51,
+          "tps": 1.23,
+          "tvq": 2.44,
+          "total": 28.18,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Transaction en attente sur carte; aucune taxe détaillée.",
+            "TPS/TVQ calculées à partir du total taxes incluses (28.18 $ = 24.51 HT + 1.23 TPS 5 % + 2.44 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-07-02",
+          "fournisseur": "Lashtoniic (commande Lbl extensions)",
+          "facture": "1708",
+          "description": "Sérum pour cils Lashtoniic, 12 unités + présentoir",
+          "montant_ht": 239.88,
+          "tps": 11.99,
+          "tvq": 23.93,
+          "total": 275.8,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Nom du fournisseur déduit du produit; livraison gratuite."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-03",
+          "fournisseur": "Amazon.ca",
+          "facture": "702-3892259-3321860",
+          "description": "Mouchoirs faciaux en velours Royale",
+          "montant_ht": 34.99,
+          "tps": 1.75,
+          "tvq": 0.0,
+          "total": 36.74,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "TVQ imprimée à 0,00 $ sur le document; TPS 1,75 $."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-04",
+          "fournisseur": "Amazon.ca",
+          "facture": "",
+          "description": "Articles (2) – matériel de cils",
+          "montant_ht": 27.53,
+          "tps": 0.59,
+          "tvq": 2.75,
+          "total": 30.87,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "HT = 32,78 $ − coupons 2,10 $ − promotion 3,15 $. Date selon note manuscrite/livraison."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-13",
+          "fournisseur": "La Perle Virtuelle",
+          "facture": "26009",
+          "description": "Gestion opérationnelle – soutien technique et administratif",
+          "montant_ht": 1000.0,
+          "tps": 50.0,
+          "tvq": 99.75,
+          "total": 1149.75,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-20",
+          "fournisseur": "Amazon.ca",
+          "facture": "",
+          "description": "Articles (2) – matériel de cils (dont boîtes d'expédition EXYGLO)",
+          "montant_ht": 58.98,
+          "tps": 2.95,
+          "tvq": 5.89,
+          "total": 67.82,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Date selon note manuscrite (livraison prévue 20 août)."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-16",
+          "fournisseur": "Amazon.ca",
+          "facture": "702-1576304-8553019",
+          "description": "Poudre coréenne de cils PERMANIA + coussinets (lot)",
+          "montant_ht": 45.97,
+          "tps": 2.3,
+          "tvq": 4.58,
+          "total": 52.85,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Même commande que la facture CA6G3SHGH4HI (page suivante) : risque de double comptage."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": null,
+          "fournisseur": "Temu (présumé, application d'achat en ligne)",
+          "facture": "",
+          "description": "Commande de 20 articles (brosses à cils, etc.)",
+          "montant_ht": 249.4,
+          "tps": 12.46,
+          "tvq": 24.88,
+          "total": 286.74,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Taxes incluses détaillées (GST 12,46 $ / QST 24,88 $; total 37,34 $). HT calculé = total − taxes. Fournisseur et date non visibles."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": null,
+          "fournisseur": "ZAHKA SNC",
+          "facture": "175",
+          "description": "Service d'accompagnement en image de marque",
+          "montant_ht": 400.0,
+          "tps": 20.0,
+          "tvq": 39.9,
+          "total": 459.9,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Date non imprimée (août 2026 selon note manuscrite)."
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": null,
+          "fournisseur": "Muhammad Adnan Muhammad Aslam (virement)",
+          "facture": "",
+          "description": "Pinces à cils (virement)",
+          "montant_ht": 375.76,
+          "tps": 18.79,
+          "tvq": 37.48,
+          "total": 432.03,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA), taxes calculées",
+          "remarques": [
+            "Confirmation de virement seulement, aucune taxe imprimée; date non visible (août 2026 selon note manuscrite).",
+            "TPS/TVQ calculées à partir du total taxes incluses (432.03 $ = 375.76 HT + 18.79 TPS 5 % + 37.48 TVQ 9,975 %)"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-1-20.pdf",
+          "date": "2026-08-17",
+          "fournisseur": "Amazon.ca (vendeur : putianshiqianmuhemaoyiyouxiangongsi)",
+          "facture": "CA6G3SHGH4HI",
+          "description": "Lash Lift Pads Kit, 3 paires (utuher)",
+          "montant_ht": 9.99,
+          "tps": 0.5,
+          "tvq": 1.0,
+          "total": 11.49,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Facture partielle de la commande 702-1576304-8553019 (déjà incluse dans le total 52,85 $) : possible doublon."
+          ]
+        }
       ],
-      "extrait_le": "2026-10-18T13:58:02"
+      "avertissements": [],
+      "extrait_le": "2026-10-18T14:01:38"
     },
     "2ac552bed3c71ba2189d4652df9cbeeca030ca0d51b34623708c08fc9cbaba15": {
       "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
-      "depenses": [],
-      "avertissements": [
-        "2026-T3/Dépenses_T3-21-39.pdf : aucune dépense avec taxes trouvée"
+      "depenses": [
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-08-03",
+          "fournisseur": "Amazon.com.ca ULC",
+          "facture": "CA82J18PMACCUI",
+          "description": "Royale Velour mouchoirs faciaux 24 boîtes",
+          "montant_ht": 34.99,
+          "tps": 1.75,
+          "tvq": 0.0,
+          "total": 36.74,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "TVQ imprimée à 0,00 $"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-08-03",
+          "fournisseur": "Amazon.com.ca (qingdaoweimeishijiexinxikejiyouxiangongsi)",
+          "facture": "CA899UIFFIII",
+          "description": "VEYES INC extensions de cils volume classique",
+          "montant_ht": 11.79,
+          "tps": 0.59,
+          "tvq": 1.18,
+          "total": 13.56,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-08-19",
+          "fournisseur": "Amazon.ca (EXYGLO)",
+          "facture": "702-0686830-7305820",
+          "description": "Lot de 10 boîtes d'expédition (récapitulatif de commande)",
+          "montant_ht": 58.98,
+          "tps": 2.95,
+          "tvq": 5.89,
+          "total": 67.82,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Capture d'écran du récapitulatif de commande, numéro de commande utilisé comme numéro de facture"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-09",
+          "fournisseur": "Amazon.com.ca ULC",
+          "facture": "CA62ZJ7TIACCUI",
+          "description": "Ring Pop Candy 50 unités",
+          "montant_ht": 31.15,
+          "tps": 1.56,
+          "tvq": 3.1,
+          "total": 35.81,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-16",
+          "fournisseur": "Amazon.com.ca (guangzhouxingyanshengwukejiyouxiangongsi)",
+          "facture": "CA63XQ7BDOQI",
+          "description": "Trousse de rehaussement de cils ICONSIGN",
+          "montant_ht": 16.99,
+          "tps": 0.85,
+          "tvq": 1.69,
+          "total": 19.53,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-16",
+          "fournisseur": "Amazon.com.ca (guangzhouxingyanshengwukejiyouxiangongsi)",
+          "facture": "CA63XG7BDOOI",
+          "description": "Fast Perm Lash Lift Kit",
+          "montant_ht": 16.99,
+          "tps": 0.85,
+          "tvq": 1.69,
+          "total": 19.53,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Même montant que la facture précédente mais numéro de facture et commande différents"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-17",
+          "fournisseur": "Amazon.com.ca (Shanghai Xijian Technology Co., Ltd)",
+          "facture": "CA6GGKGO4C6I",
+          "description": "Article ASIN B08BQXSRR7",
+          "montant_ht": 9.89,
+          "tps": 0.49,
+          "tvq": 0.99,
+          "total": 11.37,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Prix 10,99 $ moins rabais 1,10 $"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-15",
+          "fournisseur": "DHL Express Canada Ltd",
+          "facture": "E103255297400",
+          "description": "Droits et frais de dédouanement",
+          "montant_ht": 30.93,
+          "tps": 7.16,
+          "tvq": 0.0,
+          "total": 38.09,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "TPS sur importation 4,82 $ + TPS sur frais de dédouanement 2,34 $"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-13",
+          "fournisseur": "La Perle Virtuelle",
+          "facture": "26013",
+          "description": "Gestion opérationnelle - présence mensuelle",
+          "montant_ht": 500.0,
+          "tps": 25.0,
+          "tvq": 49.87,
+          "total": 574.88,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-30",
+          "fournisseur": "DHL Express Canada Ltd",
+          "facture": "E103278805700",
+          "description": "Droits et frais de dédouanement",
+          "montant_ht": 76.06,
+          "tps": 23.97,
+          "tvq": 0.0,
+          "total": 100.03,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "TPS sur importation 21,63 $ + TPS sur frais de dédouanement 2,34 $"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-07-11",
+          "fournisseur": "Patrick Morin",
+          "facture": "04F021303246",
+          "description": "Extincteur d'incendie",
+          "montant_ht": 27.99,
+          "tps": 1.4,
+          "tvq": 2.79,
+          "total": 32.18,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": []
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-07-12",
+          "fournisseur": "Dollarama",
+          "facture": "3348",
+          "description": "Articles divers (Anjou)",
+          "montant_ht": 30.36,
+          "tps": 1.28,
+          "tvq": 2.55,
+          "total": 34.19,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Sous-total inclut des dépôts de consigne"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-06-14",
+          "fournisseur": "Scores P.A.T.",
+          "facture": "1883568-1",
+          "description": "Repas restaurant",
+          "montant_ht": 42.35,
+          "tps": 2.12,
+          "tvq": 4.22,
+          "total": 48.69,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Date 2026-06-14 hors du trimestre 2026-T3"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-10",
+          "fournisseur": "Dollarama",
+          "facture": "4318",
+          "description": "Articles divers (Sherbrooke Est)",
+          "montant_ht": 13.5,
+          "tps": 0.68,
+          "tvq": 1.35,
+          "total": 15.53,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Numéro de facture partiellement illisible"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-10-04",
+          "fournisseur": "Dollarama",
+          "facture": "7942",
+          "description": "Effaces magiques et cadres document",
+          "montant_ht": 14.5,
+          "tps": 0.73,
+          "tvq": 1.45,
+          "total": 16.68,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Date 2026-10-04 hors du trimestre 2026-T3"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-09-10",
+          "fournisseur": "Maxi & Cie (Montréal Versailles)",
+          "facture": "",
+          "description": "Épicerie",
+          "montant_ht": 39.98,
+          "tps": 2.0,
+          "tvq": 3.99,
+          "total": 45.97,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Reçu à l'envers; date 26/09/10; référence 142336"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-06-07",
+          "fournisseur": "H&M",
+          "facture": "5001",
+          "description": "Vêtements (ceinture, robes, autre)",
+          "montant_ht": 148.1,
+          "tps": 7.41,
+          "tvq": 14.77,
+          "total": 170.28,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Date 2026-06-07 hors du trimestre 2026-T3"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-06-14",
+          "fournisseur": "Dollar Max Depot (Lachenaie)",
+          "facture": "850823",
+          "description": "Paille de papier et ruban déco",
+          "montant_ht": 6.47,
+          "tps": 0.32,
+          "tvq": 0.65,
+          "total": 7.44,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Numéro de transaction utilisé comme numéro de facture",
+            "Date 2026-06-14 hors du trimestre 2026-T3"
+          ]
+        },
+        {
+          "fichier": "2026-T3/Dépenses_T3-21-39.pdf",
+          "date": "2026-06-21",
+          "fournisseur": "Michaels",
+          "facture": "4183932",
+          "description": "Fournitures créatives (frisures, ficelle, rubans, ballon)",
+          "montant_ht": 49.94,
+          "tps": 2.49,
+          "tvq": 4.99,
+          "total": 57.42,
+          "devise": "CAD",
+          "methode": "PDF (lu par IA)",
+          "remarques": [
+            "Reçu partiellement flou",
+            "Date 2026-06-21 hors du trimestre 2026-T3"
+          ]
+        }
       ],
-      "extrait_le": "2026-10-18T13:58:28"
+      "avertissements": [],
+      "extrait_le": "2026-10-18T14:02:07"
     },
     "ccabb467749324cfb2b21d220cc9582a75854e86454fd1d96d9d9457a70e2279": {
       "fichier": "2026-T3/IMG_2959.jpeg",
@@ -36,7 +660,7 @@
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:58:32"
+      "extrait_le": "2026-10-18T14:02:11"
     },
     "a31ed117c5fd48504e4013e7dbb0eea1c40c39e1f386d40428aec79284f1bb5b": {
       "fichier": "2026-T3/IMG_2962.jpeg",
@@ -46,7 +670,7 @@
           "date": "2026-08-25",
           "fournisseur": "Canadian Tire #928",
           "facture": "TRANS 139",
-          "description": "GLD BLEU P50 45 (article de quincaillerie)",
+          "description": "GLD BLEU P50 45 (article Canadian Tire)",
           "montant_ht": 13.99,
           "tps": 0.7,
           "tvq": 1.4,
@@ -54,12 +678,12 @@
           "devise": "CAD",
           "methode": "photo (lue par IA)",
           "remarques": [
-            "Date imprimée 08/25/2026; annotation manuscrite « oct 2026 » ignorée. TVQ imprimée 1,40 (9,975 % de 13,99 = 1,395)."
+            "Annotation manuscrite « oct 2026 » ignorée. Date imprimée 08/25/2026."
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:58:39"
+      "extrait_le": "2026-10-18T14:02:16"
     },
     "939fef3a181a4d9331328982dc7b90f53a4a162a7d59b478d36d297a8cf148e6": {
       "fichier": "2026-T3/IMG_2963.jpeg",
@@ -77,12 +701,12 @@
           "devise": "CAD",
           "methode": "photo (lue par IA)",
           "remarques": [
-            "Service rendu le 6 juillet 2026. Le sous-total 595,00 + TPS 29,75 + TVQ 59,35 donne 684,10 $."
+            "Le calcul de la TVQ imprimée (59,35 $) correspond à 9,975 % de 595 $. Service effectué le 6 juillet 2026."
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:58:43"
+      "extrait_le": "2026-10-18T14:02:19"
     },
     "09e1a3c1ef41be27f0fba58e6fcfae468b4eaa4d52bd0ba33b2a2074861e4b4f": {
       "fichier": "2026-T3/IMG_2964.jpeg",
@@ -92,7 +716,7 @@
           "date": "2026-06-24",
           "fournisseur": "DHL Express",
           "facture": "204557218-108434242",
-          "description": "Envoi DHL Express (bordereau 3157487874) - Miss Pretty Lashes",
+          "description": "Envoi DHL Express (bordereau 3157487874, expéditeur MISS PRETTY LASHES)",
           "montant_ht": 35.06,
           "tps": 1.75,
           "tvq": 3.5,
@@ -100,14 +724,14 @@
           "devise": "CAD",
           "methode": "photo (lue par IA), taxes calculées",
           "remarques": [
-            "Confirmation de paiement en français et en anglais (même transaction, comptée une seule fois). Aucun montant de taxe imprimé. Annotations manuscrites TVQ/TPS ignorées (sans « ? »). Numéro de facture = ID de transaction.",
+            "Confirmation de paiement en français et en anglais (même transaction, comptée une seule fois). Aucun montant de taxe imprimé. Annotations manuscrites TPS/TVQ avec flèches ignorées. Numéro de facture = ID de transaction.",
             "TPS/TVQ calculées à partir du total taxes incluses (40.31 $ = 35.06 HT + 1.75 TPS 5 % + 3.50 TVQ 9,975 %)",
             "Date 2026-06-24 hors du trimestre 2026-T3"
           ]
         }
       ],
       "avertissements": [],
-      "extrait_le": "2026-10-18T13:58:46"
+      "extrait_le": "2026-10-18T14:02:23"
     }
   }
 }
