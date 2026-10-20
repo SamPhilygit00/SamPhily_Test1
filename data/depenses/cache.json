@@ -732,6 +732,55 @@
       ],
       "avertissements": [],
       "extrait_le": "2026-10-18T14:02:23"
+    },
+    "469a4831daf7c7532362caa953cb44df66bf0f4c750eaf421627c10f8deceaf1": {
+      "fichier": "2026-T3/Telus.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/Telus.jpeg",
+          "date": "2026-10-13",
+          "fournisseur": "TELUS Mobilité",
+          "facture": "",
+          "description": "Services mobiles TELUS (période sept. 2026)",
+          "montant_ht": 179.1,
+          "tps": 8.96,
+          "tvq": 17.87,
+          "total": 205.93,
+          "devise": "CAD",
+          "methode": "photo (lue par IA), taxe combinée répartie",
+          "remarques": [
+            "Taxes combinées de 26,83 $ imprimées sans distinction TPS/TVQ (annotation manuscrite « ? TPS / ? TVQ »). Numéro de compte 40892992. Économies de 20,00 $ ce mois-ci déjà reflétées dans les frais.",
+            "TPS/TVQ réparties à partir de la taxe combinée imprimée (26.83 $ = 8.96 TPS 5 % + 17.87 TVQ 9,975 %)",
+            "Date 2026-10-13 hors du trimestre 2026-T3"
+          ]
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-20T01:39:09"
+    },
+    "b16232fe06aa350e438b149e62e2da5e3c71a7e4e055b690db1fa02a92d0b27f": {
+      "fichier": "2026-T3/Telus_PRET.jpeg",
+      "depenses": [
+        {
+          "fichier": "2026-T3/Telus_PRET.jpeg",
+          "date": "2026-07-01",
+          "fournisseur": "Affirm",
+          "facture": "",
+          "description": "iPhone 17 Pro Max 256 Go Argent (prêt Affirm, 24 mois)",
+          "montant_ht": 1749.0,
+          "tps": 87.45,
+          "tvq": 174.46,
+          "total": 2010.91,
+          "devise": "CAD",
+          "methode": "photo (lue par IA), taxe combinée répartie",
+          "remarques": [
+            "Impôts/taxes de 261,91 $ imprimés sans distinction TPS/TVQ (à calculer, repère « ? » de l'entreprise). Prêt de 1 749,00 $ (72,88 $/mois x 24). Total = prêt + taxes (calculé). Date non imprimée : période juillet 2026 selon la note manuscrite.",
+            "TPS/TVQ réparties à partir de la taxe combinée imprimée (261.91 $ = 87.45 TPS 5 % + 174.46 TVQ 9,975 %)"
+          ]
+        }
+      ],
+      "avertissements": [],
+      "extrait_le": "2026-10-20T01:39:15"
     }
   }
 }
