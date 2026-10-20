@@ -119,7 +119,7 @@ CATEGORY_RULES: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bmichaels\b"), "Frais de maintien divers"),
     (re.compile(r"\bla perle virtuelle\b"), "Soutien technique"),
     (re.compile(r"\bzahka\b"), "Service d'accompagnement en ligne de marque"),
-    (re.compile(r"\btelus\b"), "Frais Téléphonie et Prêt"),
+    (re.compile(r"\btelus\b"), "Frais Téléphonie et Prêt"),  # see also apply_telus_rules
     (re.compile(r"\bmm\b"), "Matériel de cils"),
 ]
 
@@ -790,6 +790,7 @@ def remove_duplicates(records: list[dict]) -> tuple[list[dict], list[str]]:
 TELUS_RE = re.compile(r"\btelus\b")
 TELUS_LOAN_RE = re.compile(r"\bpret\b|\bfinancement\b|\bappareil\b")
 TELUS_MONTHS = 3
+TELUS_CATEGORY = "Frais Téléphonie et Prêt"
 
 
 def apply_telus_rules(records: list[dict]) -> tuple[list[dict], list[str]]:
@@ -801,13 +802,17 @@ def apply_telus_rules(records: list[dict]) -> tuple[list[dict], list[str]]:
     - "Prêt téléphone" (phone loan / device financing, detected by "prêt",
       "financement" or "appareil" in the file name or description): the tax
       was paid only once, so it is counted as printed, never multiplied.
+    An expense is a Telus one when "Telus" is in the supplier name OR in the
+    file name: the phone loan is issued by a lender (e.g. Affirm), so
+    Telus_PRET.jpeg is recognized by its file name. All of them get the
+    "Frais Téléphonie et Prêt" category.
     If several Telus monthly bills are in the same quarter, none is multiplied
     (each month is then already there) and a warning says so."""
     warnings: list[str] = []
     service, out = [], []
     for r in records:
-        if TELUS_RE.search(normalize(r["fournisseur"])):
-            r = dict(r)
+        if TELUS_RE.search(normalize(f"{r['fournisseur']} {r['fichier']}")):
+            r = dict(r, categorie=TELUS_CATEGORY)
             if TELUS_LOAN_RE.search(normalize(f"{r['fichier']} {r['description']}")):
                 r["remarques"] = r["remarques"] + [
                     "Prêt téléphone Telus : taxe payée une seule fois, comptée telle quelle (pas de × 3)"]
@@ -869,7 +874,8 @@ def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
     records, telus_notes = apply_telus_rules(records)
     warnings += telus_notes
     for r in records:
-        r["categorie"] = categorize_fournisseur(r["fournisseur"])
+        if r.get("categorie") != TELUS_CATEGORY:
+            r["categorie"] = categorize_fournisseur(r["fournisseur"])
         if r["devise"] != "CAD":
             warnings.append(f"{r['fichier']} : {r['fournisseur']} en {r['devise']}, montants non convertis en $ CA")
     records.sort(key=lambda r: (r["date"] or "9999", r["fichier"]))

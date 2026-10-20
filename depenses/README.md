@@ -75,7 +75,9 @@ La catégorie apparaît dans l'onglet Dépenses, à côté du fournisseur.
 - **Prêt téléphone Telus** (mettre « prêt », « financement » ou
   « appareil » dans le nom du fichier, ex. `PRET TELEPHONE.pdf`) : la taxe
   n'a été payée qu'une fois (juillet 2026), elle est comptée **telle
-  quelle, sans × 3**.
+  quelle, sans × 3**. Le prêt étant émis par un prêteur (ex. Affirm),
+  garder **« Telus » dans le nom du fichier** (ex. `Telus_PRET.jpeg`) pour
+  qu'il soit classé en « Frais Téléphonie et Prêt ».
 
 ## Factures « taxes incluses »
 
