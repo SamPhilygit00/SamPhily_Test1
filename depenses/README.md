@@ -64,6 +64,19 @@ Chaque dépense est classée automatiquement selon le nom du fournisseur :
 
 La catégorie apparaît dans l'onglet Dépenses, à côté du fournisseur.
 
+## Factures Telus (cellulaire de l'entreprise)
+
+- **Facture mensuelle Telus** : déposer **une seule facture par trimestre**
+  (ex. celle de septembre). Le même montant étant payé chaque mois, son
+  montant HT, sa TPS, sa TVQ et son total sont **multipliés par 3**. Si la
+  facture n'affiche pas de TPS/TVQ, elles sont d'abord calculées à partir
+  du total. Si plusieurs factures mensuelles Telus sont déposées dans le
+  même trimestre, aucune n'est multipliée (avertissement dans le courriel).
+- **Prêt téléphone Telus** (mettre « prêt », « financement » ou
+  « appareil » dans le nom du fichier, ex. `PRET TELEPHONE.pdf`) : la taxe
+  n'a été payée qu'une fois (juillet 2026), elle est comptée **telle
+  quelle, sans × 3**.
+
 ## Factures « taxes incluses »
 
 Si une facture n'affiche qu'un **total taxes incluses** (ou « TTC »), sans
