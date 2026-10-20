@@ -119,6 +119,7 @@ CATEGORY_RULES: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bmichaels\b"), "Frais de maintien divers"),
     (re.compile(r"\bla perle virtuelle\b"), "Soutien technique"),
     (re.compile(r"\bzahka\b"), "Service d'accompagnement en ligne de marque"),
+    (re.compile(r"\btelus\b"), "Frais Téléphonie et Prêt"),
     (re.compile(r"\bmm\b"), "Matériel de cils"),
 ]
 

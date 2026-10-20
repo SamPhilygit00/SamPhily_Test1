@@ -60,6 +60,7 @@ Chaque dépense est classée automatiquement selon le nom du fournisseur :
 | Scores, Maxi, Dollarama, H&M, Dollar Max Dépôt, Michaels | Frais de maintien divers |
 | La Perle Virtuelle | Soutien technique |
 | Zahka Inc | Service d'accompagnement en ligne de marque |
+| Telus | Frais Téléphonie et Prêt |
 
 La catégorie apparaît dans l'onglet Dépenses, à côté du fournisseur.
 
