@@ -69,7 +69,11 @@ chaque lancement manuel. Les documents déjà lus par l'IA sont gardés dans
   l'onglet Dépenses) : Amazon/MM/non listé → Matériel de cils ; DHL → Frais
   de livraison ; Scores/Maxi/Dollarama/H&M/Dollar Max Dépôt/Michaels →
   Frais de maintien divers ; La Perle Virtuelle → Soutien technique ; Zahka
-  Inc → Service d'accompagnement en ligne de marque.
+  Inc → Service d'accompagnement en ligne de marque ; Telus → Frais
+  Téléphonie et Prêt.
+- **Telus** : la facture mensuelle (une par trimestre) est comptée × 3 ;
+  la facture « PRET TELEPHONE » (taxe payée une seule fois en juillet
+  2026) est comptée telle quelle.
 
 ## Fichier "Déclaration TPS/TVQ" (xlsx)
 

@@ -119,6 +119,7 @@ CATEGORY_RULES: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bmichaels\b"), "Frais de maintien divers"),
     (re.compile(r"\bla perle virtuelle\b"), "Soutien technique"),
     (re.compile(r"\bzahka\b"), "Service d'accompagnement en ligne de marque"),
+    (re.compile(r"\btelus\b"), "Frais Téléphonie et Prêt"),
     (re.compile(r"\bmm\b"), "Matériel de cils"),
 ]
 
@@ -786,6 +787,47 @@ def remove_duplicates(records: list[dict]) -> tuple[list[dict], list[str]]:
     return kept, warnings
 
 
+TELUS_RE = re.compile(r"\btelus\b")
+TELUS_LOAN_RE = re.compile(r"\bpret\b|\bfinancement\b|\bappareil\b")
+TELUS_MONTHS = 3
+
+
+def apply_telus_rules(records: list[dict]) -> tuple[list[dict], list[str]]:
+    """Telus conventions for the business cell phone.
+
+    - Monthly service bill: one bill is deposited per quarter and the same
+      amount is paid every month, so its HT/TPS/TVQ/total are multiplied by 3
+      (TPS/TVQ calculated from the total first when the bill shows none).
+    - "Prêt téléphone" (phone loan / device financing, detected by "prêt",
+      "financement" or "appareil" in the file name or description): the tax
+      was paid only once, so it is counted as printed, never multiplied.
+    If several Telus monthly bills are in the same quarter, none is multiplied
+    (each month is then already there) and a warning says so."""
+    warnings: list[str] = []
+    service, out = [], []
+    for r in records:
+        if TELUS_RE.search(normalize(r["fournisseur"])):
+            r = dict(r)
+            if TELUS_LOAN_RE.search(normalize(f"{r['fichier']} {r['description']}")):
+                r["remarques"] = r["remarques"] + [
+                    "Prêt téléphone Telus : taxe payée une seule fois, comptée telle quelle (pas de × 3)"]
+            else:
+                service.append(r)
+        out.append(r)
+    if len(service) == 1:
+        r = apply_tax_included(service[0])
+        for k in ("montant_ht", "tps", "tvq", "total"):
+            if r[k] is not None:
+                r[k] = r2(r[k] * TELUS_MONTHS)
+        r["remarques"] = r["remarques"] + [
+            f"Facture Telus mensuelle × {TELUS_MONTHS} (même montant payé chaque mois du trimestre)"]
+        r["methode"] += f", × {TELUS_MONTHS} mois"
+    elif len(service) > 1:
+        warnings.append(f"{len(service)} factures Telus mensuelles dans le trimestre : "
+                        f"aucune multipliée par {TELUS_MONTHS}, chacune comptée une fois")
+    return out, warnings
+
+
 def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
     """Extract every expense of quarter `label` (e.g. "2026-T4").
 
@@ -824,6 +866,8 @@ def load_quarter_expenses(label: str, api_key: str | None = None) -> dict:
     save_cache(cache)
     records, duplicate_notes = remove_duplicates(records)
     warnings += duplicate_notes
+    records, telus_notes = apply_telus_rules(records)
+    warnings += telus_notes
     for r in records:
         r["categorie"] = categorize_fournisseur(r["fournisseur"])
         if r["devise"] != "CAD":
